@@ -5,18 +5,18 @@ import entidades.Pessoa;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class RepositorioCliente implements IRepositorioCliente{
+public class RepositorioCliente implements IRepositorioGenerico<Pessoa, String>{
     // atributos
 
     private ArrayList<Pessoa> clientes;
-    private static IRepositorioCliente instance;
+    private static IRepositorioGenerico<Pessoa, String> instance;
 
     // construtores
     private RepositorioCliente(){
         clientes = new ArrayList<>();
     }
 
-    public static IRepositorioCliente getInstance(){
+    public static IRepositorioGenerico<Pessoa, String> getInstance(){
         if(instance == null){
             instance = new RepositorioCliente();
         }
@@ -25,14 +25,14 @@ public class RepositorioCliente implements IRepositorioCliente{
 
     // CRUD de cliente
 
-    public void inserirCliente(Pessoa cliente) {
+    public void inserir(Pessoa cliente) {
         if (cliente != null){
             clientes.add(cliente);
         }
 
     }
 
-    public Pessoa obterClientePorEmail(String email) {
+    public Pessoa recuperar(String email) {
         Pessoa c = null;
         for (Pessoa cliente : clientes){
             if (cliente.getEmail().equals(email)){
@@ -42,13 +42,13 @@ public class RepositorioCliente implements IRepositorioCliente{
         return c;
     }
 
-    public void removerCliente(Pessoa cliente) {
+    public void remover(Pessoa cliente) {
         if (cliente != null){
             clientes.remove(cliente);
         }
     }
 
-    public void atualizarCliente(Pessoa cliente) {
+    public void atualizar(Pessoa cliente) {
         if (cliente != null){
             for (Pessoa antigo : clientes){
                 if (antigo.getEmail().equals(cliente.getEmail())){  // se o email do cliente antigo for igual ao id do cliente novo, a atualização é feita

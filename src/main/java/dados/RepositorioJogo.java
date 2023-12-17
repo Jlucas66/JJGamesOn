@@ -4,12 +4,12 @@ import entidades.Jogo;
 
 import java.util.ArrayList;
 
-public class RepositorioJogo implements IRepositorioJogo {
+public class RepositorioJogo implements IRepositorioGenerico<Jogo, Integer> {
 
     // atributos
 
     private ArrayList<Jogo> jogos;
-    private static IRepositorioJogo instance;
+    private static IRepositorioGenerico<Jogo, Integer> instance;
 
     // construtores
 
@@ -17,7 +17,7 @@ public class RepositorioJogo implements IRepositorioJogo {
         jogos = new ArrayList<>();
     }
 
-    public static IRepositorioJogo getInstance(){
+    public static IRepositorioGenerico<Jogo, Integer> getInstance(){
         if(instance == null){
             instance = new RepositorioJogo();
         }
@@ -25,13 +25,13 @@ public class RepositorioJogo implements IRepositorioJogo {
     }
 
     // CRUD de jogo
-    public void inserirJogo(Jogo jogo){
+    public void inserir(Jogo jogo){
         if (jogo != null){
             jogos.add(jogo);
         }
     }
 
-    public Jogo obterJogoPorId(int id){
+    public Jogo recuperar(Integer id){
         Jogo c = null;
         for (Jogo jogo : jogos){
             if (jogo.getId() == id){
@@ -41,13 +41,13 @@ public class RepositorioJogo implements IRepositorioJogo {
         return c;
     }
 
-    public void removerJogo(Jogo jogo){
+    public void remover(Jogo jogo){
         if (jogo != null){
             jogos.remove(jogo);
         }
     }
 
-    public void atualizarJogo (Jogo jogo){
+    public void atualizar (Jogo jogo){
         if (jogo != null){
             for (Jogo antigo : jogos){
                 if (antigo.getId() == jogo.getId()){  // se o id do jogo antigo for igual ao id do jogo novo, a atualização é feita
