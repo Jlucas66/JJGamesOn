@@ -1,12 +1,13 @@
 package dados;
 
-import entidades.Cliente;
+
+import entidades.Pessoa;
 
 public interface IRepositorioCliente {
 
-        void inserirCliente(Cliente cliente);
-        Cliente obterClientePorId(int id);
-        void removerCliente(Cliente cliente);
-        void atualizarCliente(Cliente cliente);
+        void inserirCliente(Pessoa cliente);
+//        Pessoa obterClientePorId(int id);
+        void removerCliente(Pessoa cliente);
+//        void atualizarCliente(Pessoa cliente);
         //static void listarClientesDoBancoDeDados();
 }
