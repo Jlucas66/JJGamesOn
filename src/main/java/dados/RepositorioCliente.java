@@ -32,9 +32,6 @@ public class RepositorioCliente implements IRepositorioCliente{
 
     }
 
-    // *ATUALIZAR*
-    // NÃO EXISTE ATRIBUTO ID
-
     public Pessoa obterClientePorEmail(String email) {
         Pessoa c = null;
         for (Pessoa cliente : clientes){
@@ -51,22 +48,18 @@ public class RepositorioCliente implements IRepositorioCliente{
         }
     }
 
-
-    // *ATUALIZAR*
-    // NÃO EXISTE ATRIBUTO ID
-
-//    public void atualizarCliente(Pessoa cliente) {
-//        if (cliente != null){
-//            for (Pessoa antigo : clientes){
-//                if (antigo.getIdCliente() == cliente.getIdCliente()){  // se o id do cliente antigo for igual ao id do cliente novo, a atualização é feita
-//                    antigo.setNome(cliente.getNome());
-//                    antigo.setEmail(cliente.getEmail());
-//                    antigo.setSenha(cliente.getSenha());
-//                    antigo.setDataNascimento(cliente.getDataNascimento());
-//                }
-//            }
-//        }
-//    }
+    public void atualizarCliente(Pessoa cliente) {
+        if (cliente != null){
+            for (Pessoa antigo : clientes){
+                if (antigo.getEmail().equals(cliente.getEmail())){  // se o email do cliente antigo for igual ao id do cliente novo, a atualização é feita
+                    antigo.setNome(cliente.getNome());
+                    antigo.setEmail(cliente.getEmail());
+                    antigo.setSenha(cliente.getSenha());
+                    antigo.setDataNascimento(cliente.getDataNascimento());
+                }
+            }
+        }
+    }
 
     public static void listarClientesDoBancoDeDados() {
         String consultaSQL = "select * from Cliente";
