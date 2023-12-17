@@ -6,7 +6,7 @@ import entidades.Pessoa;
 public interface IRepositorioCliente {
 
         void inserirCliente(Pessoa cliente);
-//        Pessoa obterClientePorId(int id);
+        Pessoa obterClientePorEmail(String email);
         void removerCliente(Pessoa cliente);
 //        void atualizarCliente(Pessoa cliente);
         //static void listarClientesDoBancoDeDados();

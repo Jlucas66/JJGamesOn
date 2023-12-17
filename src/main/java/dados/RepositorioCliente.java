@@ -35,15 +35,15 @@ public class RepositorioCliente implements IRepositorioCliente{
     // *ATUALIZAR*
     // NÃO EXISTE ATRIBUTO ID
 
-//    public Pessoa obterClientePorId(int id) {
-//        Pessoa c = null;
-//        for (Pessoa cliente : clientes){
-//            if (cliente.getIdCliente() == id){
-//                c = cliente;
-//            }
-//        }
-//        return c;
-//    }
+    public Pessoa obterClientePorEmail(String email) {
+        Pessoa c = null;
+        for (Pessoa cliente : clientes){
+            if (cliente.getEmail().equals(email)){
+                c = cliente;
+            }
+        }
+        return c;
+    }
 
     public void removerCliente(Pessoa cliente) {
         if (cliente != null){
