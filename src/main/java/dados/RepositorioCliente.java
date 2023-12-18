@@ -33,7 +33,10 @@ public class RepositorioCliente implements IRepositorioCliente{
     public void removerCliente(String email) {
         if(email != null){
             for (Pessoa cliente:clientes) {
-                if(cliente.getEmail().equals(email)) clientes.remove(cliente);
+                if(cliente.getEmail().equals(email)){
+                    clientes.remove(cliente);
+                    break;
+                }
             }
         }
 
