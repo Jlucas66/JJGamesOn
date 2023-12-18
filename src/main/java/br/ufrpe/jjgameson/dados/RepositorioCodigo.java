@@ -7,20 +7,21 @@ import java.util.List;
 
 public class RepositorioCodigo implements IRepositorioCodigo {
 
-    private ArrayList<Codigo> codigos;
+    private List<String> codigos;
 
     public RepositorioCodigo() {
         codigos = new ArrayList<>();
     }
+
     @Override
-    public void inserir(Codigo codigo) {
-        if(codigo != null){
+    public void inserir(String codigo) {
+        if(codigo != null && !codigo.isEmpty()) {
             codigos.add(codigo);
         }
     }
 
     @Override
-    public List<Codigo> listar() {
-        return codigos;
+    public List<String> listar() {
+        return new ArrayList<>(codigos);
     }
 }
