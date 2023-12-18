@@ -5,6 +5,7 @@ import br.ufrpe.jjgameson.entidades.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Main {
 
@@ -25,7 +26,7 @@ public class Main {
         Jogo jogo1 = new Jogo(1,"Minecraft",29.90,"Mojang Studios","Casual","Um jogo casual de construção", FaixaEtaria.LIVRE);
 
         // Gerando itemVenda
-        ItemVenda itemVenda1 = new ItemVenda(jogo1,1,1);
+        ItemVenda itemVenda1 = new ItemVenda(jogo1,2,1);
         for (String codigo: itemVenda1.getCodigos()) {
             repositorioCodigo.inserir(codigo);
         }
@@ -40,5 +41,12 @@ public class Main {
         repositorioCliente.inserirCliente(cliente1);
         repositorioJogo.inserirJogo(jogo1);
         repositorioVenda.inserir(venda1);
+
+        // Listando coisas
+        List<Pessoa> clientes = repositorioCliente.listarClientes();
+        System.out.println("\nClientes:");
+        for (Pessoa cliente : clientes) {
+            System.out.println("Nome: " + cliente.getNome() + ", Email: " + cliente.getEmail());
         }
+    }
 }
