@@ -1,86 +1,58 @@
 package dados;
 
+import entidades.Avaliacao;
 import entidades.Pessoa;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
-public class RepositorioCliente implements IRepositorioGenerico<Pessoa, String>{
-    // atributos
+public class RepositorioCliente implements IRepositorioCliente{
 
     private ArrayList<Pessoa> clientes;
-    private static IRepositorioGenerico<Pessoa, String> instance;
 
-    // construtores
-    private RepositorioCliente(){
+    public RepositorioCliente() {
         clientes = new ArrayList<>();
     }
-
-    public static IRepositorioGenerico<Pessoa, String> getInstance(){
-        if(instance == null){
-            instance = new RepositorioCliente();
-        }
-        return instance;
-    }
-
-    // CRUD de cliente
-
-    public void inserir(Pessoa cliente) {
-        if (cliente != null){
+    @Override
+    public void inserirCliente(Pessoa cliente) {
+        if(cliente != null){
             clientes.add(cliente);
         }
-
     }
 
-    public Pessoa recuperar(String email) {
-        Pessoa c = null;
-        for (Pessoa cliente : clientes){
-            if (cliente.getEmail().equals(email)){
-                c = cliente;
+    @Override
+    public Pessoa obterClientePorEmail(String email) {
+        for (Pessoa cliente : clientes) {
+            if(cliente.getEmail().equals(email))return cliente;
+        }
+        return null;
+    }
+
+    @Override
+    public void removerCliente(String email) {
+        if(email != null){
+            for (Pessoa cliente:clientes) {
+                if(cliente.getEmail().equals(email)) clientes.remove(cliente);
             }
         }
-        return c;
+
     }
 
-    public void remover(Pessoa cliente) {
-        if (cliente != null){
-            clientes.remove(cliente);
-        }
-    }
-
-    public void atualizar(Pessoa cliente) {
-        if (cliente != null){
-            for (Pessoa antigo : clientes){
-                if (antigo.getEmail().equals(cliente.getEmail())){  // se o email do cliente antigo for igual ao id do cliente novo, a atualização é feita
-                    antigo.setNome(cliente.getNome());
-                    antigo.setEmail(cliente.getEmail());
-                    antigo.setSenha(cliente.getSenha());
-                    antigo.setDataNascimento(cliente.getDataNascimento());
-                }
+    @Override
+    public void atualizarCliente(Pessoa clienteAntigo, Pessoa clienteNovo) {
+        for (Pessoa cliente : clientes) {
+            if (cliente.equals(clienteAntigo)) {
+                int index = clientes.indexOf(cliente);
+                clientes.set(index, clienteNovo);
+                break;
             }
         }
     }
 
-    public static void listarClientesDoBancoDeDados() {
-        String consultaSQL = "select * from Cliente";
-
-        try (Connection conexao = ConexaoBD.obterConexao()) {
-            PreparedStatement comando = conexao.prepareStatement(consultaSQL);
-            ResultSet resultado = comando.executeQuery();
-
-            while (resultado.next()) {
-                String nome = resultado.getString("nome");
-
-                System.out.println("Nome: " + nome);
-                System.out.println();
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static void main(String[] args) {
-        listarClientesDoBancoDeDados();
+    @Override
+    public List<Pessoa> listarClientes() {
+        return clientes;
     }
 }
 

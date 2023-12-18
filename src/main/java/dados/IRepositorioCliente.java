@@ -3,11 +3,13 @@ package dados;
 
 import entidades.Pessoa;
 
+import java.util.List;
+
 public interface IRepositorioCliente {
 
         void inserirCliente(Pessoa cliente);
         Pessoa obterClientePorEmail(String email);
-        void removerCliente(Pessoa cliente);
-        void atualizarCliente(Pessoa cliente);
-        //static void listarClientesDoBancoDeDados();
+        void removerCliente(String email);
+        void atualizarCliente(Pessoa clienteAntigo, Pessoa clienteNovo);
+        List<Pessoa> listarClientes();
 }
