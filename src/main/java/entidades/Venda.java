@@ -4,11 +4,11 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Venda {
-    private Cliente cliente;
+    private Pessoa cliente;
     private ArrayList<ItemVenda> itensVenda = new ArrayList();
     private LocalDateTime data;
 
-    public Venda(Cliente cliente, LocalDateTime data) {
+    public Venda(Pessoa cliente, LocalDateTime data) {
         this.cliente = cliente;
         this.data = data;
     }

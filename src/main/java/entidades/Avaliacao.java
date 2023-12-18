@@ -2,14 +2,14 @@ package entidades;
 
 import java.time.LocalDateTime;
 
-public class Avalicao {
+public class Avaliacao {
     private Pessoa cliente;
     private Jogo jogo;
     private int nota;
     private String comentario;
     private LocalDateTime data;
 
-    public Avalicao(Pessoa cliente, Jogo jogo, int nota, String comentario) {
+    public Avaliacao(Pessoa cliente, Jogo jogo, int nota, String comentario) {
         this.cliente = cliente;
         this.jogo = jogo;
         this.nota = nota;
