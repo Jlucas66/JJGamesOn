@@ -7,38 +7,40 @@ import java.util.List;
 
 public class RepositorioAdmin implements IRepositorioAdmin{
 
-    private ArrayList<Pessoa> pessoas;
+    private ArrayList<Pessoa> admins;
 
     public RepositorioAdmin() {
-        pessoas = new ArrayList<>();
+        admins = new ArrayList<>();
     }
 
     @Override
     public void inserir(Pessoa admin) {
-        if(pessoas != null){
-            pessoas.add(admin)
+        if(admin != null){
+            admins.add(admin);
         }
     }
 
     @Override
     public List<Pessoa> listar() {
-        return pessoas;
+        return admins;
     }
 
     @Override
     public void atualizar(Pessoa adminAntigo, Pessoa adminNovo) {
-        for (Pessoa pessoa : pessoas) {
-            if (pessoas.equals(adminAntigo)){
-                int index = pessoas.indexOf(adminNovo)
+        for (Pessoa pessoa : admins) {
+            if (admins.equals(adminAntigo)){
+                int index = admins.indexOf(adminNovo);
+                admins.set(index, adminNovo);
+                break;
             }
         }
     }
 
     @Override
     public void excluir(Pessoa adminParaExcluir) {
-        for (Pessoa pessoa : pessoas){
-            if (Pessoa.equals(adminParaExcluir)){
-                avaliacoes.remove(pessoa);
+        for (Pessoa admin : admins){
+            if (admin.equals(adminParaExcluir)){
+                admins.remove(admin);
                 break;
             }
         }
