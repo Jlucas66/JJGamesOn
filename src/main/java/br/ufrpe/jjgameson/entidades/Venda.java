@@ -34,4 +34,12 @@ public class Venda {
         }
         return valorFinal;
     }
+
+    public String getData() {
+        return data.getDayOfMonth() + "/" + data.getMonthValue() + "/" + data.getYear();
+    }
+
+    public Pessoa getCliente() {
+        return cliente;
+    }
 }

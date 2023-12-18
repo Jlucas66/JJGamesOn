@@ -20,6 +20,7 @@ public class Main {
 
         // Gerando Pessoas
         Pessoa admin1 = new Pessoa("João", "joaoemail@gmail.com", "senha123", LocalDate.of(1999,12,12),true);
+        Pessoa admin2 = new Pessoa("Maria", "mariaemail@yahoo.com", "senha123", LocalDate.of(1999,12,12),true);
         Pessoa cliente1 = new Pessoa("Vagner", "vagneremail@gmail.com", "coxinha123", LocalDate.of(2002,5,15),false);
         Pessoa cliente2 = new Pessoa("Bruno", "brunoemail@gmail.com", "123456", LocalDate.of(2001,7,15),false);
 
@@ -27,6 +28,7 @@ public class Main {
         Jogo jogo1 = new Jogo(1,"Minecraft",29.90,"Mojang Studios","Casual","Um jogo casual de construção", FaixaEtaria.LIVRE);
         Jogo jogo2 = new Jogo(2,"GTA V",69.90,"Rockstar Games","Ação","Um jogo de ação", FaixaEtaria.DEZESSEIS);
         // Gerando itemVenda
+
         ItemVenda itemVenda1 = new ItemVenda(jogo1,2,1);
         for (String codigo: itemVenda1.getCodigos()) {
             repositorioCodigo.inserir(codigo);
@@ -39,6 +41,7 @@ public class Main {
 
         // Inserindo no repositorio
         repositorioAdmin.inserir(admin1);
+        repositorioAdmin.inserir(admin2);
         repositorioCliente.inserirCliente(cliente1);
         repositorioCliente.inserirCliente(cliente2);
         repositorioJogo.inserirJogo(jogo1);
@@ -46,15 +49,24 @@ public class Main {
         repositorioVenda.inserir(venda1);
 
         // Listando coisas
+        //Listando Admin
+        List<Pessoa> admins = repositorioAdmin.listar();
+        System.out.println("Admins:");
+        for (Pessoa admin : admins) {
+            System.out.println("Nome: " + admin.getNome() + ", Email: " + admin.getEmail());
+        }
+        // Removendo admin
+        repositorioAdmin.excluir(admin1);
+        System.out.println("\nAdmins:");
+        for (Pessoa admin : admins) {
+            System.out.println("Nome: " + admin.getNome() + ", Email: " + admin.getEmail());
+        }
+        
+        //Listando Cliente
         List<Pessoa> clientes = repositorioCliente.listarClientes();
         System.out.println("\nClientes:");
         for (Pessoa cliente : clientes) {
             System.out.println("Nome: " + cliente.getNome() + ", Email: " + cliente.getEmail());
-        }
-        List<String> codigos = repositorioCodigo.listar();
-        System.out.println("\nCódigos:");
-        for (String codigo : codigos) {
-            System.out.println("Código: " + codigo);
         }
 
         // Removendo cliente
@@ -62,6 +74,12 @@ public class Main {
         System.out.println("\nClientes:");
         for (Pessoa cliente : clientes) {
             System.out.println("Nome: " + cliente.getNome() + ", Email: " + cliente.getEmail());
+        }
+        //Listando Codigos
+        List<String> codigos = repositorioCodigo.listar();
+        System.out.println("\nCódigos:");
+        for (String codigo : codigos) {
+            System.out.println("Código: " + codigo);
         }
 
         //Listando Jogo
@@ -77,5 +95,14 @@ public class Main {
         for (Jogo jogo : jogos) {
             System.out.println("Nome: " + jogo.getNome() + ", Desenvolvedora: " + jogo.getDesenvolvedora());
         }
+
+        //listando venda
+        List<Venda> vendas = repositorioVenda.listar();
+        System.out.println("\nVendas:");
+        for (Venda venda : vendas) {
+            System.out.println("Cliente: " + venda1.getCliente().getNome() + ", Data: " + venda1.getData()  + ", Valor: " + venda1.calcularTotal());
+        }
+
+
     }
 }
