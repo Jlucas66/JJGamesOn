@@ -21,6 +21,7 @@ public class Main {
         // Gerando Pessoas
         Pessoa admin1 = new Pessoa("João", "joaoemail@gmail.com", "senha123", LocalDate.of(1999,12,12),true);
         Pessoa cliente1 = new Pessoa("Vagner", "vagneremail@gmail.com", "coxinha123", LocalDate.of(2002,5,15),false);
+        Pessoa cliente2 = new Pessoa("Bruno", "brunoemail@gmail.com", "123456", LocalDate.of(2001,7,15),false);
 
         // Gerando Jogo
         Jogo jogo1 = new Jogo(1,"Minecraft",29.90,"Mojang Studios","Casual","Um jogo casual de construção", FaixaEtaria.LIVRE);
@@ -39,6 +40,7 @@ public class Main {
         // Inserindo no repositorio
         repositorioAdmin.inserir(admin1);
         repositorioCliente.inserirCliente(cliente1);
+        repositorioCliente.inserirCliente(cliente2);
         repositorioJogo.inserirJogo(jogo1);
         repositorioVenda.inserir(venda1);
 
@@ -52,6 +54,13 @@ public class Main {
         System.out.println("\nCódigos:");
         for (String codigo : codigos) {
             System.out.println("Código: " + codigo);
+        }
+
+        // Removendo cliente
+        repositorioCliente.removerCliente("brunoemail@gmail.com");
+        System.out.println("\nClientes:");
+        for (Pessoa cliente : clientes) {
+            System.out.println("Nome: " + cliente.getNome() + ", Email: " + cliente.getEmail());
         }
     }
 }
