@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 public class ItemVenda {
     private Jogo jogo;
+    private int idItemVenda;
     private int quantidade;
     private double valorTotal;
     private ArrayList<String> codigos;
 
-    public ItemVenda(Jogo jogo, int quantidade) {
+    public ItemVenda(Jogo jogo, int quantidade, int idItemVenda) {
         this.jogo = jogo;
+        this.idItemVenda = idItemVenda;
         this.quantidade = quantidade;
         valorTotal = jogo.getValor() * quantidade;
         this.codigos = Codigo.gerarCodigos(quantidade);
@@ -31,6 +33,14 @@ public class ItemVenda {
 
     public void setJogo(Jogo jogo) {
         this.jogo = jogo;
+    }
+
+    public int getIdItemVenda() {
+        return idItemVenda;
+    }
+
+    public void setIdItemVenda(int idItemVenda) {
+        this.idItemVenda = idItemVenda;
     }
 
     public int getQuantidade() {
