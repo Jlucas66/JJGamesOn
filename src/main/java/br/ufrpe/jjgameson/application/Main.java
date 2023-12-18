@@ -101,6 +101,15 @@ public class Main {
         System.out.println("\nVendas:");
         for (Venda venda : vendas) {
             System.out.println("Cliente: " + venda1.getCliente().getNome() + ", Data: " + venda1.getData()  + ", Valor: " + venda1.calcularTotal());
+            List<ItemVenda> itensVenda = venda.getItensVenda();
+            System.out.println("Itens da Venda:");
+            for (ItemVenda itemVenda : itensVenda) {
+                System.out.println("  Jogo: " + itemVenda.getJogo().getNome() + ", Quantidade: " + itemVenda.getQuantidade());
+                System.out.println("  Códigos:");
+                for (String codigo : codigos) {
+                    System.out.println("      Código: " + codigo);
+                }
+            }
         }
 
 

@@ -42,4 +42,8 @@ public class Venda {
     public Pessoa getCliente() {
         return cliente;
     }
+
+    public ArrayList<ItemVenda> getItensVenda() {
+        return itensVenda;
+    }
 }
