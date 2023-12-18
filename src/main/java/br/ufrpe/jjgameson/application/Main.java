@@ -25,7 +25,7 @@ public class Main {
 
         // Gerando Jogo
         Jogo jogo1 = new Jogo(1,"Minecraft",29.90,"Mojang Studios","Casual","Um jogo casual de construção", FaixaEtaria.LIVRE);
-
+        Jogo jogo2 = new Jogo(2,"GTA V",69.90,"Rockstar Games","Ação","Um jogo de ação", FaixaEtaria.DEZESSEIS);
         // Gerando itemVenda
         ItemVenda itemVenda1 = new ItemVenda(jogo1,2,1);
         for (String codigo: itemVenda1.getCodigos()) {
@@ -42,6 +42,7 @@ public class Main {
         repositorioCliente.inserirCliente(cliente1);
         repositorioCliente.inserirCliente(cliente2);
         repositorioJogo.inserirJogo(jogo1);
+        repositorioJogo.inserirJogo(jogo2);
         repositorioVenda.inserir(venda1);
 
         // Listando coisas
@@ -61,6 +62,20 @@ public class Main {
         System.out.println("\nClientes:");
         for (Pessoa cliente : clientes) {
             System.out.println("Nome: " + cliente.getNome() + ", Email: " + cliente.getEmail());
+        }
+
+        //Listando Jogo
+        List<Jogo> jogos = repositorioJogo.listarJogos();
+        System.out.println("\nJogos:");
+        for (Jogo jogo : jogos) {
+            System.out.println("Nome: " + jogo.getNome() + ", Desenvolvedora: " + jogo.getDesenvolvedora());
+        }
+
+        //Removendo Jogo
+        repositorioJogo.removerJogo(jogo1);
+        System.out.println("\nJogos:");
+        for (Jogo jogo : jogos) {
+            System.out.println("Nome: " + jogo.getNome() + ", Desenvolvedora: " + jogo.getDesenvolvedora());
         }
     }
 }
