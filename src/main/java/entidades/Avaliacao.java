@@ -17,7 +17,7 @@ public class Avaliacao {
         this.jogo = jogo;
         this.nota = nota;
         this.comentario = comentario;
-        this.data = Timestamp.valueOf(comentario);
+        this.data = Timestamp.valueOf(data.toLocalDateTime());
     }
 
     public Avaliacao() {
