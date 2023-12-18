@@ -11,75 +11,43 @@ import entidades.Avaliacao;
 
 
 public class RepositorioAvaliacao implements IRepositorioAvaliacao {
-	private Connection conexao;
-	
-	public void AvaliacaoDAO() throws SQLException {
-		this.conexao = ConexaoBD.obterConexao();
+
+	private ArrayList<Avaliacao> avaliacoes;
+
+	public RepositorioAvaliacao() {
+		avaliacoes = new ArrayList<>();
 	}
-  
-	
-	
-// métodos do CRUD para avaliação
-    
-    public void inserir (Avaliacao avaliacao) {
-    	String sql = "INSERT INTO avaliacao (comentario, dtAvaliacao, emailCliente, idAvaliacao, nomeJogo, nota) VALUES (?, ?, ?, ?, ?, ?)";
-    			
-    	try (PreparedStatement ps = conexao.prepareStatement(sql)){
-    		ps.setString(1, avaliacao.getComentario());
-    		ps.setTimestamp(2, avaliacao.getData());
-    		ps.setString(3, avaliacao.getCliente().getEmail());
-    		ps.setInt(4,  avaliacao.getIdAvaliacao());
-    		ps.setString(5, avaliacao.getJogo().getNome());
-    		ps.setDouble(6, avaliacao.getNota());
-    		ps.executeUpdate();
-    	} catch (SQLException e) {
-    		e.printStackTrace();
-    	}			
-    }
-    
-    public List<Avaliacao> listar() {
-    	List<Avaliacao> listAvaliacao = new ArrayList <>();
-    	String sql = "SELECT * FROM avaliacao";
-    	
-    	try (PreparedStatement ps = conexao.prepareStatement(sql);
-                ResultSet rs = ps.executeQuery()) {
 
-               while (rs.next()) {
-                   Avaliacao avaliacao  = new Avaliacao();
-                   avaliacao.setIdAvaliacao(rs.getInt("idAvaliacao"));
-                   listAvaliacao.add(avaliacao);
-               }
-           } catch (SQLException e) {
-               e.printStackTrace();
-           }
-
-           return listAvaliacao;
-       }
-
-	public void atualizar (Avaliacao avaliacao) {
-		String sql = "UPDATE avaliacao SET comentario = ?, dtAvaliacao = ?, emailCliente = ?, idAvaliacao = ?, nomeJogo = ?, nota = ? ";
-		
-		try (PreparedStatement ps = conexao.prepareStatement(sql)){
-			ps.setString(1, avaliacao.getComentario());
-    		ps.setTimestamp(2, avaliacao.getData());
-    		ps.setString(3, avaliacao.getCliente().getEmail());
-    		ps.setInt(4,  avaliacao.getIdAvaliacao());
-    		ps.setString(5, avaliacao.getJogo().getNome());
-    		ps.setDouble(6, avaliacao.getNota());
-    		ps.executeUpdate();
-    	} catch (SQLException e) {
-    		e.printStackTrace();
-    	}			
+	@Override
+	public void inserir(Avaliacao avaliacao) {
+		if(avaliacao != null){
+			avaliacoes.add(avaliacao);
+		}
 	}
-	
-    public void excluir(int id) {
-        String sql = "DELETE FROM produtos WHERE id = ?";
 
-        try (PreparedStatement ps = conexao.prepareStatement(sql)) {
-            ps.setInt(1, id);
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }	
-}	
+	@Override
+	public List<Avaliacao> listar() {
+		return avaliacoes;
+	}
+
+	@Override
+	public void atualizar(Avaliacao avaliacaoAntiga, Avaliacao novaAvaliacao) {
+		for (Avaliacao avaliacao : avaliacoes) {
+			if (avaliacao.equals(avaliacaoAntiga)) {
+				int index = avaliacoes.indexOf(avaliacao);
+				avaliacoes.set(index, novaAvaliacao);
+				break;
+			}
+		}
+	}
+
+	@Override
+	public void excluir(Avaliacao avaliacaoParaExcluir) {
+		for (Avaliacao avaliacao : avaliacoes) {
+			if (avaliacao.equals(avaliacaoParaExcluir)) {
+				avaliacoes.remove(avaliacao);
+				break;
+			}
+		}
+	}
+}

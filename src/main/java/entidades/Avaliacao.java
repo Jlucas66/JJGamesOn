@@ -5,19 +5,17 @@ import java.time.LocalDateTime;
 
 public class Avaliacao {
     private Pessoa cliente;
-    private int idAvaliacao;
     private Jogo jogo;
     private int nota;
     private String comentario;
-    private Timestamp data;
+    private LocalDateTime data;
 
-    public Avaliacao(Pessoa cliente, Jogo jogo, int nota, String comentario, int idAvaliacao, Timestamp data) {
+    public Avaliacao(Pessoa cliente, Jogo jogo, int nota, String comentario, LocalDateTime data) {
         this.cliente = cliente;
-        this.idAvaliacao = idAvaliacao;
         this.jogo = jogo;
         this.nota = nota;
         this.comentario = comentario;
-        this.data = Timestamp.valueOf(data.toLocalDateTime());
+        this.data = LocalDateTime.now();
     }
 
     public Avaliacao() {
@@ -29,14 +27,6 @@ public class Avaliacao {
 
     public void setCliente(Pessoa cliente) {
         this.cliente = cliente;
-    }
-
-    public int getIdAvaliacao() {
-        return idAvaliacao;
-    }
-
-    public void setIdAvaliacao(int idAvaliacao) {
-        this.idAvaliacao = idAvaliacao;
     }
 
     public Jogo getJogo() {
@@ -62,7 +52,7 @@ public class Avaliacao {
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
-    public Timestamp getData(){
+    public LocalDateTime getData(){
         return data;
     }
 }
