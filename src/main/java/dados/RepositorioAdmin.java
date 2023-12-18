@@ -15,7 +15,7 @@ public class RepositorioAdmin implements IRepositorioAdmin{
 
     @Override
     public void inserir(Pessoa admin) {
-        if(admin != null){
+        if(admin != null && admin.isEhAdm()){
             admins.add(admin);
         }
     }

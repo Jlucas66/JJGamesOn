@@ -16,7 +16,7 @@ public class RepositorioCliente implements IRepositorioCliente{
     }
     @Override
     public void inserirCliente(Pessoa cliente) {
-        if(cliente != null){
+        if(cliente != null && !cliente.isEhAdm()){
             clientes.add(cliente);
         }
     }
