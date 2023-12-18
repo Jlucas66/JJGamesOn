@@ -8,6 +8,6 @@ import java.util.List;
 public interface IRepositorioPromocao {
     public void inserir (Promocao promocao);
     public List<Promocao> listar();
-    public void atualizar (Promocao promocao);
-    public void excluir(int idPromocao);
+    public void atualizar (Promocao promocaoAntiga, Promocao promocaoNova);
+    public void excluir(Promocao promocaoParaExcluir);
 }
