@@ -9,15 +9,18 @@ public class Avaliacao {
     private Jogo jogo;
     private int nota;
     private String comentario;
-    private LocalDateTime data;
+    private Timestamp data;
 
-    public Avaliacao(Pessoa cliente, Jogo jogo, int nota, String comentario, int idAvaliacao) {
+    public Avaliacao(Pessoa cliente, Jogo jogo, int nota, String comentario, int idAvaliacao, Timestamp data) {
         this.cliente = cliente;
         this.idAvaliacao = idAvaliacao;
         this.jogo = jogo;
         this.nota = nota;
         this.comentario = comentario;
-        this.data = LocalDateTime.now();
+        this.data = Timestamp.valueOf(comentario);
+    }
+
+    public Avaliacao() {
     }
 
     public Pessoa getCliente() {

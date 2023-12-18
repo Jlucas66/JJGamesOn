@@ -38,22 +38,22 @@ public class RepositorioAvaliacao implements IRepositorioAvaliacao {
     }
     
     public List<Avaliacao> listar() {
-    	List<Avaliacao> avaliacao = new ArrayList <>();
+    	List<Avaliacao> listAvaliacao = new ArrayList <>();
     	String sql = "SELECT * FROM avaliacao";
     	
     	try (PreparedStatement ps = conexao.prepareStatement(sql);
                 ResultSet rs = ps.executeQuery()) {
 
                while (rs.next()) {
-                   Avaliacao avaliacao = new Avaliacao();
-                   avaliacao.setIdAvaliacao(rs.getInt("id"));
-                   avaliacao.add(avaliacao);
+                   Avaliacao avaliacao  = new Avaliacao();
+                   avaliacao.setIdAvaliacao(rs.getInt("idAvaliacao"));
+                   listAvaliacao.add(avaliacao);
                }
            } catch (SQLException e) {
                e.printStackTrace();
            }
 
-           return avaliacao;
+           return listAvaliacao;
        }
 
 	public void atualizar (Avaliacao avaliacao) {
