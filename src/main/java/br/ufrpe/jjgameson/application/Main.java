@@ -48,5 +48,10 @@ public class Main {
         for (Pessoa cliente : clientes) {
             System.out.println("Nome: " + cliente.getNome() + ", Email: " + cliente.getEmail());
         }
+        List<String> codigos = repositorioCodigo.listar();
+        System.out.println("\nCódigos:");
+        for (String codigo : codigos) {
+            System.out.println("Código: " + codigo);
+        }
     }
 }
