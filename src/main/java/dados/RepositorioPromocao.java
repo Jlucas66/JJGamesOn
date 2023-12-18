@@ -8,7 +8,7 @@ public class RepositorioPromocao implements IRepositorioPromocao{
 
     @Override
     public void inserir(Promocao promocao) {
-        
+
     }
 
     @Override
