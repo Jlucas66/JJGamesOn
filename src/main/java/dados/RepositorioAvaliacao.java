@@ -13,7 +13,7 @@ import entidades.Avaliacao;
 public class RepositorioAvaliacao implements IRepositorioAvaliacao {
 	private Connection conexao;
 	
-	public void AvaliacaoDAO() {
+	public void AvaliacaoDAO() throws SQLException {
 		this.conexao = ConexaoBD.obterConexao();
 	}
   
@@ -26,9 +26,9 @@ public class RepositorioAvaliacao implements IRepositorioAvaliacao {
     			
     	try (PreparedStatement ps = conexao.prepareStatement(sql)){
     		ps.setString(1, avaliacao.getComentario());
-    		ps.setTimeStamp(2, avaliacao.getData());
+    		ps.setTimestamp(2, avaliacao.getData());
     		ps.setString(3, avaliacao.getCliente().getEmail());
-    		ps.setString(4,  avaliacao.getIdAvaliacao());
+    		ps.setInt(4,  avaliacao.getIdAvaliacao());
     		ps.setString(5, avaliacao.getJogo().getNome());
     		ps.setDouble(6, avaliacao.getNota());
     		ps.executeUpdate();
@@ -61,9 +61,9 @@ public class RepositorioAvaliacao implements IRepositorioAvaliacao {
 		
 		try (PreparedStatement ps = conexao.prepareStatement(sql)){
 			ps.setString(1, avaliacao.getComentario());
-    		ps.setDate(2, avaliacao.getData());
+    		ps.setTimestamp(2, avaliacao.getData());
     		ps.setString(3, avaliacao.getCliente().getEmail());
-    		ps.setString(4,  avaliacao.getIdAvaliacao());
+    		ps.setInt(4,  avaliacao.getIdAvaliacao());
     		ps.setString(5, avaliacao.getJogo().getNome());
     		ps.setDouble(6, avaliacao.getNota());
     		ps.executeUpdate();

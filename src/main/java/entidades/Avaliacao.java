@@ -1,16 +1,19 @@
 package entidades;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 public class Avaliacao {
     private Pessoa cliente;
+    private int idAvaliacao;
     private Jogo jogo;
     private int nota;
     private String comentario;
     private LocalDateTime data;
 
-    public Avaliacao(Pessoa cliente, Jogo jogo, int nota, String comentario) {
+    public Avaliacao(Pessoa cliente, Jogo jogo, int nota, String comentario, int idAvaliacao) {
         this.cliente = cliente;
+        this.idAvaliacao = idAvaliacao;
         this.jogo = jogo;
         this.nota = nota;
         this.comentario = comentario;
@@ -23,6 +26,14 @@ public class Avaliacao {
 
     public void setCliente(Pessoa cliente) {
         this.cliente = cliente;
+    }
+
+    public int getIdAvaliacao() {
+        return idAvaliacao;
+    }
+
+    public void setIdAvaliacao(int idAvaliacao) {
+        this.idAvaliacao = idAvaliacao;
     }
 
     public Jogo getJogo() {
@@ -48,7 +59,7 @@ public class Avaliacao {
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
-    public LocalDateTime getData(){
+    public Timestamp getData(){
         return data;
     }
 }
