@@ -8,7 +8,7 @@ public class RepostorioCodigo implements IRepostorioCodigo{
 
     @Override
     public void inserir(Codigo codigo) {
-        
+
     }
 
     @Override
