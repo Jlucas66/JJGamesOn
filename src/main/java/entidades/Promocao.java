@@ -4,12 +4,14 @@ import java.time.LocalDate;
 
 public class Promocao {
     private Jogo jogoEmPromocao;
+    private int idPromocao;
     private double desconto;
     private LocalDate dataInicio;
     private LocalDate dataFim;
 
-    public Promocao(Jogo jogoEmPromocao, double desconto, LocalDate dataInicio, LocalDate dataFim) {
+    public Promocao(Jogo jogoEmPromocao, double desconto, LocalDate dataInicio, LocalDate dataFim, int idPromocao) {
         this.jogoEmPromocao = jogoEmPromocao;
+        this.idPromocao = idPromocao;
         this.setDesconto(desconto);
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
@@ -30,6 +32,14 @@ public class Promocao {
 
     public void setJogoEmPromocao(Jogo jogoEmPromocao) {
         this.jogoEmPromocao = jogoEmPromocao;
+    }
+
+    public int getIdPromocao() {
+        return idPromocao;
+    }
+
+    public void setIdPromocao(int idPromocao) {
+        this.idPromocao = idPromocao;
     }
 
     public double getDesconto() {
