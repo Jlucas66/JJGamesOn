@@ -7,6 +7,6 @@ module com.ufrpe.br.jjgameson {
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
 
-    opens com.ufrpe.br.jjgameson to javafx.fxml;
-    exports com.ufrpe.br.jjgameson;
+    opens br.ufrpe.jjgameson to javafx.fxml;
+    exports br.ufrpe.jjgameson;
 }
