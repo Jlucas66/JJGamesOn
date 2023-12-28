@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class ConexaoBD {
 
-    private static final String URL = "jdbc:mysql://root:eDc3b6agDG11-1-1-DB61CgEfac363hh@roundhouse.proxy.rlwy.net:39211/railway";
+    private static final String URL = "jdbc:mysql://root:B1b54ACg-2B155gAd-4EdbG5ffhGea2D@viaduct.proxy.rlwy.net:26602/railway";
     private static final String USUARIO = "root";
-    private static final String SENHA = "eDc3b6agDG11-1-1-DB61CgEfac363hh";
+    private static final String SENHA = "B1b54ACg-2B155gAd-4EdbG5ffhGea2D";
 
     private static Connection conexao;
 
