@@ -5,6 +5,7 @@ import java.util.Objects;
 public class Jogo {
     private int id;
     private String nome;
+    private String codigo;
     private double valor;
     private String desenvolvedora;
     private String genero;
@@ -14,6 +15,7 @@ public class Jogo {
     public Jogo(int id,String nome, double valor, String desenvolvedora, String genero, String resumo, FaixaEtaria faixaEtaria) {
         this.id = id;
         this.nome = nome;
+        this.codigo = null;
         this.valor = valor;
         this.desenvolvedora = desenvolvedora;
         this.genero = genero;
@@ -88,6 +90,10 @@ public class Jogo {
 
     public void setFaixaEtaria(FaixaEtaria faixaEtaria) {
         this.faixaEtaria = faixaEtaria;
+    }
+
+    public String getCodigo(){
+        return codigo;
     }
 
 }
