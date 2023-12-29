@@ -12,11 +12,11 @@ public class Main {
     public static void main(String[] args) {
 
         // Instanciando Repositorios:
-        RepositorioAdmin repositorioAdmin = new RepositorioAdmin();
-        RepositorioCliente repositorioCliente = new RepositorioCliente();
-        RepositorioCodigo repositorioCodigo = new RepositorioCodigo();
-        RepositorioJogo repositorioJogo = new RepositorioJogo();
-        RepositorioVenda repositorioVenda = new RepositorioVenda();
+        RepositorioAdmin repositorioAdmin = (RepositorioAdmin) RepositorioAdmin.getInstance();
+        RepositorioCliente repositorioCliente = (RepositorioCliente) RepositorioCliente.getInstance();
+        RepositorioCodigo repositorioCodigo = (RepositorioCodigo) RepositorioCodigo.getInstance();
+        RepositorioJogo repositorioJogo = (RepositorioJogo) RepositorioJogo.getInstance();
+        RepositorioVenda repositorioVenda = (RepositorioVenda) RepositorioVenda.getInstance();
 
         // Gerando Pessoas
         Pessoa admin1 = new Pessoa("João", "joaoemail@gmail.com", "senha123", LocalDate.of(1999,12,12),true);

@@ -9,9 +9,16 @@ import br.ufrpe.jjgameson.entidades.Avaliacao;
 public class RepositorioAvaliacao implements IRepositorioAvaliacao {
 
 	private ArrayList<Avaliacao> avaliacoes;
+	private static IRepositorioAvaliacao instance;
 
-	public RepositorioAvaliacao() {
+	private RepositorioAvaliacao() {
 		avaliacoes = new ArrayList<>();
+	}
+	public static IRepositorioAvaliacao getInstance(){
+		if(instance == null){
+			instance = new RepositorioAvaliacao();
+		}
+		return instance;
 	}
 
 	@Override

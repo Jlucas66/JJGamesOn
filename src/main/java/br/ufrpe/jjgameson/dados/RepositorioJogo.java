@@ -8,9 +8,17 @@ import java.util.List;
 public class RepositorioJogo implements IRepositorioJogo {
 
     private ArrayList<Jogo> jogos;
+    private static IRepositorioJogo instance;
 
-    public RepositorioJogo() {
+    private RepositorioJogo() {
         jogos = new ArrayList<>();
+    }
+
+    public static IRepositorioJogo getInstance(){
+        if(instance == null){
+            instance = new RepositorioJogo();
+        }
+        return instance;
     }
     @Override
     public void inserirJogo(Jogo jogo) {

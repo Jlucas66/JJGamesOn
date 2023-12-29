@@ -8,9 +8,17 @@ import java.util.List;
 public class RepositorioCodigo implements IRepositorioCodigo {
 
     private List<String> codigos;
+    private static IRepositorioCodigo instance;
 
-    public RepositorioCodigo() {
+    private RepositorioCodigo() {
         codigos = new ArrayList<>();
+    }
+
+    public static IRepositorioCodigo getInstance(){
+        if(instance == null){
+            instance = new RepositorioCodigo();
+        }
+        return instance;
     }
 
     @Override

@@ -8,9 +8,17 @@ import java.util.List;
 public class RepositorioAdmin implements IRepositorioAdmin{
 
     private ArrayList<Pessoa> admins;
+    private static IRepositorioAdmin instance;
 
-    public RepositorioAdmin() {
+    private RepositorioAdmin() {
         admins = new ArrayList<>();
+    }
+
+    public static IRepositorioAdmin getInstance(){
+        if(instance == null){
+            instance = new RepositorioAdmin();
+        }
+        return instance;
     }
 
     @Override

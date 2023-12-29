@@ -8,10 +8,18 @@ import java.util.List;
 public class RepositorioCliente implements IRepositorioCliente{
 
     private ArrayList<Pessoa> clientes;
+    private static IRepositorioCliente instance;
 
-    public RepositorioCliente() {
+    private RepositorioCliente() {
         clientes = new ArrayList<>();
     }
+    public static IRepositorioCliente getInstance(){
+        if(instance == null){
+            instance = new RepositorioCliente();
+        }
+        return instance;
+    }
+
     @Override
     public void inserirCliente(Pessoa cliente) {
         if(cliente != null && !cliente.isEhAdm()){
