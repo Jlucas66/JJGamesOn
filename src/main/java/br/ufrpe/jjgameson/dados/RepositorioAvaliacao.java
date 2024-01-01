@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.ufrpe.jjgameson.entidades.Avaliacao;
+import br.ufrpe.jjgameson.exceptions.ClienteNuloException;
+import br.ufrpe.jjgameson.exceptions.JogoNuloException;
+import br.ufrpe.jjgameson.exceptions.NotaInvalidaException;
 
 
 public class RepositorioAvaliacao implements IRepositorioAvaliacao {
@@ -22,11 +25,17 @@ public class RepositorioAvaliacao implements IRepositorioAvaliacao {
 	}
 
 	@Override
-	public void inserir(Avaliacao avaliacao) {
-		if(avaliacao != null){
+	public void inserir(Avaliacao avaliacao) throws ClienteNuloException, JogoNuloException {
+		if (avaliacao.getCliente() == null) {
+				throw new ClienteNuloException("Cliente não pode ser nulo.");
+			}
+
+			if (avaliacao.getJogo() == null) {
+				throw new JogoNuloException("Jogo não pode ser nulo.");
+			}
+
 			avaliacoes.add(avaliacao);
 		}
-	}
 
 	@Override
 	public List<Avaliacao> listar() {
