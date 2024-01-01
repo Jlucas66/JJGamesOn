@@ -1,6 +1,9 @@
 package br.ufrpe.jjgameson.dados;
 
 import br.ufrpe.jjgameson.entidades.Pessoa;
+import br.ufrpe.jjgameson.exceptions.AcessoInvalidoException;
+import br.ufrpe.jjgameson.exceptions.AdminDuplicadoException;
+import br.ufrpe.jjgameson.exceptions.AdminNaoEncontradoException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +25,21 @@ public class RepositorioAdmin implements IRepositorioAdmin{
     }
 
     @Override
-    public void inserir(Pessoa admin) {
-        if(admin != null && admin.isEhAdm()){
+    public void inserir(Pessoa admin) throws AdminDuplicadoException, AcessoInvalidoException {
+        if (admin != null && admin.isEhAdm() && admins.isEmpty()) {
             admins.add(admin);
+        } else {
+            if (admin != null && !admin.isEhAdm()) {
+                throw new AcessoInvalidoException("Apenas administradores podem ser cadastrados.");
+            } else if (!admins.isEmpty()) {
+                throw new AdminDuplicadoException("Já existe um administrador cadastrado.");
+            }
+                else if (admin == null) {
+                throw new IllegalArgumentException("Administrador não pode ser nulo.");
+            }
         }
     }
+
 
     @Override
     public List<Pessoa> listar() {
@@ -34,23 +47,33 @@ public class RepositorioAdmin implements IRepositorioAdmin{
     }
 
     @Override
-    public void atualizar(Pessoa adminAntigo, Pessoa adminNovo) {
+    public void atualizar(Pessoa adminAntigo, Pessoa adminNovo) throws AdminNaoEncontradoException {
+        boolean encontrado = false;
         for (Pessoa pessoa : admins) {
-            if (admins.equals(adminAntigo)){
-                int index = admins.indexOf(adminNovo);
+            if (pessoa.equals(adminAntigo)) {
+                int index = admins.indexOf(pessoa);
                 admins.set(index, adminNovo);
+                encontrado = true;
                 break;
             }
+        }
+        if (!encontrado) {
+            throw new AdminNaoEncontradoException("Administrador não encontrado para atualização.");
         }
     }
 
     @Override
-    public void excluir(Pessoa adminParaExcluir) {
-        for (Pessoa admin : admins){
-            if (admin.equals(adminParaExcluir)){
+    public void excluir(Pessoa adminParaExcluir) throws AdminNaoEncontradoException {
+        boolean encontrado = false;
+        for (Pessoa admin : admins) {
+            if (admin.equals(adminParaExcluir)) {
                 admins.remove(admin);
+                encontrado = true;
                 break;
             }
+        }
+        if (!encontrado) {
+            throw new AdminNaoEncontradoException("Administrador não encontrado para exclusão.");
         }
     }
 }

@@ -3,6 +3,9 @@ package br.ufrpe.jjgameson.negocio;
 import br.ufrpe.jjgameson.dados.IRepositorioAdmin;
 import br.ufrpe.jjgameson.dados.RepositorioAdmin;
 import br.ufrpe.jjgameson.entidades.Pessoa;
+import br.ufrpe.jjgameson.exceptions.AcessoInvalidoException;
+import br.ufrpe.jjgameson.exceptions.AdminDuplicadoException;
+import br.ufrpe.jjgameson.exceptions.AdminNaoEncontradoException;
 
 public class ControladorAdmin {
 
@@ -20,7 +23,7 @@ public class ControladorAdmin {
         return instance;
     }
 
-    public void inserir(Pessoa admin){
+    public void inserir(Pessoa admin) throws AcessoInvalidoException, AdminDuplicadoException {
         repositorioAdmin.inserir(admin);
     }
 
@@ -28,11 +31,11 @@ public class ControladorAdmin {
         repositorioAdmin.listar();
     }
 
-    public void atualizar(Pessoa adminAntigo, Pessoa adminNovo){
+    public void atualizar(Pessoa adminAntigo, Pessoa adminNovo) throws AdminNaoEncontradoException {
         repositorioAdmin.atualizar(adminAntigo, adminNovo);
     }
 
-    public void excluir(Pessoa adminParaExcluir){
+    public void excluir(Pessoa adminParaExcluir) throws AdminNaoEncontradoException {
         repositorioAdmin.excluir(adminParaExcluir);
     }
 }
