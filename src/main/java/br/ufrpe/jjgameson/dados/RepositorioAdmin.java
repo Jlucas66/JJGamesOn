@@ -26,13 +26,13 @@ public class RepositorioAdmin implements IRepositorioAdmin{
 
     @Override
     public void inserir(Pessoa admin) throws AdminDuplicadoException, AcessoInvalidoException {
-        if (admin != null && admin.isEhAdm() && admins.isEmpty()) {
+        if (admin != null && admin.isEhAdm() && !admins.contains(admin)) {
             admins.add(admin);
         } else {
             if (admin != null && !admin.isEhAdm()) {
                 throw new AcessoInvalidoException("Apenas administradores podem ser cadastrados.");
-            } else if (!admins.isEmpty()) {
-                throw new AdminDuplicadoException("Já existe um administrador cadastrado.");
+            } else if (admins.contains(admin)) {
+                throw new AdminDuplicadoException("Esse administrador ja foi cadastrado.");
             }
                 else if (admin == null) {
                 throw new IllegalArgumentException("Administrador não pode ser nulo.");
