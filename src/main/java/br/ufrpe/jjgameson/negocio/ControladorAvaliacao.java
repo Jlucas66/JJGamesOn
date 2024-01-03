@@ -3,7 +3,7 @@ package br.ufrpe.jjgameson.negocio;
 import br.ufrpe.jjgameson.dados.IRepositorioAvaliacao;
 import br.ufrpe.jjgameson.dados.RepositorioAvaliacao;
 import br.ufrpe.jjgameson.entidades.Avaliacao;
-import br.ufrpe.jjgameson.exceptions.AvaliacaoInvalidaException;
+import br.ufrpe.jjgameson.exceptions.ElementoNaoEncontradoException;
 import br.ufrpe.jjgameson.exceptions.ElementoNuloException;
 import br.ufrpe.jjgameson.exceptions.NotaInvalidaException;
 
@@ -39,9 +39,9 @@ public class ControladorAvaliacao {
         repositorioAvaliacao.listar();
     }
 
-    public void atualizarAvaliacao(Avaliacao avaliacaoAntiga, Avaliacao novaAvaliacao) throws AvaliacaoInvalidaException, NotaInvalidaException {
+    public void atualizarAvaliacao(Avaliacao avaliacaoAntiga, Avaliacao novaAvaliacao) throws ElementoNuloException, NotaInvalidaException, ElementoNaoEncontradoException {
         if (avaliacaoAntiga == null || novaAvaliacao == null) {
-            throw new AvaliacaoInvalidaException("Avaliação não pode ser nula.");
+            throw new ElementoNuloException("Avaliação não pode ser nula.");
         }
 
         List<Avaliacao> avaliacoes = repositorioAvaliacao.listar();
@@ -55,7 +55,7 @@ public class ControladorAvaliacao {
         }
 
         if (avaliacaoEncontrada == false) {
-            throw new AvaliacaoInvalidaException("Avaliação não encontrada.");
+            throw new ElementoNaoEncontradoException("Avaliação não encontrada.");
         }
 
         // Verificar se a nova avaliação é válida antes de chamar o método atualizar
@@ -67,9 +67,9 @@ public class ControladorAvaliacao {
     }
 
 
-    public void excluirAvaliacao(Avaliacao avaliacaoParaExcluir) throws AvaliacaoInvalidaException {
+    public void excluirAvaliacao(Avaliacao avaliacaoParaExcluir) throws ElementoNuloException, ElementoNaoEncontradoException {
         if (avaliacaoParaExcluir == null) {
-            throw new AvaliacaoInvalidaException("Avaliação não pode ser nula.");
+            throw new ElementoNuloException("Avaliação não pode ser nula.");
         }
 
         List<Avaliacao> avaliacoes = repositorioAvaliacao.listar();
@@ -83,7 +83,7 @@ public class ControladorAvaliacao {
         }
 
         if (avaliacaoEncontrada == false) {
-            throw new AvaliacaoInvalidaException("Avaliação não encontrada.");
+            throw new ElementoNaoEncontradoException("Avaliação não encontrada.");
         }
 
         repositorioAvaliacao.excluir(avaliacaoParaExcluir);

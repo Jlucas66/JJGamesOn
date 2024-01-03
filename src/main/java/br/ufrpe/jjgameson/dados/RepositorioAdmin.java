@@ -1,10 +1,7 @@
 package br.ufrpe.jjgameson.dados;
 
 import br.ufrpe.jjgameson.entidades.Pessoa;
-import br.ufrpe.jjgameson.exceptions.AcessoInvalidoException;
-import br.ufrpe.jjgameson.exceptions.AdminDuplicadoException;
-import br.ufrpe.jjgameson.exceptions.AdminNaoEncontradoException;
-import br.ufrpe.jjgameson.exceptions.ElementoNuloException;
+import br.ufrpe.jjgameson.exceptions.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,14 +23,14 @@ public class RepositorioAdmin implements IRepositorioAdmin{
     }
 
     @Override
-    public void inserir(Pessoa admin) throws AdminDuplicadoException, AcessoInvalidoException, ElementoNuloException {
+    public void inserir(Pessoa admin) throws ElementoDuplicadoException, AcessoInvalidoException, ElementoNuloException {
         if (admin != null && admin.isEhAdm() && !admins.contains(admin)) {
             admins.add(admin);
         } else {
             if (admin != null && !admin.isEhAdm()) {
                 throw new AcessoInvalidoException("Apenas administradores podem ser cadastrados.");
             } else if (admins.contains(admin)) {
-                throw new AdminDuplicadoException("Esse administrador ja foi cadastrado.");
+                throw new ElementoDuplicadoException("Esse administrador ja foi cadastrado.");
             }
                 else if (admin == null) {
                 throw new ElementoNuloException("Administrador não pode ser nulo.");
@@ -48,7 +45,7 @@ public class RepositorioAdmin implements IRepositorioAdmin{
     }
 
     @Override
-    public void atualizar(Pessoa adminAntigo, Pessoa adminNovo) throws AdminNaoEncontradoException {
+    public void atualizar(Pessoa adminAntigo, Pessoa adminNovo) throws ElementoNaoEncontradoException {
         boolean encontrado = false;
         for (Pessoa pessoa : admins) {
             if (pessoa.equals(adminAntigo)) {
@@ -59,12 +56,12 @@ public class RepositorioAdmin implements IRepositorioAdmin{
             }
         }
         if (!encontrado) {
-            throw new AdminNaoEncontradoException("Administrador não encontrado para atualização.");
+            throw new ElementoNaoEncontradoException("Administrador não encontrado para atualização.");
         }
     }
 
     @Override
-    public void excluir(Pessoa adminParaExcluir) throws AdminNaoEncontradoException {
+    public void excluir(Pessoa adminParaExcluir) throws ElementoNaoEncontradoException {
         boolean encontrado = false;
         for (Pessoa admin : admins) {
             if (admin.equals(adminParaExcluir)) {
@@ -74,7 +71,7 @@ public class RepositorioAdmin implements IRepositorioAdmin{
             }
         }
         if (!encontrado) {
-            throw new AdminNaoEncontradoException("Administrador não encontrado para exclusão.");
+            throw new ElementoNaoEncontradoException("Administrador não encontrado para exclusão.");
         }
     }
 }
