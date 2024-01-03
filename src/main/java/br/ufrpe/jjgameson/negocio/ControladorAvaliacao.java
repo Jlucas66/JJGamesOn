@@ -4,8 +4,7 @@ import br.ufrpe.jjgameson.dados.IRepositorioAvaliacao;
 import br.ufrpe.jjgameson.dados.RepositorioAvaliacao;
 import br.ufrpe.jjgameson.entidades.Avaliacao;
 import br.ufrpe.jjgameson.exceptions.AvaliacaoInvalidaException;
-import br.ufrpe.jjgameson.exceptions.ClienteNuloException;
-import br.ufrpe.jjgameson.exceptions.JogoNuloException;
+import br.ufrpe.jjgameson.exceptions.ElementoNuloException;
 import br.ufrpe.jjgameson.exceptions.NotaInvalidaException;
 
 import java.util.List;
@@ -26,7 +25,7 @@ public class ControladorAvaliacao {
         return instance;
     }
 
-    public void inserirAvaliacao(Avaliacao avaliacao) throws JogoNuloException, ClienteNuloException, NotaInvalidaException {
+    public void inserirAvaliacao(Avaliacao avaliacao) throws ElementoNuloException, NotaInvalidaException {
         if (avaliacao != null) {
             if (avaliacao.getNota() < 1 || avaliacao.getNota() > 5) {
                 throw new NotaInvalidaException("A nota da avaliação deve estar entre 1 e 5.");

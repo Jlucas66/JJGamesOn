@@ -4,6 +4,7 @@ import br.ufrpe.jjgameson.entidades.Pessoa;
 import br.ufrpe.jjgameson.exceptions.AcessoInvalidoException;
 import br.ufrpe.jjgameson.exceptions.AdminDuplicadoException;
 import br.ufrpe.jjgameson.exceptions.AdminNaoEncontradoException;
+import br.ufrpe.jjgameson.exceptions.ElementoNuloException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ public class RepositorioAdmin implements IRepositorioAdmin{
     }
 
     @Override
-    public void inserir(Pessoa admin) throws AdminDuplicadoException, AcessoInvalidoException {
+    public void inserir(Pessoa admin) throws AdminDuplicadoException, AcessoInvalidoException, ElementoNuloException {
         if (admin != null && admin.isEhAdm() && !admins.contains(admin)) {
             admins.add(admin);
         } else {
@@ -35,7 +36,7 @@ public class RepositorioAdmin implements IRepositorioAdmin{
                 throw new AdminDuplicadoException("Esse administrador ja foi cadastrado.");
             }
                 else if (admin == null) {
-                throw new IllegalArgumentException("Administrador não pode ser nulo.");
+                throw new ElementoNuloException("Administrador não pode ser nulo.");
             }
         }
     }

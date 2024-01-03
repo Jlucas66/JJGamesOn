@@ -5,6 +5,7 @@ import br.ufrpe.jjgameson.entidades.*;
 import br.ufrpe.jjgameson.exceptions.AcessoInvalidoException;
 import br.ufrpe.jjgameson.exceptions.AdminDuplicadoException;
 import br.ufrpe.jjgameson.exceptions.AdminNaoEncontradoException;
+import br.ufrpe.jjgameson.exceptions.ElementoNuloException;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) throws AcessoInvalidoException, AdminDuplicadoException, AdminNaoEncontradoException {
+    public static void main(String[] args) throws AcessoInvalidoException, AdminDuplicadoException, AdminNaoEncontradoException, ElementoNuloException {
 
         // Instanciando Repositorios:
         RepositorioAdmin repositorioAdmin = (RepositorioAdmin) RepositorioAdmin.getInstance();

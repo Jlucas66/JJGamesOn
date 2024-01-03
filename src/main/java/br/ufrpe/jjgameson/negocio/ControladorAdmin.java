@@ -6,6 +6,7 @@ import br.ufrpe.jjgameson.entidades.Pessoa;
 import br.ufrpe.jjgameson.exceptions.AcessoInvalidoException;
 import br.ufrpe.jjgameson.exceptions.AdminDuplicadoException;
 import br.ufrpe.jjgameson.exceptions.AdminNaoEncontradoException;
+import br.ufrpe.jjgameson.exceptions.ElementoNuloException;
 
 public class ControladorAdmin {
 
@@ -23,7 +24,7 @@ public class ControladorAdmin {
         return instance;
     }
 
-    public void inserir(Pessoa admin) throws AcessoInvalidoException, AdminDuplicadoException {
+    public void inserir(Pessoa admin) throws AcessoInvalidoException, AdminDuplicadoException, ElementoNuloException {
         repositorioAdmin.inserir(admin);
     }
 
