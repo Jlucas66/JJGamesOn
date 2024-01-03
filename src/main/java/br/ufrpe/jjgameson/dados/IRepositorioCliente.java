@@ -2,6 +2,8 @@ package br.ufrpe.jjgameson.dados;
 
 
 import br.ufrpe.jjgameson.entidades.Pessoa;
+import br.ufrpe.jjgameson.exceptions.AcessoInvalidoException;
+import br.ufrpe.jjgameson.exceptions.ElementoNuloException;
 
 import java.util.List;
 

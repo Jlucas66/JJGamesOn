@@ -26,12 +26,19 @@ public class ControladorAvaliacao {
     }
 
     public void inserirAvaliacao(Avaliacao avaliacao) throws ElementoNuloException, NotaInvalidaException {
-        if (avaliacao != null) {
-            if (avaliacao.getNota() < 1 || avaliacao.getNota() > 5) {
-                throw new NotaInvalidaException("A nota da avaliação deve estar entre 1 e 5.");
-            } else {
-                repositorioAvaliacao.inserir(avaliacao);
-            }
+        if (avaliacao == null) {
+            throw new ElementoNuloException("Avaliação não pode ser nula.");
+        }
+        if (avaliacao.getCliente() == null) {
+            throw new ElementoNuloException("Cliente não pode ser nulo.");
+        }
+        if (avaliacao.getJogo() == null) {
+            throw new ElementoNuloException("Jogo não pode ser nulo.");
+        }
+        if (avaliacao.getNota() < 1 || avaliacao.getNota() > 5) {
+            throw new NotaInvalidaException("A nota da avaliação deve estar entre 1 e 5.");
+        } else {
+            repositorioAvaliacao.inserir(avaliacao);
         }
     }
 

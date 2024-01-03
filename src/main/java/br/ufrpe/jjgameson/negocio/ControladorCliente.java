@@ -3,6 +3,10 @@ package br.ufrpe.jjgameson.negocio;
 import br.ufrpe.jjgameson.dados.IRepositorioCliente;
 import br.ufrpe.jjgameson.dados.RepositorioCliente;
 import br.ufrpe.jjgameson.entidades.Pessoa;
+import br.ufrpe.jjgameson.exceptions.AcessoInvalidoException;
+import br.ufrpe.jjgameson.exceptions.ElementoDuplicadoException;
+import br.ufrpe.jjgameson.exceptions.ElementoNuloException;
+import br.ufrpe.jjgameson.exceptions.SenhaFracaException;
 
 public class ControladorCliente {
 
@@ -20,7 +24,27 @@ public class ControladorCliente {
         return instance;
     }
 
-    public void inserirCliente(Pessoa cliente){
+    private boolean verificarSenhaForte(String senha) {
+        // Exigir pelo menos 8 caracteres, incluindo letras maiúsculas, minúsculas, números e caracteres especiais
+        return senha.length() >= 8 && senha.matches(".*[A-Z].*") && senha.matches(".*[a-z].*")
+                && senha.matches(".*\\d.*") && senha.matches(".*[!@#$%^&*()_+\\-={}\\[\\]:;\"'<>,.?/~`].*");
+    }
+
+    public void inserirCliente(Pessoa cliente) throws ElementoNuloException, AcessoInvalidoException, ElementoDuplicadoException, SenhaFracaException {
+        if(cliente == null){
+            throw new ElementoNuloException("Cliente não pode ser nulo");
+        }
+        if(cliente.isEhAdm()){
+            throw new AcessoInvalidoException("Cliente não pode ser um administrador");
+        }
+        if(repositorioCliente.obterClientePorEmail(cliente.getEmail()) != null){
+            throw new ElementoDuplicadoException("Cliente já cadastrado");
+        }
+        if(!verificarSenhaForte(cliente.getSenha())){
+            throw new SenhaFracaException("Sua senha deve ter pelo menos 8 " +
+                    "caracteres, incluindo letras maiúsculas, minúsculas, números e caracteres especiais");
+        }
+
         repositorioCliente.inserirCliente(cliente);
     }
 

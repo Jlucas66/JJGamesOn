@@ -1,11 +1,13 @@
 package br.ufrpe.jjgameson.dados;
 
 import br.ufrpe.jjgameson.entidades.Pessoa;
+import br.ufrpe.jjgameson.exceptions.AcessoInvalidoException;
+import br.ufrpe.jjgameson.exceptions.ElementoNuloException;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class RepositorioCliente implements IRepositorioCliente{
+public class RepositorioCliente implements IRepositorioCliente {
 
     private ArrayList<Pessoa> clientes;
     private static IRepositorioCliente instance;
@@ -13,8 +15,9 @@ public class RepositorioCliente implements IRepositorioCliente{
     private RepositorioCliente() {
         clientes = new ArrayList<>();
     }
-    public static IRepositorioCliente getInstance(){
-        if(instance == null){
+
+    public static IRepositorioCliente getInstance() {
+        if (instance == null) {
             instance = new RepositorioCliente();
         }
         return instance;
@@ -22,24 +25,22 @@ public class RepositorioCliente implements IRepositorioCliente{
 
     @Override
     public void inserirCliente(Pessoa cliente) {
-        if(cliente != null && !cliente.isEhAdm()){
-            clientes.add(cliente);
-        }
+        clientes.add(cliente);
     }
 
     @Override
     public Pessoa obterClientePorEmail(String email) {
         for (Pessoa cliente : clientes) {
-            if(cliente.getEmail().equals(email))return cliente;
+            if (cliente.getEmail().equals(email)) return cliente;
         }
         return null;
     }
 
     @Override
     public void removerCliente(String email) {
-        if(email != null){
-            for (Pessoa cliente:clientes) {
-                if(cliente.getEmail().equals(email)){
+        if (email != null) {
+            for (Pessoa cliente : clientes) {
+                if (cliente.getEmail().equals(email)) {
                     clientes.remove(cliente);
                     break;
                 }

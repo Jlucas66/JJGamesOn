@@ -6,8 +6,8 @@ import br.ufrpe.jjgameson.exceptions.*;
 import java.util.List;
 
 public interface IRepositorioAdmin {
-    public void inserir (Pessoa admin) throws ElementoDuplicadoException, AcessoInvalidoException, ElementoNuloException;
+    public void inserir (Pessoa admin);
     public List<Pessoa> listar();
-    public void atualizar (Pessoa adminAntigo, Pessoa adminNovo) throws ElementoNaoEncontradoException;
-    public void excluir(Pessoa adminParaExcluir) throws ElementoNaoEncontradoException;
+    public void atualizar (Pessoa adminAntigo, Pessoa adminNovo);
+    public void excluir(Pessoa adminParaExcluir);
 }

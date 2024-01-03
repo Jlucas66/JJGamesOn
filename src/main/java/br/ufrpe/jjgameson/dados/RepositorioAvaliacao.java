@@ -23,15 +23,7 @@ public class RepositorioAvaliacao implements IRepositorioAvaliacao {
 	}
 
 	@Override
-	public void inserir(Avaliacao avaliacao) throws ElementoNuloException {
-		if (avaliacao.getCliente() == null) {
-				throw new ElementoNuloException("Cliente não pode ser nulo.");
-			}
-
-			if (avaliacao.getJogo() == null) {
-				throw new ElementoNuloException("Jogo não pode ser nulo.");
-			}
-
+	public void inserir(Avaliacao avaliacao){
 			avaliacoes.add(avaliacao);
 		}
 
