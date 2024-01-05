@@ -29,7 +29,7 @@ public class ControladorAdmin {
                 && senha.matches(".*\\d.*") && senha.matches(".*[!@#$%^&*()_+\\-={}\\[\\]:;\"'<>,.?/~`].*");
     }
 
-    public void inserir(Pessoa admin) throws AcessoInvalidoException, ElementoDuplicadoException, ElementoNuloException, EmailInvalidoException, SenhaFracaException {
+    public void inserir(Pessoa admin) throws AcessoInvalidoException, ElementoDuplicadoException, ElementoNuloException, ElementoInvalidoException, SenhaFracaException {
         if (admin == null) {
             throw new ElementoNuloException("Administrador não pode ser nulo.");
         }
@@ -46,7 +46,7 @@ public class ControladorAdmin {
             throw new ElementoNuloException("Email não pode ser nulo.");
         }
         if (!admin.getEmail().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
-            throw new EmailInvalidoException("Email inválido, o email deve ser no formato \"email@dominio\".");
+            throw new ElementoInvalidoException("Email inválido, o email deve ser no formato \"email@dominio\".");
         }
         if (!verificarSenhaForte(admin.getSenha())) {
             throw new SenhaFracaException("Sua senha deve ter pelo menos 8 " +
@@ -63,7 +63,7 @@ public class ControladorAdmin {
         repositorioAdmin.listar();
     }
 
-    public void atualizar(Pessoa adminAntigo, Pessoa adminNovo) throws ElementoNaoEncontradoException, ElementoNuloException, AcessoInvalidoException, EmailInvalidoException, SenhaFracaException, ElementoDuplicadoException {
+    public void atualizar(Pessoa adminAntigo, Pessoa adminNovo) throws ElementoNaoEncontradoException, ElementoNuloException, AcessoInvalidoException, SenhaFracaException, ElementoDuplicadoException, ElementoInvalidoException {
         if (adminAntigo == null || adminNovo == null) {
             throw new ElementoNuloException("Administrador não pode ser nulo.");
         }
@@ -93,7 +93,7 @@ public class ControladorAdmin {
             throw new ElementoNuloException("Email não pode ser nulo.");
         }
         if (!adminNovo.getEmail().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
-            throw new EmailInvalidoException("Email inválido, o email deve ser no formato \"email@dominio\".");
+            throw new ElementoInvalidoException("Email inválido, o email deve ser no formato \"email@dominio\".");
         }
         if (!verificarSenhaForte(adminNovo.getSenha())) {
             throw new SenhaFracaException("Sua senha deve ter pelo menos 8 " +

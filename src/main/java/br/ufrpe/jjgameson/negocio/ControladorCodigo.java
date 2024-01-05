@@ -4,7 +4,7 @@ import br.ufrpe.jjgameson.dados.IRepositorioCodigo;
 import br.ufrpe.jjgameson.dados.RepositorioCodigo;
 import br.ufrpe.jjgameson.exceptions.ElementoDuplicadoException;
 import br.ufrpe.jjgameson.exceptions.ElementoNuloException;
-import br.ufrpe.jjgameson.exceptions.FormatoInvalidoException;
+import br.ufrpe.jjgameson.exceptions.ElementoInvalidoException;
 
 public class ControladorCodigo {
 
@@ -21,15 +21,15 @@ public class ControladorCodigo {
         }
         return instance;
     }
-    public void inserir(String codigo) throws ElementoNuloException, FormatoInvalidoException, ElementoDuplicadoException {
+    public void inserir(String codigo) throws ElementoNuloException, ElementoInvalidoException, ElementoDuplicadoException {
         if(codigo == null || codigo.isEmpty()){
             throw new ElementoNuloException("O código não pode ser nulo ou vazio.");
         }
         if(codigo.length() != 10){
-            throw new FormatoInvalidoException("O código deve ter 10 caracteres.");
+            throw new ElementoInvalidoException("O código deve ter 10 caracteres.");
         }
         if(!codigo.matches("[a-zA-Z0-9]+")){
-            throw new FormatoInvalidoException("O código deve conter apenas letras e números.");
+            throw new ElementoInvalidoException("O código deve conter apenas letras e números.");
         }
         if(repositorioCodigo.listar().contains(codigo)){
             throw new ElementoDuplicadoException("O código já foi cadastrado.");

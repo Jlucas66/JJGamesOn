@@ -3,9 +3,9 @@ package br.ufrpe.jjgameson.negocio;
 import br.ufrpe.jjgameson.dados.IRepositorioAvaliacao;
 import br.ufrpe.jjgameson.dados.RepositorioAvaliacao;
 import br.ufrpe.jjgameson.entidades.Avaliacao;
+import br.ufrpe.jjgameson.exceptions.ElementoInvalidoException;
 import br.ufrpe.jjgameson.exceptions.ElementoNaoEncontradoException;
 import br.ufrpe.jjgameson.exceptions.ElementoNuloException;
-import br.ufrpe.jjgameson.exceptions.NotaInvalidaException;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ public class ControladorAvaliacao {
         return instance;
     }
 
-    public void inserirAvaliacao(Avaliacao avaliacao) throws ElementoNuloException, NotaInvalidaException {
+    public void inserirAvaliacao(Avaliacao avaliacao) throws ElementoNuloException, ElementoInvalidoException {
         if (avaliacao == null) {
             throw new ElementoNuloException("Avaliação não pode ser nula.");
         }
@@ -36,7 +36,7 @@ public class ControladorAvaliacao {
             throw new ElementoNuloException("Jogo não pode ser nulo.");
         }
         if (avaliacao.getNota() < 1 || avaliacao.getNota() > 5) {
-            throw new NotaInvalidaException("A nota da avaliação deve estar entre 1 e 5.");
+            throw new ElementoInvalidoException("A nota da avaliação deve estar entre 1 e 5.");
         } else {
             repositorioAvaliacao.inserir(avaliacao);
         }
@@ -46,7 +46,7 @@ public class ControladorAvaliacao {
         repositorioAvaliacao.listar();
     }
 
-    public void atualizarAvaliacao(Avaliacao avaliacaoAntiga, Avaliacao novaAvaliacao) throws ElementoNuloException, NotaInvalidaException, ElementoNaoEncontradoException {
+    public void atualizarAvaliacao(Avaliacao avaliacaoAntiga, Avaliacao novaAvaliacao) throws ElementoNuloException, ElementoInvalidoException, ElementoNaoEncontradoException {
         if (avaliacaoAntiga == null || novaAvaliacao == null) {
             throw new ElementoNuloException("Avaliação não pode ser nula.");
         }
@@ -67,7 +67,7 @@ public class ControladorAvaliacao {
 
         // Verificar se a nova avaliação é válida antes de chamar o método atualizar
         if (novaAvaliacao.getNota() < 1 || novaAvaliacao.getNota() > 5) {
-            throw new NotaInvalidaException("A nota da avaliação deve estar entre 1 e 5.");
+            throw new ElementoInvalidoException("A nota da avaliação deve estar entre 1 e 5.");
         }
 
         repositorioAvaliacao.atualizar(avaliacaoAntiga, novaAvaliacao);

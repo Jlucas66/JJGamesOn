@@ -27,7 +27,7 @@ public class ControladorCliente {
                 && senha.matches(".*\\d.*") && senha.matches(".*[!@#$%^&*()_+\\-={}\\[\\]:;\"'<>,.?/~`].*");
     }
 
-    public void inserirCliente(Pessoa cliente) throws ElementoNuloException, AcessoInvalidoException, ElementoDuplicadoException, SenhaFracaException, EmailInvalidoException {
+    public void inserirCliente(Pessoa cliente) throws ElementoNuloException, AcessoInvalidoException, ElementoDuplicadoException, SenhaFracaException, ElementoInvalidoException {
         if(cliente == null){
             throw new ElementoNuloException("Cliente não pode ser nulo");
         }
@@ -51,7 +51,7 @@ public class ControladorCliente {
         }
 
         if(!cliente.getEmail().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")){
-            throw new EmailInvalidoException("Email inválido, o email deve ser no formato \"email@dominio\"");
+            throw new ElementoInvalidoException("Email inválido, o email deve ser no formato \"email@dominio\"");
         }
 
         if(!verificarSenhaForte(cliente.getSenha())){
@@ -62,13 +62,16 @@ public class ControladorCliente {
         repositorioCliente.inserirCliente(cliente);
     }
 
-    public Pessoa obterClientePorEmail(String email) throws ElementoNuloException, EmailInvalidoException {
+    public Pessoa obterClientePorEmail(String email) throws ElementoNuloException, ElementoInvalidoException, ElementoNaoEncontradoException {
         Pessoa resultado = null;
         if(email == null){
             throw new ElementoNuloException("Email não pode ser nulo");
         }
         if (!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
-            throw new EmailInvalidoException("Email inválido, o email deve ser no formato \"email@dominio\"");
+            throw new ElementoInvalidoException("Email inválido, o email deve ser no formato \"email@dominio\"");
+        }
+        if (repositorioCliente.obterClientePorEmail(email) == null) {
+            throw new ElementoNaoEncontradoException("Não existe cliente cadastrado com esse email");
         }
         resultado = repositorioCliente.obterClientePorEmail(email);
         return resultado;
@@ -81,15 +84,10 @@ public class ControladorCliente {
         if(repositorioCliente.obterClientePorEmail(email) == null){
             throw new ElementoNaoEncontradoException("Não existe cliente cadastrado com esse email");
         }
-        for (Pessoa cliente : repositorioCliente.listarClientes()) {
-            if (cliente.getEmail().equals(email)) {
-                repositorioCliente.removerCliente(email);
-                break;
-            }
-        }
+           repositorioCliente.removerCliente(email);
     }
 
-    public void atualizarCliente(Pessoa clienteAntigo, Pessoa clienteNovo) throws ElementoNuloException, AcessoInvalidoException, ElementoNaoEncontradoException, EmailInvalidoException, SenhaFracaException {
+    public void atualizarCliente(Pessoa clienteAntigo, Pessoa clienteNovo) throws ElementoNuloException, AcessoInvalidoException, ElementoNaoEncontradoException, SenhaFracaException, ElementoInvalidoException {
         if(clienteAntigo == null || clienteNovo == null){
             throw new ElementoNuloException("Cliente não pode ser nulo");
         }
@@ -113,10 +111,10 @@ public class ControladorCliente {
             throw new ElementoNaoEncontradoException("Não existe cliente cadastrado com esse email");
         }
         if(repositorioCliente.obterClientePorEmail(clienteNovo.getEmail()) != null){
-            throw new EmailInvalidoException("Já existe um cliente cadastrado com esse email");
+            throw new ElementoInvalidoException("Já existe um cliente cadastrado com esse email");
         }
         if(!clienteNovo.getEmail().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")){
-            throw new EmailInvalidoException("Email inválido, o email deve ser no formato \"email@dominio\"");
+            throw new ElementoInvalidoException("Email inválido, o email deve ser no formato \"email@dominio\"");
         }
         repositorioCliente.atualizarCliente(clienteAntigo, clienteNovo);
     }
