@@ -33,14 +33,17 @@ public class ControladorAdmin {
         if (admin == null) {
             throw new ElementoNuloException("Administrador não pode ser nulo.");
         }
-        if(admin.getSenha() == null){
-            throw new ElementoNuloException("Senha não pode ser nula");
+        if (admin.getNome() == null) {
+            throw new ElementoNuloException("Nome não pode ser nulo.");
+        }
+        if(admin.getSenha() == null || admin.getSenha().isEmpty()){
+            throw new ElementoNuloException("Senha não pode ser nula ou vazia.");
         }
         if (!admin.isEhAdm()) {
             throw new AcessoInvalidoException("Apenas administradores podem ser cadastrados.");
         }
-        if (admin.getSenha().isEmpty()) {
-            throw new ElementoNuloException("Senha não pode ser vazia.");
+        if (admin.getDataNascimento() == null) {
+            throw new ElementoNuloException("Data de nascimento não pode ser nula.");
         }
         if (admin.getEmail() == null) {
             throw new ElementoNuloException("Email não pode ser nulo.");
@@ -83,11 +86,15 @@ public class ControladorAdmin {
         if (adminNovo.isEhAdm() == false) {
             throw new AcessoInvalidoException("Apenas administradores podem ser cadastrados.");
         }
-        if(adminNovo.getSenha() == null){
-            throw new ElementoNuloException("Senha não pode ser nula");
+
+        if (adminNovo.getNome() == null) {
+            throw new ElementoNuloException("Nome não pode ser nulo.");
         }
-        if (adminNovo.getSenha().isEmpty()) {
-            throw new ElementoNuloException("Senha não pode ser vazia.");
+        if(adminNovo.getSenha() == null || adminNovo.getSenha().isEmpty()){
+            throw new ElementoNuloException("Senha não pode ser nula ou vazia.");
+        }
+        if (adminNovo.getDataNascimento() == null) {
+            throw new ElementoNuloException("Data de nascimento não pode ser nula.");
         }
         if (adminNovo.getEmail() == null) {
             throw new ElementoNuloException("Email não pode ser nulo.");
