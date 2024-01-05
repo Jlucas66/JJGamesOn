@@ -8,5 +8,7 @@ module com.ufrpe.br.jjgameson {
     requires java.sql;
 
     opens br.ufrpe.jjgameson to javafx.fxml;
+    opens br.ufrpe.jjgameson.gui to javafx.fxml;
     exports br.ufrpe.jjgameson;
+    exports br.ufrpe.jjgameson.gui;
 }
