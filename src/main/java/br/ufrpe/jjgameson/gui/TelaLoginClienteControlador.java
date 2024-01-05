@@ -8,18 +8,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class TelaLoginClienteControlador {
-/*
-    public void initialize() {
-        // Carregar a imagem
-        Image capa = new Image(getClass().getResourceAsStream("capaofc1.jpg"));
-        Image logo = new Image(getClass().getResourceAsStream("JJ-GamesON.png"));
+import java.io.InputStream;
 
-        // Definir a imagem no ImageView
-        capaLoginCliente.setImage(capa);
-        logoLoginCliente.setImage(logo);
+public class TelaLoginClienteControlador {
+
+    public void initialize(){
+        //capaLoginCliente.setImage(new Image(getClass().getResourceAsStream("capaofc1.jpg")));
     }
-*/
+
     @FXML
     private Button botaoCadastrar;
 
@@ -41,6 +37,8 @@ public class TelaLoginClienteControlador {
     @FXML
     private PasswordField senhaLogin;
 
+
+
     @FXML
     void btnLoginClienteCadastrar(ActionEvent event) {
 
@@ -54,6 +52,22 @@ public class TelaLoginClienteControlador {
     @FXML
     void btnLoginClienteEntrarComoADM(ActionEvent event) {
 
+    }
+
+    public ImageView getCapaLoginCliente() {
+        return capaLoginCliente;
+    }
+
+    public void setCapaLoginCliente(ImageView capaLoginCliente) {
+        this.capaLoginCliente = capaLoginCliente;
+    }
+
+    public ImageView getLogoLoginCliente() {
+        return logoLoginCliente;
+    }
+
+    public void setLogoLoginCliente(ImageView logoLoginCliente) {
+        this.logoLoginCliente = logoLoginCliente;
     }
 
 }
