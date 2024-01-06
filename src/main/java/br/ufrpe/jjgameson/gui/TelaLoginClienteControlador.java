@@ -2,18 +2,24 @@ package br.ufrpe.jjgameson.gui;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
-import java.io.InputStream;
+import java.io.IOException;
 
 public class TelaLoginClienteControlador {
 
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
     public void initialize(){
-        //capaLoginCliente.setImage(new Image(getClass().getResourceAsStream("capaofc1.jpg")));
+
     }
 
     @FXML
@@ -40,34 +46,18 @@ public class TelaLoginClienteControlador {
 
 
     @FXML
-    void btnLoginClienteCadastrar(ActionEvent event) {
+    void btnLoginClienteCadastrar(ActionEvent event) throws IOException{
+        GerenciadorDeTelas.irParaTelaCadastro(event);
+    }
+
+    @FXML
+    void btnLoginClienteEntrar(ActionEvent event) throws IOException{
 
     }
 
     @FXML
-    void btnLoginClienteEntrar(ActionEvent event) {
-
-    }
-
-    @FXML
-    void btnLoginClienteEntrarComoADM(ActionEvent event) {
-
-    }
-
-    public ImageView getCapaLoginCliente() {
-        return capaLoginCliente;
-    }
-
-    public void setCapaLoginCliente(ImageView capaLoginCliente) {
-        this.capaLoginCliente = capaLoginCliente;
-    }
-
-    public ImageView getLogoLoginCliente() {
-        return logoLoginCliente;
-    }
-
-    public void setLogoLoginCliente(ImageView logoLoginCliente) {
-        this.logoLoginCliente = logoLoginCliente;
+    void btnLoginClienteEntrarComoADM(ActionEvent event) throws IOException{
+GerenciadorDeTelas.irParaTelaLoginADM(event);
     }
 
 }

@@ -6,6 +6,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
+import java.io.IOException;
+
 public class TelaLoginADMControlador {
 
     @FXML
@@ -24,13 +26,13 @@ public class TelaLoginADMControlador {
     private TextField senhaLoginADM;
 
     @FXML
-    void btnLoginADMEntrarComoADM(ActionEvent event) {
+    void btnLoginADMEntrarComoADM(ActionEvent event) throws IOException{
 
     }
 
     @FXML
-    void btnLoginADMVoltar(ActionEvent event) {
-
+    void btnLoginADMVoltar(ActionEvent event) throws IOException {
+GerenciadorDeTelas.irParaTelaLoginCliente(event);
     }
 
 }
