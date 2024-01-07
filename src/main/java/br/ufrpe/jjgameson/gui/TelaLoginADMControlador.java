@@ -28,6 +28,9 @@ public class TelaLoginADMControlador {
     @FXML
     void btnLoginADMEntrarComoADM(ActionEvent event) throws IOException{
 
+        // Adicionar algoritmo de verificação de usuário aqui
+
+GerenciadorDeTelas.irParaTelaPrincipalADM(event);
     }
 
     @FXML
