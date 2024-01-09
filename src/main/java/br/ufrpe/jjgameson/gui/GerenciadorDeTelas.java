@@ -56,4 +56,13 @@ public class GerenciadorDeTelas {
         stage.setResizable(false);
         stage.show();
     }
+    public static void irParaTelaRemoverJogo (ActionEvent event) throws IOException {
+        Stage stage;
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tela_remover_jogo.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(fxmlLoader.load(), 900, 600));
+        stage.setTitle("Remover um jogo");
+        stage.setResizable(false);
+        stage.show();
+    }
 }

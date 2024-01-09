@@ -52,7 +52,7 @@ GerenciadorDeTelas.irParaTelaAdicionarJogo(event);
 
         @FXML
         void btnRemoverJogoADM(ActionEvent event) throws IOException {
-
+GerenciadorDeTelas.irParaTelaRemoverJogo(event);
         }
 
         @FXML
