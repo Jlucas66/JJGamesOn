@@ -4,13 +4,15 @@ import java.time.LocalDate;
 
 public class Promocao {
     private Jogo jogoEmPromocao;
+    private String nome;
     private int idPromocao;
     private double desconto;
     private LocalDate dataInicio;
     private LocalDate dataFim;
 
-    public Promocao(Jogo jogoEmPromocao, double desconto, LocalDate dataInicio, LocalDate dataFim, int idPromocao) {
+    public Promocao(Jogo jogoEmPromocao, String nome, double desconto, LocalDate dataInicio, LocalDate dataFim, int idPromocao) {
         this.jogoEmPromocao = jogoEmPromocao;
+        this.nome = nome;
         this.idPromocao = idPromocao;
         this.setDesconto(desconto);
         this.dataInicio = dataInicio;
@@ -32,6 +34,14 @@ public class Promocao {
 
     public void setJogoEmPromocao(Jogo jogoEmPromocao) {
         this.jogoEmPromocao = jogoEmPromocao;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public int getIdPromocao() {
