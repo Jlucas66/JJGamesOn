@@ -47,7 +47,7 @@ GerenciadorDeTelas.irParaTelaEditarJogo(event);
 
         @FXML
         void btnRelatorioDeVendasADM(ActionEvent event) throws IOException {
-
+GerenciadorDeTelas.irParaTelaRelatorioDeVendas(event);
         }
 
         @FXML
