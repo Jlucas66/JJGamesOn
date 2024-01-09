@@ -42,7 +42,7 @@ GerenciadorDeTelas.irParaTelaEditarJogo(event);
 
         @FXML
         void btnGerenciarPromocoesADM(ActionEvent event) throws IOException {
-
+GerenciadorDeTelas.irParaTelaGerenciarPromocoes(event);
         }
 
         @FXML
