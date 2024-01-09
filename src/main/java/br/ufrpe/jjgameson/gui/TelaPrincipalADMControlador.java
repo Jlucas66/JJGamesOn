@@ -37,7 +37,7 @@ GerenciadorDeTelas.irParaTelaAdicionarJogo(event);
 
         @FXML
         void btnEditarJogoADM(ActionEvent event) throws IOException {
-
+GerenciadorDeTelas.irParaTelaEditarJogo(event);
         }
 
         @FXML
