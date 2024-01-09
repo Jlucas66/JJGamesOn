@@ -29,8 +29,8 @@ public class Main {
         Pessoa cliente2 = new Pessoa("Bruno", "brunoemail@gmail.com", "123456", LocalDate.of(2001,7,15),false);
 
         // Gerando Jogo
-        Jogo jogo1 = new Jogo(1,"Minecraft",29.90,"Mojang Studios","Casual","Um jogo casual de construção", FaixaEtaria.LIVRE);
-        Jogo jogo2 = new Jogo(2,"GTA V",69.90,"Rockstar Games","Ação","Um jogo de ação", FaixaEtaria.DEZESSEIS);
+        Jogo jogo1 = new Jogo(1,"@imagens/minecraft.jpg","Minecraft",29.90,"Mojang Studios","Casual","Um jogo casual de construção", FaixaEtaria.LIVRE);
+        Jogo jogo2 = new Jogo(2,"@imagens/gtaV.jpg","GTA V",69.90,"Rockstar Games","Ação","Um jogo de ação", FaixaEtaria.DEZESSEIS);
         // Gerando itemVenda
 
         ItemVenda itemVenda1 = new ItemVenda(jogo1,2,1);

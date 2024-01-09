@@ -12,7 +12,7 @@ public class Teste {
                 "senha123", LocalDate.of(2022, 12, 1), true);
         Pessoa cliente = new Pessoa("Maria", "maria@email.br",
                 "senha123", LocalDate.of(2003, 2, 4), false);
-        Jogo jogo = new Jogo(1, "Minecraft", 29.90, "Mojang Studios", "Casual",
+        Jogo jogo = new Jogo(1, "@imagens/minecraft.jpg","Minecraft", 29.90, "Mojang Studios", "Casual",
                 "Um jogo casual de construção", FaixaEtaria.LIVRE);
         Avaliacao avaliacao = new Avaliacao(cliente, jogo, 5, "Muito bom!", LocalDateTime.now());
         Venda venda = new Venda(cliente, LocalDateTime.now());
