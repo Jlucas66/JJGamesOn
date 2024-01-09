@@ -32,7 +32,7 @@ public class TelaPrincipalADMControlador {
 
         @FXML
         void btnAdicionarJogoADM(ActionEvent event) throws IOException {
-
+GerenciadorDeTelas.irParaTelaAdicionarJogo(event);
         }
 
         @FXML

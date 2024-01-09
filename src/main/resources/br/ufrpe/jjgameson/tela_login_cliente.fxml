@@ -31,8 +31,8 @@
                   <Image url="@imagens/JJ-GamesON.png" />
                </image>
             </ImageView>
-            <TextField fx:id="emailLogin" layoutX="71.0" layoutY="187.0" prefHeight="31.0" prefWidth="230.0" promptText="Digite seu email" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
-            <PasswordField fx:id="senhaLogin" layoutX="72.0" layoutY="260.0" prefHeight="31.0" prefWidth="230.0" promptText="Digite sua senha" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="emailLogin" layoutX="71.0" layoutY="187.0" prefHeight="31.0" prefWidth="230.0" promptText="Digite seu email" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
+            <PasswordField fx:id="senhaLogin" layoutX="72.0" layoutY="260.0" prefHeight="31.0" prefWidth="230.0" promptText="Digite sua senha" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
             <Button fx:id="botaoEntrar" layoutX="107.0" layoutY="324.0" mnemonicParsing="false" onAction="#btnLoginClienteEntrar" prefWidth="66.4" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Entrar" />
             <Button fx:id="botaoCadastrar" layoutX="198.0" layoutY="324.0" mnemonicParsing="false" onAction="#btnLoginClienteCadastrar" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Cadastrar" />
             <Button fx:id="botaoEntrarComoADM" layoutX="107.0" layoutY="537.0" mnemonicParsing="false" onAction="#btnLoginClienteEntrarComoADM" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Entrar como administrador" />
