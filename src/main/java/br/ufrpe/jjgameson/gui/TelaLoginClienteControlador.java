@@ -52,7 +52,8 @@ public class TelaLoginClienteControlador {
 
     @FXML
     void btnLoginClienteEntrar(ActionEvent event) throws IOException{
-
+        //escrever algoritmo
+GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
     }
 
     @FXML
