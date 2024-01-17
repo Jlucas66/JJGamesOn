@@ -1,15 +1,55 @@
 package br.ufrpe.jjgameson.gui;
+    import br.ufrpe.jjgameson.HelloApplication;
+    import br.ufrpe.jjgameson.entidades.FaixaEtaria;
+    import br.ufrpe.jjgameson.entidades.Jogo;
     import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+    import javafx.fxml.FXMLLoader;
+    import javafx.fxml.Initializable;
+    import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
     import java.io.IOException;
+    import java.net.URL;
+    import java.util.ArrayList;
+    import java.util.List;
+    import java.util.ResourceBundle;
 
-public class TelaPrincipalClienteControlador {
+public class TelaPrincipalClienteControlador implements Initializable {
+
+        @Override
+        public void initialize(URL url, ResourceBundle resourceBundle) {
+
+                 catalogo = new ArrayList<>(catalogo());
+        try{
+                for(int i = 0; i < catalogo.size(); i++){
+                        FXMLLoader fxmlLoader = new FXMLLoader();
+                        fxmlLoader.setLocation(HelloApplication.class.getResource("cardPrincipalCliente.fxml"));
+                        VBox cardBox = fxmlLoader.load();
+                        CardTelaPrincipalClienteControlador cardTelaPrincipalClienteControlador = fxmlLoader.getController();
+                        cardTelaPrincipalClienteControlador.setInformacoes(catalogo.get(i));
+                        VBoxPrincipalCliente.getChildren().add(cardBox);
+                }
+        }
+           catch (IOException e){
+                e.printStackTrace();
+           }
+
+        }
+
+        private List<Jogo> catalogo(){
+                List<Jogo> cata = new ArrayList<>();
+                Jogo jogo1 = new Jogo(1,"@imagens/minecraft.jpg","Minecraft",29.90,"Mojang Studios","Casual","Um jogo casual de construção", FaixaEtaria.LIVRE);
+                cata.add(jogo1);
+                Jogo jogo2 = new Jogo(2,"@imagens/gtaV.jpg","GTA V",69.90,"Rockstar Games","Ação","Um jogo de ação", FaixaEtaria.DEZESSEIS);
+                cata.add(jogo2);
+                return cata;
+        }
+
+        private List<Jogo> catalogo;
 
         @FXML
         private VBox VBoxPrincipalCliente;
@@ -111,4 +151,5 @@ GerenciadorDeTelas.irParaTelaLoginCliente(event);
 
         }
 
-    }
+
+}

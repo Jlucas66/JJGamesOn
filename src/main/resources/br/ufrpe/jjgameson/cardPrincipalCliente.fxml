@@ -1,33 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="330.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.jjgameson.gui.CardTelaPrincipalClienteControlador">
+
+<VBox fx:id="cardLayout" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="330.0" prefWidth="200.0" style="-fx-border-color: #000000;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.jjgameson.gui.CardTelaPrincipalClienteControlador">
    <children>
-      <ImageView fx:id="capa" fitHeight="190.0" fitWidth="190.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="capa" fitHeight="190.0" fitWidth="190.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@imagens/minecraft.jpg" />
          </image>
+         <VBox.margin>
+            <Insets left="13.0" top="12.5" />
+         </VBox.margin>
       </ImageView>
-      <Label fx:id="dev" layoutX="20.0" layoutY="260.0" prefHeight="19.0" prefWidth="173.0" text="Hello Games" textAlignment="JUSTIFY" wrapText="true">
+      <Hyperlink fx:id="nome" onAction="#nomeJogoCard" prefHeight="57.0" prefWidth="185.0" text="No Man's Sky" wrapText="true">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <padding>
+            <Insets left="12.5" />
+         </padding>
+      </Hyperlink>
+      <Label fx:id="dev" prefHeight="18.0" prefWidth="185.0" text="Hello Games">
+         <padding>
+            <Insets left="12.5" />
+         </padding>
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <Hyperlink fx:id="nome" layoutX="14.0" layoutY="204.0" onAction="#nomeJogoCard" prefHeight="62.0" prefWidth="173.0" text="No Man's Sky" textAlignment="JUSTIFY" wrapText="true">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Hyperlink>
-      <Label fx:id="preco" layoutX="20.0" layoutY="284.0" prefHeight="27.0" prefWidth="173.0" text="R$ 300,00">
+      <Label fx:id="preco" text="R$ 300,00">
+         <VBox.margin>
+            <Insets left="12.5" />
+         </VBox.margin>
          <font>
             <Font size="18.0" />
          </font>
       </Label>
    </children>
-</Pane>
+</VBox>
