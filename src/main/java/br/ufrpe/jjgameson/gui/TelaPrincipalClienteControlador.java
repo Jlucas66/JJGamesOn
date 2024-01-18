@@ -10,7 +10,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
+    import javafx.scene.layout.HBox;
+    import javafx.scene.layout.VBox;
 
     import java.io.IOException;
     import java.net.URL;
@@ -28,10 +29,10 @@ public class TelaPrincipalClienteControlador implements Initializable {
                 for(int i = 0; i < catalogo.size(); i++){
                         FXMLLoader fxmlLoader = new FXMLLoader();
                         fxmlLoader.setLocation(HelloApplication.class.getResource("cardPrincipalCliente.fxml"));
-                        VBox cardBox = fxmlLoader.load();
+                        HBox cardBox = fxmlLoader.load();
                         CardTelaPrincipalClienteControlador cardTelaPrincipalClienteControlador = fxmlLoader.getController();
                         cardTelaPrincipalClienteControlador.setInformacoes(catalogo.get(i));
-                        VBoxPrincipalCliente.getChildren().add(cardBox);
+                        hboxPrincipalCliente.getChildren().add(cardBox);
                 }
         }
            catch (IOException e){
@@ -42,9 +43,9 @@ public class TelaPrincipalClienteControlador implements Initializable {
 
         private List<Jogo> catalogo(){
                 List<Jogo> cata = new ArrayList<>();
-                Jogo jogo1 = new Jogo(1,"@imagens/minecraft.jpg","Minecraft",29.90,"Mojang Studios","Casual","Um jogo casual de construção", FaixaEtaria.LIVRE);
+                Jogo jogo1 = new Jogo(1,"@imagens/minecraft.jpg","Minecraft",29.99,"Mojang Studios","Casual","Um jogo casual de construção", FaixaEtaria.LIVRE);
                 cata.add(jogo1);
-                Jogo jogo2 = new Jogo(2,"@imagens/gtaV.jpg","GTA V",69.90,"Rockstar Games","Ação","Um jogo de ação", FaixaEtaria.DEZESSEIS);
+                Jogo jogo2 = new Jogo(2,"@imagens/gtaV.jpg","GTA V",69.99,"Rockstar Games","Ação","Um jogo de ação", FaixaEtaria.DEZESSEIS);
                 cata.add(jogo2);
                 return cata;
         }
@@ -52,7 +53,7 @@ public class TelaPrincipalClienteControlador implements Initializable {
         private List<Jogo> catalogo;
 
         @FXML
-        private VBox VBoxPrincipalCliente;
+        private HBox hboxPrincipalCliente;
 
         @FXML
         private Button botaoAcao;

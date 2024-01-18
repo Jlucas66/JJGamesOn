@@ -8,6 +8,7 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
@@ -24,7 +25,7 @@ public class CardTelaPrincipalClienteControlador {
         private Hyperlink nome;
 
         @FXML
-        private VBox cardLayout;
+        private HBox cardLayout;
 
         @FXML
         private Label preco;
