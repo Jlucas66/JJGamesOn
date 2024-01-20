@@ -48,7 +48,6 @@ public class CardTelaPrincipalClienteControlador {
             dev.setText(jogo.getDesenvolvedora());
             String oValor = Double.toString(jogo.getValor());
             preco.setText(oValor);
-            System.out.println(jogo.getPathDaCapa());
         }
 
     }

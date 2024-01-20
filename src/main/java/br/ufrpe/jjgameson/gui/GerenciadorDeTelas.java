@@ -92,21 +92,30 @@ public class GerenciadorDeTelas {
         stage.setResizable(false);
         stage.show();
     }
-    public static void irParaTelaCompraFinalizada (ActionEvent event) throws IOException {
-        Stage stage;
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tela_compra_finalizada.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(fxmlLoader.load(), 900, 600));
-        stage.setTitle("Compra finalizada");
-        stage.setResizable(false);
-        stage.show();
-    }
     public static void irParaTelaPrincipalCliente (ActionEvent event) throws IOException {
         Stage stage;
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tela_principal_cliente.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(fxmlLoader.load(), 900, 600));
         stage.setTitle("Seja bem-vindo(a)!");
+        stage.setResizable(false);
+        stage.show();
+    }
+    public static void irParaTelaBusca (ActionEvent event) throws IOException {
+        Stage stage;
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tela_busca.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(fxmlLoader.load(), 900, 600));
+        stage.setTitle("Buscar");
+        stage.setResizable(false);
+        stage.show();
+    }
+    public static void irParaTelaCompraFinalizada (ActionEvent event) throws IOException {
+        Stage stage;
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tela_compra_finalizada.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(fxmlLoader.load(), 900, 600));
+        stage.setTitle("Compra finalizada");
         stage.setResizable(false);
         stage.show();
     }

@@ -134,7 +134,7 @@ public class TelaPrincipalClienteControlador implements Initializable {
 
         @FXML
         void btnPesquisarPrincipalCliente(ActionEvent event) throws IOException{
-
+GerenciadorDeTelas.irParaTelaBusca(event);
         }
 
         @FXML
