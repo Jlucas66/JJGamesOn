@@ -109,7 +109,7 @@ public class TelaPrincipalClienteControlador implements Initializable {
 
         @FXML
         void btnCarrinhoPrincipalCliente(ActionEvent event) throws IOException{
-
+GerenciadorDeTelas.irParaTelaCarrinho(event);
         }
 
         @FXML
