@@ -14,15 +14,32 @@ public class ItemVenda {
         this.idItemVenda = idItemVenda;
         this.quantidade = quantidade;
         valorTotal = jogo.getValor() * quantidade;
-        this.codigos = Codigo.gerarCodigos(quantidade);
+        this.codigos = gerarCodigos(quantidade);
     }
 
+    // Método para gerar códigos diretamente na classe ItemVenda
+    private static ArrayList<String> gerarCodigos(int quantidade) {
+        ArrayList<String> codigos = new ArrayList<>();
 
-    public void aplicarDesconto(Promocao promocao){
-        if(promocao.getJogoEmPromocao().equals(jogo)){
-            valorTotal = promocao.calcularValorComDesconto() * quantidade;
+        for (int j = 0; j < quantidade; j++) {
+            String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            StringBuilder codigo = new StringBuilder();
+
+            java.util.Random random = new java.util.Random();
+            for (int i = 0; i < 10; i++) {
+                int indice = random.nextInt(caracteres.length());
+                codigo.append(caracteres.charAt(indice));
+            }
+
+            codigos.add(codigo.toString());
         }
-        else {
+        return codigos;
+    }
+
+    public void aplicarDesconto(Promocao promocao) {
+        if (promocao.getJogoEmPromocao().equals(jogo)) {
+            valorTotal = promocao.calcularValorComDesconto() * quantidade;
+        } else {
             throw new IllegalArgumentException("O jogo não está em promoção.");
         }
     }
