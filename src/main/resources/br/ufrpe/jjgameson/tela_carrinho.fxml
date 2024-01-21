@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -16,7 +17,7 @@
             <Image url="@imagens/JJ-GamesON.png" />
          </image>
       </ImageView>
-      <ScrollPane fx:id="scrollPaneTelaCarrinho" layoutX="10.0" layoutY="146.0" prefHeight="400.0" prefWidth="880.0" style="-fx-border-color: #000000;">
+      <ScrollPane fx:id="scrollPaneTelaCarrinho" layoutX="10.0" layoutY="146.0" prefHeight="360.0" prefWidth="880.0" style="-fx-border-color: #000000;">
          <content>
             <VBox fx:id="vboxTelaCarrinho" prefHeight="1200.0" prefWidth="860.0" spacing="10.0" />
          </content>
@@ -41,5 +42,25 @@
             <Font size="13.0" />
          </font>
       </Button>
+      <Text layoutX="510.0" layoutY="537.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor total: R$">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="240.0" layoutY="537.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Promoção:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Label fx:id="promocaoCarrinho" layoutX="333.0" layoutY="508.0" prefHeight="47.0" prefWidth="165.0" text="Nenhuma" wrapText="true">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="valorTotalCarrinho" layoutX="624.0" layoutY="517.0" prefHeight="27.0" prefWidth="85.0" text="0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

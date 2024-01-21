@@ -27,9 +27,6 @@ public class CardTelaCarrinhoControlador {
         private Label preco;
 
         @FXML
-        private Label promocao;
-
-        @FXML
         private Label quantidade;
 
         @FXML
@@ -54,7 +51,6 @@ public class CardTelaCarrinhoControlador {
                 nome.setText(jogo.getNome());
                 String oValor = Double.toString(jogo.getValor());
                 preco.setText(oValor);
-                //promocao.setText(itemVenda.getPromocao());
                 String quant = Integer.toString(itemVenda.getQuantidade());
                 quantidade.setText(quant);
                 String vTotal = Double.toString(itemVenda.getValorTotal());

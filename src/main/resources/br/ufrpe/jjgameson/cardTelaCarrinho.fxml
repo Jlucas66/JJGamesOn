@@ -9,7 +9,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <VBox fx:id="cardLayoutCarrinho" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.jjgameson.gui.CardTelaCarrinhoControlador">
    <children>
       <Pane prefHeight="250.0" prefWidth="850.0">
@@ -34,21 +33,16 @@
                   <Font size="20.0" />
                </font>
             </Text>
-            <Text layoutX="616.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor total:  R$">
+            <Text layoutX="613.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor total:  R$">
                <font>
                   <Font size="20.0" />
                </font>
             </Text>
-            <Hyperlink fx:id="removerDoCarrinho" layoutX="609.0" layoutY="182.0" onAction="#removerDoCarrinhoJogoCard" text="Remover do carrinho">
+            <Hyperlink fx:id="removerDoCarrinho" layoutX="608.0" layoutY="182.0" onAction="#removerDoCarrinhoJogoCard" text="Remover do carrinho">
                <font>
                   <Font size="20.0" />
                </font>
             </Hyperlink>
-            <Text layoutX="617.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Promoção:">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Text>
             <Label fx:id="nome" layoutX="309.0" layoutY="35.0" prefHeight="38.0" prefWidth="270.0" text="Zelda: Tears of the Kingdom" wrapText="true">
                <font>
                   <Font size="20.0" />
@@ -64,12 +58,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="valorTotal" layoutX="750.0" layoutY="112.0" prefHeight="30.0" prefWidth="94.0" text="300.00">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="promocao" layoutX="722.0" layoutY="38.0" prefHeight="30.0" prefWidth="108.0" text="0%">
+            <Label fx:id="valorTotal" layoutX="747.0" layoutY="38.0" prefHeight="30.0" prefWidth="94.0" text="300.00">
                <font>
                   <Font size="20.0" />
                </font>
