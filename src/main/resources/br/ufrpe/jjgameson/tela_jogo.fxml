@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.jjgameson.gui.TelaJogoControlador">
+   <children>
+      <ImageView fx:id="logoTelaJogo" fitHeight="157.0" fitWidth="450.0" layoutX="225.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imagens/JJ-GamesON.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="capaTelaJogo" fitHeight="306.0" fitWidth="280.0" layoutX="41.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imagens/minecraft.jpg" />
+         </image>
+      </ImageView>
+      <Text layoutX="370.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="⭐">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text layoutX="630.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sobre este jogo">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text layoutX="374.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="R$">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="descricaoTelaJogo" editable="false" layoutX="630.0" layoutY="226.0" prefHeight="233.0" prefWidth="226.0" promptText="A descrição do jogo aparecerá aqui..." style="-fx-border-color: #000000;" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextArea>
+      <Label fx:id="nomeTelaJogo" layoutX="372.0" layoutY="152.0" prefHeight="49.0" prefWidth="502.0" text="No Man's Sky">
+         <font>
+            <Font size="33.0" />
+         </font>
+      </Label>
+      <Label fx:id="devTelaJogo" layoutX="373.0" layoutY="201.0" prefHeight="26.0" prefWidth="226.0" text="Hello Games">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="precoTelaJogo" layoutX="412.0" layoutY="262.0" prefHeight="38.0" prefWidth="201.0" text="300.00">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Button fx:id="botaoAdicionarAoCarrinho" layoutX="372.0" layoutY="323.0" mnemonicParsing="false" onAction="#btnAdicionarAoCarrinhoTelaJogo" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Adicionar ao carrinho">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="botaoAvaliar" layoutX="373.0" layoutY="376.0" mnemonicParsing="false" onAction="#btnAvaliarTelaJogo" prefHeight="43.0" prefWidth="216.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Avaliar">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Label fx:id="notaTelaJogo" layoutX="397.0" layoutY="232.0" prefHeight="25.0" prefWidth="32.0" text="4.5">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="generoTelaJogo" layoutX="108.0" layoutY="487.0" prefHeight="27.0" prefWidth="208.0" text="Aventura">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="faixaEtariaTelaJogo" layoutX="230.0" layoutY="515.0" prefHeight="27.0" prefWidth="32.0" text="14">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="botaoVoltar" layoutX="427.0" layoutY="498.0" mnemonicParsing="false" onAction="#btnVoltarTelaJogo" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Voltar para a loja" />
+      <Text layoutX="41.0" layoutY="507.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gênero:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="41.0" layoutY="534.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Classificação indicativa:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+   </children>
+</Pane>

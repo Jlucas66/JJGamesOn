@@ -108,11 +108,6 @@ public class TelaPrincipalClienteControlador implements Initializable {
         }
 
         @FXML
-        void btnCarrinhoPrincipalCliente(ActionEvent event) throws IOException{
-GerenciadorDeTelas.irParaTelaCarrinho(event);
-        }
-
-        @FXML
         void btnCasualPrincipalCliente(ActionEvent event) throws IOException{
 
         }
@@ -123,25 +118,9 @@ GerenciadorDeTelas.irParaTelaCarrinho(event);
         }
 
         @FXML
-        void btnHistoricoPrincipalCliente(ActionEvent event) throws IOException{
-
-        }
-
-        @FXML
         void btnMobaPrincipalCliente(ActionEvent event) throws IOException{
 
         }
-
-        @FXML
-        void btnPesquisarPrincipalCliente(ActionEvent event) throws IOException{
-GerenciadorDeTelas.irParaTelaBusca(event);
-        }
-
-        @FXML
-        void btnSairDaContaPrincipalCliente(ActionEvent event) throws IOException {
-GerenciadorDeTelas.irParaTelaLoginCliente(event);
-        }
-
         @FXML
         void btnSimulacaoPrincipalCliente(ActionEvent event) throws IOException{
 
@@ -151,6 +130,22 @@ GerenciadorDeTelas.irParaTelaLoginCliente(event);
         void btnTerrorPrincipalCliente(ActionEvent event) throws IOException{
 
         }
+        @FXML
+        void btnPesquisarPrincipalCliente(ActionEvent event) throws IOException{
+GerenciadorDeTelas.irParaTelaBusca(event);
+        }
+        @FXML
+        void btnCarrinhoPrincipalCliente(ActionEvent event) throws IOException{
+                GerenciadorDeTelas.irParaTelaCarrinho(event);
+        }
 
+        @FXML
+        void btnHistoricoPrincipalCliente(ActionEvent event) throws IOException{
 
+        }
+
+        @FXML
+        void btnSairDaContaPrincipalCliente(ActionEvent event) throws IOException {
+                GerenciadorDeTelas.irParaTelaLoginCliente(event);
+        }
 }
