@@ -5,12 +5,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 import java.io.IOException;
@@ -23,7 +19,12 @@ public class TelaAvaliacaoControlador implements Initializable {
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
-              avaliacoes = new ArrayList<>(avaliacoes());
+
+            SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,5);
+            valueFactory.setValue(1);
+            notaTelaAvaliacao.setValueFactory(valueFactory);
+
+            avaliacoes = new ArrayList<>(avaliacoes());
             try{
                 for(int i = 0; i < avaliacoes.size(); i++){
                     FXMLLoader fxmlLoader = new FXMLLoader();
@@ -69,13 +70,13 @@ public class TelaAvaliacaoControlador implements Initializable {
         private VBox vboxTelaAvaliacao;
 
         @FXML
-        void btnAvaliarTelaAvaliacao(ActionEvent event) {
+        void btnAvaliarTelaAvaliacao(ActionEvent event) throws IOException{
 
         }
 
         @FXML
-        void btnCancelarTelaAvaliacao(ActionEvent event) {
-
+        void btnCancelarTelaAvaliacao(ActionEvent event) throws IOException{
+GerenciadorDeTelas.irParaTelaJogo(event);
         }
 
 
