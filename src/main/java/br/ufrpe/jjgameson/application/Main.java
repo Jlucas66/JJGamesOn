@@ -37,10 +37,16 @@ public class Main {
         for (String codigo: itemVenda1.getCodigos()) {
             repositorioCodigo.inserir(codigo);
         }
+        ItemVenda itemVenda2 = new ItemVenda(jogo2, 1, 2);
+        for (String codigo : itemVenda2.getCodigos()) {
+            repositorioCodigo.inserir(codigo);
+        }
+
 
         // Gerando Venda
         Venda venda1 = new Venda(cliente1, LocalDateTime.now());
         venda1.adicionarItemVenda(itemVenda1);
+        venda1.adicionarItemVenda(itemVenda2);
 
 
         // Inserindo no repositorio
@@ -65,7 +71,7 @@ public class Main {
         for (Pessoa admin : admins) {
             System.out.println("Nome: " + admin.getNome() + ", Email: " + admin.getEmail());
         }
-        
+
         //Listando Cliente
         List<Pessoa> clientes = repositorioCliente.listarClientes();
         System.out.println("\nClientes:");
@@ -111,6 +117,25 @@ public class Main {
                 System.out.println("  Jogo: " + itemVenda.getJogo().getNome() + ", Quantidade: " + itemVenda.getQuantidade());
                 System.out.println("  Códigos:");
                 for (String codigo : codigos) {
+                    System.out.println("      Código: " + codigo);
+                }
+            }
+        }
+
+        vendas = repositorioVenda.listar();
+        System.out.println("\nVendas:");
+        for (Venda venda : vendas) {
+            System.out.println("Cliente: " + venda.getCliente().getNome() + ", Data: " + venda.getData()  + ", Valor: " + venda.calcularTotal());
+
+            List<ItemVenda> itensVenda = venda.getItensVenda();
+            System.out.println("Itens da Venda:");
+
+            for (ItemVenda itemVenda : itensVenda) {
+                System.out.println("  Jogo: " + itemVenda.getJogo().getNome() + ", Quantidade: " + itemVenda.getQuantidade());
+                System.out.println("  Códigos:");
+
+                // Agora, percorremos os códigos associados ao itemVenda
+                for (String codigo : itemVenda.getCodigos()) {
                     System.out.println("      Código: " + codigo);
                 }
             }
