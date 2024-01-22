@@ -28,6 +28,6 @@ public class RepositorioCodigo implements IRepositorioCodigo {
 
     @Override
     public List<String> listar() {
-        return new ArrayList<>(codigos);
+        return codigos;
     }
 }
