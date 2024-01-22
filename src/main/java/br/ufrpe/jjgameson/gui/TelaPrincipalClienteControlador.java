@@ -141,7 +141,7 @@ GerenciadorDeTelas.irParaTelaBusca(event);
 
         @FXML
         void btnHistoricoPrincipalCliente(ActionEvent event) throws IOException{
-
+GerenciadorDeTelas.irParaTelaHistorico(event);
         }
 
         @FXML
