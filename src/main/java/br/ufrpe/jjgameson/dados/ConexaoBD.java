@@ -20,8 +20,6 @@ public class ConexaoBD {
             throw new DBException(e.getMessage());
         }
     }
-
-            return DriverManager.getConnection(URL, USUARIO, SENHA);
     public static Connection getConnection(){
         if (conn == null){
             try {
