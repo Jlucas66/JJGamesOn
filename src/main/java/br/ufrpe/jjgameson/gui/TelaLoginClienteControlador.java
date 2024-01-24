@@ -57,10 +57,7 @@ public class TelaLoginClienteControlador {
         try {
             repositorioCliente.obterClientePorEmail(emailLogin.getText());
             if (repositorioCliente.VerificarUsuarioLoginBD(emailLogin.getText(), senhaLogin.getText())) {
-                System.out.println("Login efetuado com sucesso!");
                 GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
-            } else {
-                System.out.println("Senha incorreta!");
             }
 
         } catch (Exception e) {

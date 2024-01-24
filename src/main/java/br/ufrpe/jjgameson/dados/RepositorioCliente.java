@@ -3,6 +3,7 @@ package br.ufrpe.jjgameson.dados;
 import br.ufrpe.jjgameson.entidades.Pessoa;
 import br.ufrpe.jjgameson.exceptions.AcessoInvalidoException;
 import br.ufrpe.jjgameson.exceptions.DBException;
+import br.ufrpe.jjgameson.gui.GerenciadorDeTelas;
 import javafx.scene.control.Alert;
 
 import java.sql.Connection;
@@ -28,14 +29,7 @@ public class RepositorioCliente implements IRepositorioCliente {
         return instance;
     }
 
-    private void exibirAlertaMensagem(String titulo, String mensagem) {
-        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-        alerta.setTitle(titulo);
-        alerta.setHeaderText(null); // Sem cabeçalho adicional
-        alerta.setContentText(mensagem);
 
-        alerta.showAndWait();
-    }
     @Override
     public void inserirCliente(Pessoa cliente) {
         clientes.add(cliente);
@@ -85,12 +79,12 @@ public class RepositorioCliente implements IRepositorioCliente {
                     return true;
                 }
                 else{
-                    exibirAlertaMensagem("Erro", "Senha incorreta!");
+                    GerenciadorDeTelas.exibirAlertaMensagem("Erro", "Senha incorreta!");
                     throw new AcessoInvalidoException("Senha incorreta!");
                 }
             }
             else{
-                exibirAlertaMensagem("Erro", "Email não cadastrado!");
+                GerenciadorDeTelas.exibirAlertaMensagem("Erro", "Email não cadastrado!");
                 throw new AcessoInvalidoException("Email não cadastrado!");
             }
 
