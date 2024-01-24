@@ -3,7 +3,7 @@ package br.ufrpe.jjgameson.dados;
 import br.ufrpe.jjgameson.entidades.Pessoa;
 import br.ufrpe.jjgameson.exceptions.AcessoInvalidoException;
 import br.ufrpe.jjgameson.exceptions.DBException;
-import br.ufrpe.jjgameson.exceptions.ElementoNuloException;
+import javafx.scene.control.Alert;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -28,6 +28,14 @@ public class RepositorioCliente implements IRepositorioCliente {
         return instance;
     }
 
+    private void exibirAlertaMensagem(String titulo, String mensagem) {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(null); // Sem cabeçalho adicional
+        alerta.setContentText(mensagem);
+
+        alerta.showAndWait();
+    }
     @Override
     public void inserirCliente(Pessoa cliente) {
         clientes.add(cliente);
@@ -61,7 +69,8 @@ public class RepositorioCliente implements IRepositorioCliente {
         return null;
     }
 
-    public void obterClientePorEmailBD(String email) {
+    @Override
+    public boolean VerificarUsuarioLoginBD(String email, String senha) {
         Connection conn = null;
         Statement st = null;
         ResultSet rs = null;
@@ -71,16 +80,26 @@ public class RepositorioCliente implements IRepositorioCliente {
             st = conn.createStatement();
             rs = st.executeQuery("SELECT * FROM Cliente WHERE emailCliente = '" + email + "'");
 
-            while (rs.next()){
-                System.out.println(rs.getString("nome") + " " + rs.getString("emailCliente") + " " + rs.getDate("dtNascimento"));
+            if (rs.next()){
+                if (rs.getString("senha").equals(senha)){
+                    return true;
+                }
+                else{
+                    exibirAlertaMensagem("Erro", "Senha incorreta!");
+                    throw new AcessoInvalidoException("Senha incorreta!");
+                }
+            }
+            else{
+                exibirAlertaMensagem("Erro", "Email não cadastrado!");
+                throw new AcessoInvalidoException("Email não cadastrado!");
             }
 
         }
         catch (SQLException e){
             throw new DBException(e.getMessage());
-        }
-        finally {
-            ConexaoBD.closeConnection();
+        } catch (AcessoInvalidoException e) {
+            throw new RuntimeException(e);
+        } finally {
             ConexaoBD.closeStatement(st);
             ConexaoBD.closeResultSet(rs);
         }
@@ -179,8 +198,4 @@ public class RepositorioCliente implements IRepositorioCliente {
         }
     }
 
-    public static void main(String[] args) {
-        RepositorioCliente repositorioCliente = new RepositorioCliente();
-        repositorioCliente.listarClientesBD();
-    }
 }
