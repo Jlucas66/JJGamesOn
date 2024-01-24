@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -154,5 +155,14 @@ public class GerenciadorDeTelas {
         stage.setTitle("Compra finalizada");
         stage.setResizable(false);
         stage.show();
+    }
+
+    public static void exibirAlertaMensagem(String titulo, String mensagem) {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(null); // Sem cabeçalho adicional
+        alerta.setContentText(mensagem);
+
+        alerta.showAndWait();
     }
 }
