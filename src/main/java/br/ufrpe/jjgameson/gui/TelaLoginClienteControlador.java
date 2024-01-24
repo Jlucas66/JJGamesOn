@@ -1,5 +1,6 @@
 package br.ufrpe.jjgameson.gui;
 
+import br.ufrpe.jjgameson.dados.RepositorioCliente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -52,8 +53,20 @@ public class TelaLoginClienteControlador {
 
     @FXML
     void btnLoginClienteEntrar(ActionEvent event) throws IOException{
-        //escrever algoritmo
-GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
+        RepositorioCliente repositorioCliente = (RepositorioCliente) RepositorioCliente.getInstance();
+        try {
+            repositorioCliente.obterClientePorEmail(emailLogin.getText());
+            if (repositorioCliente.VerificarUsuarioLoginBD(emailLogin.getText(), senhaLogin.getText())) {
+                System.out.println("Login efetuado com sucesso!");
+                GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
+            } else {
+                System.out.println("Senha incorreta!");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     @FXML

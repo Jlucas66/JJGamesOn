@@ -11,6 +11,7 @@ public interface IRepositorioCliente {
 
         void inserirCliente(Pessoa cliente);
         Pessoa obterClientePorEmail(String email);
+        boolean VerificarUsuarioLoginBD(String email, String senha);
         void removerCliente(String email);
         void atualizarCliente(Pessoa clienteAntigo, Pessoa clienteNovo);
         List<Pessoa> listarClientes();
