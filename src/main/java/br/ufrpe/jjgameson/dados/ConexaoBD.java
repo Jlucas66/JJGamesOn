@@ -45,6 +45,16 @@ public class ConexaoBD {
         }
     }
 
+    public static void closePreparedStatement(PreparedStatement ps) {
+        if (ps != null) {
+            try {
+                ps.close();
+            } catch (SQLException e) {
+                throw new DBException(e.getMessage());
+            }
+        }
+    }
+
     public static void closeStatement(java.sql.Statement st){
         if (st != null){
             try {
@@ -65,6 +75,30 @@ public class ConexaoBD {
                 throw new DBException(e.getMessage());
             }
         }
+    }
+
+    public static boolean verificarCodigoExistenteNoBanco(String codigo) {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            conn = getConnection();
+            String query = "SELECT COUNT(*) FROM Codigo WHERE chave = ?";
+            ps = conn.prepareStatement(query);
+            ps.setString(1, codigo);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                return count > 0;
+            }
+        } catch (SQLException e) {
+            throw new DBException(e.getMessage());
+        } finally {
+            closePreparedStatement(ps);
+            closeResultSet(rs);
+        }
+        return false;
     }
 
     public static void main(String[] args) {
