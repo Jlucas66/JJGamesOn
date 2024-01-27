@@ -10,6 +10,7 @@ import java.util.List;
 public interface IRepositorioCliente {
 
         void inserirCliente(Pessoa cliente);
+        void inserirClienteBD(Pessoa cliente);
         Pessoa obterClientePorEmail(String email);
         boolean VerificarUsuarioLoginBD(String email, String senha);
         void removerCliente(String email);
