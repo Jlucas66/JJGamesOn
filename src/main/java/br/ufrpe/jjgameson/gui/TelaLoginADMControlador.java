@@ -1,5 +1,8 @@
 package br.ufrpe.jjgameson.gui;
 
+import br.ufrpe.jjgameson.dados.IRepositorioAdmin;
+import br.ufrpe.jjgameson.dados.RepositorioAdmin;
+import br.ufrpe.jjgameson.exceptions.AcessoInvalidoException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -27,10 +30,15 @@ public class TelaLoginADMControlador {
 
     @FXML
     void btnLoginADMEntrarComoADM(ActionEvent event) throws IOException{
+        RepositorioAdmin repositorioAdmin = (RepositorioAdmin) RepositorioAdmin.getInstance();
+        try{
+            if (repositorioAdmin.verificarloginADMBD(emailLoginADM.getText(), senhaLoginADM.getText())){
+                GerenciadorDeTelas.irParaTelaPrincipalADM(event);
+            }
 
-        // Adicionar algoritmo de verificação de usuário aqui
-
-GerenciadorDeTelas.irParaTelaPrincipalADM(event);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
