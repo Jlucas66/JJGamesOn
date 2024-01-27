@@ -54,6 +54,17 @@ public class Pessoa {
         return ehAdm;
     }
 
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", senha='" + senha + '\'' +
+                ", dataNascimento=" + dataNascimento +
+                ", ehAdm=" + ehAdm +
+                '}';
+    }
+
     public int calcularIdade(){
         LocalDate dataAtual = LocalDate.now();
         return Period.between(dataNascimento, dataAtual).getYears();

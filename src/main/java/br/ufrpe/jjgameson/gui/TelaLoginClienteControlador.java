@@ -1,6 +1,7 @@
 package br.ufrpe.jjgameson.gui;
 
 import br.ufrpe.jjgameson.dados.RepositorioCliente;
+import br.ufrpe.jjgameson.entidades.Pessoa;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
@@ -53,13 +54,15 @@ public class TelaLoginClienteControlador {
 
     @FXML
     void btnLoginClienteEntrar(ActionEvent event) throws IOException{
+
         RepositorioCliente repositorioCliente = (RepositorioCliente) RepositorioCliente.getInstance();
         try {
-            repositorioCliente.obterClientePorEmail(emailLogin.getText());
             if (repositorioCliente.VerificarUsuarioLoginBD(emailLogin.getText(), senhaLogin.getText())) {
+                Pessoa Cliente = repositorioCliente.obterClientePorEmailBD(emailLogin.getText());
+                repositorioCliente.inserirCliente(Cliente);
+                System.out.println(Cliente.toString());
                 GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -68,7 +71,7 @@ public class TelaLoginClienteControlador {
 
     @FXML
     void btnLoginClienteEntrarComoADM(ActionEvent event) throws IOException{
-GerenciadorDeTelas.irParaTelaLoginADM(event);
+        GerenciadorDeTelas.irParaTelaLoginADM(event);
     }
 
 }

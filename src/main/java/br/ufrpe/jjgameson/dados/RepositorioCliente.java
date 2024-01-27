@@ -35,6 +35,7 @@ public class RepositorioCliente implements IRepositorioCliente {
         clientes.add(cliente);
     }
 
+    @Override
     public void inserirClienteBD(Pessoa cliente) {
         Connection conn = null;
         Statement st = null;
@@ -43,13 +44,12 @@ public class RepositorioCliente implements IRepositorioCliente {
         try{
             conn = ConexaoBD.getConnection();
             st = conn.createStatement();
-            st.executeUpdate("INSERT INTO Cliente (nome, emailCliente, dtNascimento) VALUES ('" + cliente.getNome() + "', '" + cliente.getEmail() + "', '" + cliente.getDataNascimento() + "')");
+            st.executeUpdate("INSERT INTO Cliente (nome, emailCliente, senha, dtNascimento) VALUES ('" + cliente.getNome() + "', '" + cliente.getEmail() + "', '" + cliente.getSenha() + "', '" + cliente.getDataNascimento() + "')");
         }
         catch (SQLException e){
             throw new DBException(e.getMessage());
         }
         finally {
-            ConexaoBD.closeConnection();
             ConexaoBD.closeStatement(st);
             ConexaoBD.closeResultSet(rs);
         }
@@ -61,6 +61,30 @@ public class RepositorioCliente implements IRepositorioCliente {
             if (cliente.getEmail().equals(email)) return cliente;
         }
         return null;
+    }
+    public Pessoa obterClientePorEmailBD(String email){
+        Connection conn = null;
+        Statement st = null;
+        ResultSet rs = null;
+        Pessoa cliente = null;
+
+        try{
+            conn = ConexaoBD.getConnection();
+            st = conn.createStatement();
+            rs = st.executeQuery("SELECT * FROM Cliente WHERE emailCliente = '" + email + "'");
+
+            if (rs.next()){
+                cliente = new Pessoa(rs.getString("nome"), rs.getString("emailCliente"), rs.getString("senha"), rs.getDate("dtNascimento").toLocalDate(), false);
+            }
+        }
+        catch (SQLException e){
+            throw new DBException(e.getMessage());
+        }
+        finally {
+            ConexaoBD.closeStatement(st);
+            ConexaoBD.closeResultSet(rs);
+        }
+        return cliente;
     }
 
     @Override
@@ -125,7 +149,6 @@ public class RepositorioCliente implements IRepositorioCliente {
             throw new DBException(e.getMessage());
         }
         finally {
-            ConexaoBD.closeConnection();
             ConexaoBD.closeStatement(st);
             ConexaoBD.closeResultSet(rs);
         }
