@@ -1,5 +1,9 @@
 package br.ufrpe.jjgameson.gui;
 
+    import br.ufrpe.jjgameson.dados.RepositorioCliente;
+    import br.ufrpe.jjgameson.dados.RepositorioJogo;
+    import br.ufrpe.jjgameson.entidades.FaixaEtaria;
+    import br.ufrpe.jjgameson.entidades.Jogo;
     import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -46,12 +50,29 @@ public class TelaAdicionarJogoControlador {
 
         @FXML
         void btnAdicionarAdicionarJogo(ActionEvent event) throws IOException{
+                String nomeJogo = nomeAdicionarJogo.getText();
+                int idJogo = Integer.parseInt(idAdicionarJogo.getText());
+                Double valorJogo = Double.parseDouble(valorAdicionarJogo.getText());
+                String desenvolvedoraJogo = devAdicionarJogo.getText();
+                String generoJogo = generoAdicionarJogo.getText();
+                String faixaEtariaJogo = faixaAdicionarJogo.getText();
+                String resumoJogo = resumoAdicionarJogo.getText();
+                String pathJogo = pathAdicionarJogo.getText();
+                Jogo jogo = new Jogo(idJogo, pathJogo, nomeJogo, valorJogo, desenvolvedoraJogo, generoJogo, resumoJogo, FaixaEtaria.valueOf(faixaEtariaJogo));
+                RepositorioJogo.getInstance().inserirJogo(new Jogo(idJogo, pathJogo, nomeJogo, valorJogo, desenvolvedoraJogo, generoJogo, resumoJogo, FaixaEtaria.valueOf(faixaEtariaJogo)));
+                RepositorioJogo repositorioJogo = (RepositorioJogo) RepositorioJogo.getInstance();
+                try {
+                        repositorioJogo.inserirJogoBD(jogo);
+                        GerenciadorDeTelas.irParaTelaPrincipalADM(event);
+                } catch (Exception e) {
+                        e.printStackTrace();
+                }
 
         }
 
         @FXML
         void btnVoltarAdicionarJogo(ActionEvent event) throws IOException {
-GerenciadorDeTelas.irParaTelaPrincipalADM(event);
+                GerenciadorDeTelas.irParaTelaPrincipalADM(event);
         }
 
     }

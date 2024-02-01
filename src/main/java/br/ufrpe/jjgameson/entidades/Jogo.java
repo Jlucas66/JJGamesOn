@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Jogo {
     private int id;
-    private String pathDaCapa;
+    private String path;
     private String nome;
     private double valor;
     private String desenvolvedora;
@@ -14,7 +14,7 @@ public class Jogo {
 
     public Jogo(int id, String pathDaCapa, String nome, double valor, String desenvolvedora, String genero, String resumo, FaixaEtaria faixaEtaria) {
         this.id = id;
-        this.pathDaCapa = pathDaCapa;
+        this.path = pathDaCapa;
         this.nome = nome;
         this.valor = valor;
         this.desenvolvedora = desenvolvedora;
@@ -28,12 +28,12 @@ public class Jogo {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Jogo jogo = (Jogo) o;
-        return id == jogo.id && Double.compare(valor, jogo.valor) == 0 && Objects.equals(pathDaCapa, jogo.pathDaCapa) && Objects.equals(nome, jogo.nome) && Objects.equals(desenvolvedora, jogo.desenvolvedora) && Objects.equals(genero, jogo.genero) && Objects.equals(resumo, jogo.resumo) && faixaEtaria == jogo.faixaEtaria;
+        return id == jogo.id && Double.compare(valor, jogo.valor) == 0 && Objects.equals(path, jogo.path) && Objects.equals(nome, jogo.nome) && Objects.equals(desenvolvedora, jogo.desenvolvedora) && Objects.equals(genero, jogo.genero) && Objects.equals(resumo, jogo.resumo) && faixaEtaria == jogo.faixaEtaria;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, pathDaCapa, nome, valor, desenvolvedora, genero, resumo, faixaEtaria);
+        return Objects.hash(id, path, nome, valor, desenvolvedora, genero, resumo, faixaEtaria);
     }
 
     public int getId() {
@@ -44,12 +44,12 @@ public class Jogo {
         this.id = id;
     }
 
-    public String getPathDaCapa() {
-        return pathDaCapa;
+    public String getPath() {
+        return path;
     }
 
-    public void setPathDaCapa(String pathDaCapa) {
-        this.pathDaCapa = pathDaCapa;
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public String getNome() {
