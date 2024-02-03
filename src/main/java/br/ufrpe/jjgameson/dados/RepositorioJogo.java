@@ -1,8 +1,16 @@
 package br.ufrpe.jjgameson.dados;
 
 import br.ufrpe.jjgameson.entidades.Jogo;
+import br.ufrpe.jjgameson.exceptions.DBException;
+import br.ufrpe.jjgameson.gui.GerenciadorDeTelas;
+import javafx.scene.control.Alert;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class RepositorioJogo implements IRepositorioJogo {
@@ -24,6 +32,26 @@ public class RepositorioJogo implements IRepositorioJogo {
     public void inserirJogo(Jogo jogo) {
         if(jogo != null){
             jogos.add(jogo);
+        }
+    }
+
+    @Override
+    public void inserirJogoBD(Jogo jogo) {
+        Connection conn = null;
+        Statement st = null;
+        ResultSet rs = null;
+
+        try{
+            conn = ConexaoBD.getConnection();
+            st = conn.createStatement();
+            st.executeUpdate("INSERT INTO Jogo (nomeJogo, desenvolvedora, genero, faixaEtaria, resumo, valor, path, id) VALUES ('" + jogo.getNome() + "', '" + jogo.getDesenvolvedora() + "', '" + jogo.getGenero() + "', '" + jogo.getFaixaEtaria() + "', '" + jogo.getResumo() + "', '" + jogo.getValor() + "', '" + jogo.getPath() + " ', '" + jogo.getId() + "')");
+        }
+        catch (SQLException e){
+            throw new DBException(e.getMessage());
+        }
+        finally {
+            ConexaoBD.closeStatement(st);
+            ConexaoBD.closeResultSet(rs);
         }
     }
 

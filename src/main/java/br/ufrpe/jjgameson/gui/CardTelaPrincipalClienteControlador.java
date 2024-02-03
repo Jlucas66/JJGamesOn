@@ -1,6 +1,5 @@
 package br.ufrpe.jjgameson.gui;
 
-import br.ufrpe.jjgameson.HelloApplication;
 import br.ufrpe.jjgameson.entidades.Jogo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,8 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
@@ -38,7 +35,7 @@ public class CardTelaPrincipalClienteControlador {
         public void setInformacoes(Jogo jogo){
             Image image = null;
             try{
-                image = new Image(getClass().getResourceAsStream(jogo.getPathDaCapa()));
+                image = new Image(getClass().getResourceAsStream(jogo.getPath()));
             } catch (Exception e){
                // e.printStackTrace();
             }

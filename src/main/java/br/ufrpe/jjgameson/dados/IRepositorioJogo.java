@@ -7,6 +7,7 @@ import java.util.List;
 public interface IRepositorioJogo {
 
         void inserirJogo(Jogo jogo);
+        void inserirJogoBD(Jogo jogo);
         Jogo obterJogoPorId(int id);
         void removerJogo(Jogo jogo);
         void atualizarJogo(Jogo jogoAntigo, Jogo jogoNovo);
