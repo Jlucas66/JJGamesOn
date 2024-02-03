@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<HBox fx:id="cardLayoutBusca" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="326.0" prefWidth="204.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.jjgameson.gui.CardTelaBuscaControlador">
+   <children>
+      <Pane prefHeight="326.0" prefWidth="204.0">
+         <children>
+            <ImageView fx:id="capa" fitHeight="205.0" fitWidth="176.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagens/minecraft.jpg" />
+               </image>
+            </ImageView>
+            <Hyperlink fx:id="nome" layoutX="13.0" layoutY="203.0" onAction="#nomeBuscaCard" prefHeight="62.0" prefWidth="176.0" text="No Man's Sky" wrapText="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Hyperlink>
+            <Label fx:id="dev" layoutX="20.0" layoutY="263.0" prefHeight="20.0" prefWidth="176.0" text="Hello Games">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="preco" layoutX="42.0" layoutY="287.0" prefHeight="27.0" prefWidth="133.0" text="300,00">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Text layoutX="20.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="R$">
+               <font>
+                  <Font size="17.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+   </children>
+</HBox>

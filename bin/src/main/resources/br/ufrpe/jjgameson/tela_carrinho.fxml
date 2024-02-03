@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.jjgameson.gui.TelaCarrinhoControlador">
+   <children>
+      <ImageView fx:id="capaTelaCarrinho" fitHeight="157.0" fitWidth="450.0" layoutX="225.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imagens/JJ-GamesON.png" />
+         </image>
+      </ImageView>
+      <ScrollPane fx:id="scrollPaneTelaCarrinho" layoutX="10.0" layoutY="146.0" prefHeight="360.0" prefWidth="880.0" style="-fx-border-color: #000000;">
+         <content>
+            <VBox fx:id="vboxTelaCarrinho" prefHeight="1200.0" prefWidth="860.0" spacing="10.0" />
+         </content>
+      </ScrollPane>
+      <Button fx:id="botaoVoltarParaALoja" layoutX="390.0" layoutY="558.0" mnemonicParsing="false" onAction="#btnVoltaParaALojaTelaCarrinho" prefHeight="30.2" prefWidth="120.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Voltar para a loja">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Text layoutX="14.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seu carrinho de compras">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Text>
+      <Button fx:id="botaoLimparCarrinho" layoutX="240.0" layoutY="558.0" mnemonicParsing="false" onAction="#btnLimparCarrinhoTelaCarrinho" prefHeight="30.2" prefWidth="120.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Limpar carrinho">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="botaoFinalizarCompra" layoutX="540.0" layoutY="558.0" mnemonicParsing="false" onAction="#btnFinalizarComprarTelaCarrinho" prefHeight="30.2" prefWidth="120.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Finalizar compra">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Text layoutX="510.0" layoutY="537.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor total: R$">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="240.0" layoutY="537.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Promoção:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Label fx:id="promocaoCarrinho" layoutX="333.0" layoutY="508.0" prefHeight="47.0" prefWidth="165.0" text="Nenhuma" wrapText="true">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="valorTotalCarrinho" layoutX="624.0" layoutY="517.0" prefHeight="27.0" prefWidth="85.0" text="0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

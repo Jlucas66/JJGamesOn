@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.jjgameson.gui.TelaCadastroClienteControlador">
+   <left>
+      <AnchorPane prefHeight="600.0" prefWidth="526.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="capaCadastro" fitHeight="600.0" fitWidth="527.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagens/capaofc1.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="593.0" prefWidth="374.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="logoCadastro" fitHeight="87.0" fitWidth="321.0" layoutX="26.0" layoutY="49.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@imagens/JJ-GamesON.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="nomeCadastro" layoutX="72.0" layoutY="200.0" prefHeight="31.0" prefWidth="230.0" promptText="Digite seu nome" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
+            <TextField fx:id="emailCadastro" layoutX="72.0" layoutY="251.0" prefHeight="31.0" prefWidth="230.0" promptText="Digite seu email" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
+            <DatePicker fx:id="dataNascimentoCadastro" layoutX="72.0" layoutY="302.0" prefHeight="31.0" prefWidth="230.0" promptText="Insira sua data de nascimento" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
+            <PasswordField fx:id="senhaCadastro" layoutX="72.0" layoutY="353.0" prefHeight="31.0" prefWidth="230.0" promptText="Digite sua senha" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
+            <Button fx:id="botaoRealizarCadastro" layoutX="134.0" layoutY="404.0" mnemonicParsing="false" onAction="#btnCadastroClienteRealizarCadastro" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Realizar cadastro" />
+            <Button fx:id="botaoVoltar" layoutX="301.0" layoutY="555.0" mnemonicParsing="false" onAction="#btnCadastroClienteVoltar" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Voltar" />
+            <Text layoutX="132.0" layoutY="174.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastre-se">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <Text layoutX="35.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="🔒">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Text>
+            <Text layoutX="36.0" layoutY="226.0" strokeType="OUTSIDE" strokeWidth="0.0" text="👤">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Text>
+            <Text layoutX="38.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="📅">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Text>
+            <Text layoutX="36.0" layoutY="277.0" strokeType="OUTSIDE" strokeWidth="0.0" text="📧">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>

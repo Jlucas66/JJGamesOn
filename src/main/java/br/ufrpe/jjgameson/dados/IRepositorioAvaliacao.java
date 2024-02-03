@@ -11,4 +11,8 @@ public interface IRepositorioAvaliacao {
 	public List<Avaliacao> listar();
 	public void atualizar (Avaliacao avaliacao, Avaliacao novaAvaliacao);
 	public void excluir(Avaliacao avaliacaoParaExcluir);
+	void inserirBD(Avaliacao avaliacao);
+	void listarBD(Avaliacao avaliacao);
+	void atualizarBD(Avaliacao avaliacao);
+	void excluirBD(Avaliacao avaliacao);
 }
