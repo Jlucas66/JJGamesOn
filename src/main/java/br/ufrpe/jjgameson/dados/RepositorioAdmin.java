@@ -138,7 +138,6 @@ public class RepositorioAdmin implements IRepositorioAdmin {
             ConexaoBD.closeResultSet(rs);
         }
     }
-
     public void listarPessoaAdminsBD() {
         Connection conn = null;
         Statement st = null;
@@ -149,7 +148,7 @@ public class RepositorioAdmin implements IRepositorioAdmin {
             st = conn.createStatement();
             rs = st.executeQuery("SELECT * FROM Pessoa");
 
-            while (rs.next()){
+            while (rs.next()){  // deve retornar uma lista pra poder ser usado no controlador
                 System.out.println(rs.getString("nome") + " " + rs.getString("email") + " " + rs.getDate("dtNascimento"));
             }
 
