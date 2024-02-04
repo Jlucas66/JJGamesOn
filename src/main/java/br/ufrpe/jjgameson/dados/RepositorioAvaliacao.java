@@ -52,32 +52,47 @@ public class RepositorioAvaliacao implements IRepositorioAvaliacao {
 	}
 
 	@Override
+	public void listarBD(Avaliacao avaliacao) {
+
+	}
+
+	@Override
+	public void atualizarBD(Avaliacao avaliacao) {
+
+	}
+
+	@Override
+	public void excluirBD(Avaliacao avaliacao) {
+
+	}
+
+	@Override
 	public List<Avaliacao> listar(){
 		return avaliacoes;
 		}
 	
 	public Avaliacao listarBD() {
-		Connection conn = null;
-		Statement st = null;
-		ResultSet rs = null;
+//		Connection conn = null;
+//		Statement st = null;
+//		ResultSet rs = null;
 		Avaliacao avaliacao = null;
-		
-		try {
-			conn = ConexaoBD.getConnection();
-			st = conn.createStatement();
-			st.executeQuery("SELECT * FROM avaliacao");
-		
-		if (rs.next()) {
-			avaliacao = new Avaliacao(rs.getString("Cliente"), rs.getString("Jogo"), rs.getString("Comentario"), rs.getString("Data"));
-		 }
-		}
-		catch (SQLException e) {
-			throw new DBException(e.getMessage());
-		}
-		finally {
-			ConexaoBD.closeStatement(st);
-			ConexaoBD.closeResultSet(rs);
-		}
+//
+//		try {
+//			conn = ConexaoBD.getConnection();
+//			st = conn.createStatement();
+//			st.executeQuery("SELECT * FROM avaliacao");
+//
+//		if (rs.next()) {
+//			avaliacao = new Avaliacao(rs.getString("Cliente"), rs.getString("Jogo"), rs.getString("Comentario"), rs.getString("Data"));
+//		 }
+//		}
+//		catch (SQLException e) {
+//			throw new DBException(e.getMessage());
+//		}
+//		finally {
+//			ConexaoBD.closeStatement(st);
+//			ConexaoBD.closeResultSet(rs);
+//		}
 		return avaliacao;
 	}
 	

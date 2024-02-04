@@ -35,8 +35,7 @@ public class RepositorioAdmin implements IRepositorioAdmin {
         admins.add(admin);
     }
     
-    @override
-    
+    @Override
     public void inserirPessoaAdminBD(Pessoa pessoa) {
     	Connection conn = null;
     	Statement st = null;
@@ -54,6 +53,11 @@ public class RepositorioAdmin implements IRepositorioAdmin {
             ConexaoBD.closeStatement(st);
             ConexaoBD.closeResultSet(rs);
         }
+    }
+
+    @Override
+    public Pessoa obterAdminPorEmail(String email) {
+        return null;
     }
 
 
@@ -96,30 +100,30 @@ public class RepositorioAdmin implements IRepositorioAdmin {
             ConexaoBD.closeResultSet(rs);
         }
     }
-    
-    @Override
-    public void removerPessoaAdmineBD(Pessoa pessoa) {
-        Connection conn = null;
-        Statement st = null;
-        ResultSet rs = null;
 
-        try{
-            conn = ConexaoBD.getConnection();
-            st = conn.createStatement();
-            st.executeUpdate("DELETE FROM Pessoa WHERE emailCliente = '" + email + "'");
-        }
-        catch (SQLException e){
-            throw new DBException(e.getMessage());
-        }
-        finally {
-            ConexaoBD.closeStatement(st);
-            ConexaoBD.closeResultSet(rs);
-        }
-    }
+//    @Override
+//    public void removerPessoaAdminBD(Pessoa pessoa) {
+//        Connection conn = null;
+//        Statement st = null;
+//        ResultSet rs = null;
+//
+//        try{
+//            conn = ConexaoBD.getConnection();
+//            st = conn.createStatement();
+//            st.executeUpdate("DELETE FROM Pessoa WHERE emailCliente = '" + pessoa.getEmail() + "'");
+//        }
+//        catch (SQLException e){
+//            throw new DBException(e.getMessage());
+//        }
+//        finally {
+//            ConexaoBD.closeStatement(st);
+//            ConexaoBD.closeResultSet(rs);
+//        }
+//    }
 
     @Override
 // atualizarPessoaAdminBD esta atualizando um nome com ele mesmo, deve atualizar uma pessoa com outra
-    private void atualizarPessoaAdminBD(Pessoa pessoa){
+    public void atualizarPessoaAdminBD(Pessoa pessoa){
         Connection conn = null;
         Statement st = null;
         ResultSet rs = null;
@@ -138,6 +142,12 @@ public class RepositorioAdmin implements IRepositorioAdmin {
             ConexaoBD.closeResultSet(rs);
         }
     }
+
+    @Override
+    public void removerPessoaAdminBD(Pessoa pessoa) {
+
+    }
+
     public void listarPessoaAdminsBD() {
         Connection conn = null;
         Statement st = null;
