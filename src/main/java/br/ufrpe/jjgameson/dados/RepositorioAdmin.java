@@ -118,7 +118,7 @@ public class RepositorioAdmin implements IRepositorioAdmin {
     }
 
     @Override
-
+// atualizarPessoaAdminBD esta atualizando um nome com ele mesmo, deve atualizar uma pessoa com outra
     private void atualizarPessoaAdminBD(Pessoa pessoa){
         Connection conn = null;
         Statement st = null;

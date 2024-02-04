@@ -102,6 +102,7 @@ public class RepositorioAvaliacao implements IRepositorioAvaliacao {
 			}
 		}
 	}
+	// atualizarBD esta corrigindo um comentario com ele mesmo, deve atualizar uma avaliação com outra
 	public void atualizarBD(String comentario) {
 		Connection conn = null;
 		Statement st = null;

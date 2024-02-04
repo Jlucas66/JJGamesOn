@@ -182,8 +182,9 @@ public class ControladorAdmin {
        // }
         repositorioAdmin.removerPessoaAdminBD(pessoa);
     }
-
-    public void atualizarPessoaAdminBD(Pessoa pessoa) throws ElementoNaoEncontradoException, ElementoNuloException, AcessoInvalidoException, SenhaFracaException, ElementoDuplicadoException, ElementoInvalidoException{
+// corrigir metodo no repositorio
+    /*
+    public void atualizarPessoaAdminBD(Pessoa pessoaAntiga, Pessoa pessoa) throws ElementoNaoEncontradoException, ElementoNuloException, AcessoInvalidoException, SenhaFracaException, ElementoDuplicadoException, ElementoInvalidoException{
         if (pessoa == null) {
             throw new ElementoNuloException("Administrador não pode ser nulo.");
         }
@@ -210,7 +211,7 @@ public class ControladorAdmin {
                     "caracteres, incluindo letras maiúsculas, minúsculas, números e caracteres especiais.");
         }
         // corrigir IRepositorioAdmin
-         // if (repositorioAdmin.listarPessoaAdminsBD().contains(pessoa) == false) {
+         // if (repositorioAdmin.listarPessoaAdminsBD().contains(pessoaAntiga) == false) {
             //     throw new ElementoNaoEncontradoException("Administrador não encontrado para atualização.");
             // }
        // if (repositorioAdmin.listarPessoaAdminsBD().contains(pessoa)) {
@@ -222,4 +223,5 @@ public class ControladorAdmin {
    // public List<Pessoa> listarPessoaAdminsBD(){
    //     return repositorioAdmin.listarPessoaAdminsBD();
    // }
+   */
 }

@@ -143,4 +143,41 @@ public class ControladorJogo {
     public void listarJogos(){
         repositorioJogo.listarJogos();
     }
+    // metodos BD
+    // implementar obterJogoPorIdBD em RepositorioJogo e IRepositorioJogo
+    /*
+    public void inserirJogoBD(Jogo jogo) throws ElementoNuloException, ElementoDuplicadoException, ElementoInvalidoException{
+        if(jogo == null){
+            throw new ElementoNuloException("Jogo não pode ser nulo");
+        }
+        if(jogo.getNome() == null || jogo.getNome().isEmpty()){
+            throw new ElementoNuloException("Nome do jogo não pode ser nulo ou vazio");
+        }
+        if(jogo.getDesenvolvedora() == null || jogo.getDesenvolvedora().isEmpty()){
+            throw new ElementoNuloException("Desenvolvedora do jogo não pode ser nulo ou vazio");
+        }
+        if(jogo.getGenero() == null || jogo.getGenero().isEmpty()){
+            throw new ElementoNuloException("Genero do jogo não pode ser nulo ou vazio");
+        }
+        if(jogo.getResumo() == null || jogo.getResumo().isEmpty()){
+            throw new ElementoNuloException("Resumo do jogo não pode ser nulo ou vazio");
+        }
+        if(jogo.getFaixaEtaria() == null){
+            throw new ElementoNuloException("Faixa etaria do jogo não pode ser nulo");
+        }
+        if (jogo.getValor() == 0 || jogo.getValor() < 0){
+            throw new ElementoInvalidoException("Valor do jogo não pode ser zero ou negativo");
+        }
+        if (jogo.getId() == 0 || jogo.getId() < 0){
+            throw new ElementoInvalidoException("Id do jogo não pode ser zero ou negativo");
+        }
+        if(jogo.getFaixaEtaria() != FaixaEtaria.LIVRE && jogo.getFaixaEtaria() != FaixaEtaria.DEZ && jogo.getFaixaEtaria() != FaixaEtaria.DOZE && jogo.getFaixaEtaria() != FaixaEtaria.QUATORZE && jogo.getFaixaEtaria() != FaixaEtaria.DEZESSEIS && jogo.getFaixaEtaria() != FaixaEtaria.DEZOITO){
+            throw new ElementoInvalidoException("Faixa etaria do jogo não pode ser diferente das opções disponiveis");
+        }
+        if(repositorioJogo.obterJogoPorIdBD(jogo.getId()) != null){
+            throw new ElementoDuplicadoException("Jogo já cadastrado");
+        }
+        repositorioJogo.inserirJogoBD(jogo);
+    }
+     */
 }
