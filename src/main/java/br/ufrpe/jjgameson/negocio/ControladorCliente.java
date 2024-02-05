@@ -4,6 +4,7 @@ import br.ufrpe.jjgameson.dados.IRepositorioCliente;
 import br.ufrpe.jjgameson.dados.RepositorioCliente;
 import br.ufrpe.jjgameson.entidades.Pessoa;
 import br.ufrpe.jjgameson.exceptions.*;
+import br.ufrpe.jjgameson.gui.GerenciadorDeTelas;
 
 public class ControladorCliente {
 
@@ -139,39 +140,51 @@ public class ControladorCliente {
     // metodos BD
     public void inserirClienteBD(Pessoa cliente) throws ElementoNuloException, AcessoInvalidoException, ElementoDuplicadoException, SenhaFracaException, ElementoInvalidoException {
         if(cliente == null){
+            GerenciadorDeTelas.exibirAlertaMensagem("Erro", "Cliente não pode ser nulo");
             throw new ElementoNuloException("Cliente não pode ser nulo");
+
         }
         if(cliente.isEhAdm()){
+            GerenciadorDeTelas.exibirAlertaMensagem("Erro", "Cliente não pode ser um administrador");
             throw new AcessoInvalidoException("Cliente não pode ser um administrador");
         }
         if(repositorioCliente.obterClientePorEmail(cliente.getEmail()) != null){
+            GerenciadorDeTelas.exibirAlertaMensagem("Erro", "Já existe um cliente cadastrado com esse email");
             throw new ElementoDuplicadoException("Já existe um cliente cadastrado com esse email");
         }
         if (cliente.getNome() == null || cliente.getNome().isEmpty()) {
+            GerenciadorDeTelas.exibirAlertaMensagem("Erro", "Nome não pode ser nulo ou vazio");
             throw new ElementoNuloException("Nome não pode ser nulo ou vazio");
         }
 
         if (cliente.getDataNascimento() == null) {
+            GerenciadorDeTelas.exibirAlertaMensagem("Erro", "Data de nascimento não pode ser nula");
             throw new ElementoNuloException("Data de nascimento não pode ser nula");
         }
 
         if(cliente.getSenha() == null){
+            GerenciadorDeTelas.exibirAlertaMensagem("Erro", "Senha não pode ser nula");
             throw new ElementoNuloException("Senha não pode ser nula");
         }
 
         if(cliente.getSenha().isEmpty()){
+            GerenciadorDeTelas.exibirAlertaMensagem("Erro", "Senha não pode ser vazia");
             throw new ElementoNuloException("Senha não pode ser vazia");
         }
 
         if(cliente.getEmail() == null){
+            GerenciadorDeTelas.exibirAlertaMensagem("Erro", "Email não pode ser nulo");
             throw new ElementoNuloException("Email não pode ser nulo");
         }
 
         if(!cliente.getEmail().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")){
+            GerenciadorDeTelas.exibirAlertaMensagem("Erro", "Email inválido, o email deve ser no formato \"email@dominio\"");
             throw new ElementoInvalidoException("Email inválido, o email deve ser no formato \"email@dominio\"");
         }
 
         if(!verificarSenhaForte(cliente.getSenha())){
+            GerenciadorDeTelas.exibirAlertaMensagem("Erro", "Sua senha deve ter pelo menos 8 " +
+                    "caracteres, incluindo letras maiúsculas, minúsculas, números e caracteres especiais");
             throw new SenhaFracaException("Sua senha deve ter pelo menos 8 " +
                     "caracteres, incluindo letras maiúsculas, minúsculas, números e caracteres especiais");
         }
