@@ -35,9 +35,9 @@ public class CardTelaPrincipalClienteControlador {
         public void setInformacoes(Jogo jogo){
             Image image = null;
             try{
-                image = new Image(getClass().getResourceAsStream(jogo.getPath()));
+               image = new Image(jogo.getPath());
             } catch (Exception e){
-               // e.printStackTrace();
+                e.printStackTrace();
             }
 
             capa.setImage(image);

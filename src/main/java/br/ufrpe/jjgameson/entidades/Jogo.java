@@ -12,9 +12,9 @@ public class Jogo {
     private String resumo;
     private FaixaEtaria faixaEtaria;
 
-    public Jogo(int id, String pathDaCapa, String nome, double valor, String desenvolvedora, String genero, String resumo, FaixaEtaria faixaEtaria) {
+    public Jogo(int id, String path, String nome, double valor, String desenvolvedora, String genero, String resumo, FaixaEtaria faixaEtaria) {
         this.id = id;
-        this.path = pathDaCapa;
+        this.path = path;
         this.nome = nome;
         this.valor = valor;
         this.desenvolvedora = desenvolvedora;
