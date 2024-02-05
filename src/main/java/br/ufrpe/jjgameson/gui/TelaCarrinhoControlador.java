@@ -82,7 +82,7 @@ public class TelaCarrinhoControlador implements Initializable {
 
         @FXML
         void btnFinalizarComprarTelaCarrinho(ActionEvent event) throws IOException {
-
+                GerenciadorDeTelas.irParaTelaCompraFinalizada(event);
         }
 
         @FXML
@@ -92,7 +92,7 @@ public class TelaCarrinhoControlador implements Initializable {
 
         @FXML
         void btnVoltaParaALojaTelaCarrinho(ActionEvent event) throws IOException{
-GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
+                GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
         }
 
 
