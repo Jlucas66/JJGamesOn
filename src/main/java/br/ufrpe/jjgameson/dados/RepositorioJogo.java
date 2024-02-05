@@ -88,4 +88,28 @@ public class RepositorioJogo implements IRepositorioJogo {
     public List<Jogo> listarJogos() {
         return jogos;
     }
+
+    @Override
+    public boolean obterJogoPorIdBD(int id) {
+        Connection conn = null;
+        Statement st = null;
+        ResultSet rs = null;
+
+        try{
+            conn = ConexaoBD.getConnection();
+            st = conn.createStatement();
+            rs = st.executeQuery("SELECT * FROM Jogo WHERE id = " + id);
+            if(rs.next()){
+                return true;
+            }
+        }
+        catch (SQLException e){
+            throw new DBException(e.getMessage());
+        }
+        finally {
+            ConexaoBD.closeStatement(st);
+            ConexaoBD.closeResultSet(rs);
+        }
+        return false;
+    }
 }

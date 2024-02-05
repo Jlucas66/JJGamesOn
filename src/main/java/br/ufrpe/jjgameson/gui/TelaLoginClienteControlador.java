@@ -60,7 +60,6 @@ public class TelaLoginClienteControlador {
             if (repositorioCliente.VerificarUsuarioLoginBD(emailLogin.getText(), senhaLogin.getText())) {
                 Pessoa Cliente = repositorioCliente.obterClientePorEmailBD(emailLogin.getText());
                 repositorioCliente.inserirCliente(Cliente);
-                System.out.println(Cliente.toString());
                 GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
             }
         } catch (Exception e) {

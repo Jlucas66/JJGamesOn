@@ -4,6 +4,11 @@ package br.ufrpe.jjgameson.gui;
     import br.ufrpe.jjgameson.dados.RepositorioJogo;
     import br.ufrpe.jjgameson.entidades.FaixaEtaria;
     import br.ufrpe.jjgameson.entidades.Jogo;
+    import br.ufrpe.jjgameson.exceptions.DBException;
+    import br.ufrpe.jjgameson.exceptions.ElementoDuplicadoException;
+    import br.ufrpe.jjgameson.exceptions.ElementoInvalidoException;
+    import br.ufrpe.jjgameson.exceptions.ElementoNuloException;
+    import br.ufrpe.jjgameson.negocio.ControladorJogo;
     import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -49,25 +54,28 @@ public class TelaAdicionarJogoControlador {
         private TextField valorAdicionarJogo;
 
         @FXML
-        void btnAdicionarAdicionarJogo(ActionEvent event) throws IOException{
-                String nomeJogo = nomeAdicionarJogo.getText();
-                int idJogo = Integer.parseInt(idAdicionarJogo.getText());
-                Double valorJogo = Double.parseDouble(valorAdicionarJogo.getText());
-                String desenvolvedoraJogo = devAdicionarJogo.getText();
-                String generoJogo = generoAdicionarJogo.getText();
-                String faixaEtariaJogo = faixaAdicionarJogo.getText();
-                String resumoJogo = resumoAdicionarJogo.getText();
-                String pathJogo = pathAdicionarJogo.getText();
-                Jogo jogo = new Jogo(idJogo, pathJogo, nomeJogo, valorJogo, desenvolvedoraJogo, generoJogo, resumoJogo, FaixaEtaria.valueOf(faixaEtariaJogo));
-                RepositorioJogo.getInstance().inserirJogo(new Jogo(idJogo, pathJogo, nomeJogo, valorJogo, desenvolvedoraJogo, generoJogo, resumoJogo, FaixaEtaria.valueOf(faixaEtariaJogo)));
-                RepositorioJogo repositorioJogo = (RepositorioJogo) RepositorioJogo.getInstance();
-                try {
-                        repositorioJogo.inserirJogoBD(jogo);
-                        GerenciadorDeTelas.irParaTelaPrincipalADM(event);
-                } catch (Exception e) {
-                        e.printStackTrace();
-                }
+        void btnAdicionarAdicionarJogo(ActionEvent event) throws IOException, ElementoInvalidoException, ElementoNuloException, ElementoDuplicadoException {
+        String nomeJogo = nomeAdicionarJogo.getText();
+        int idJogo = Integer.parseInt(idAdicionarJogo.getText());
+        Double valorJogo = Double.parseDouble(valorAdicionarJogo.getText());
+        String desenvolvedoraJogo = devAdicionarJogo.getText();
+        String generoJogo = generoAdicionarJogo.getText();
+        String faixaEtariaJogo = faixaAdicionarJogo.getText();
+        String resumoJogo = resumoAdicionarJogo.getText();
+        String pathJogo = pathAdicionarJogo.getText();
 
+        Jogo jogo = new Jogo(idJogo, pathJogo, nomeJogo, valorJogo, desenvolvedoraJogo, generoJogo, resumoJogo, FaixaEtaria.valueOf(faixaEtariaJogo));
+
+        ControladorJogo controladorJogo = (ControladorJogo) ControladorJogo.getInstance();
+
+        try {
+            controladorJogo.inserirJogoBD(jogo);
+            GerenciadorDeTelas.exibirAlertaMensagem("Jogo adicionado com sucesso!", "Jogo adicionado com sucesso!");
+            GerenciadorDeTelas.irParaTelaPrincipalADM(event);
+        } catch (DBException e) {
+            e.printStackTrace();
+
+        }
         }
 
         @FXML

@@ -12,4 +12,5 @@ public interface IRepositorioJogo {
         void removerJogo(Jogo jogo);
         void atualizarJogo(Jogo jogoAntigo, Jogo jogoNovo);
         List<Jogo> listarJogos();
+        boolean obterJogoPorIdBD(int id);
 }
