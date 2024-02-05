@@ -224,5 +224,6 @@ public class ControladorJogo {
             GerenciadorDeTelas.exibirAlertaMensagem("Erro", "Jogo já cadastrado");
             throw new ElementoDuplicadoException("Jogo já cadastrado");
         }
+        repositorioJogo.inserirJogoBD(jogo);
     }
 }

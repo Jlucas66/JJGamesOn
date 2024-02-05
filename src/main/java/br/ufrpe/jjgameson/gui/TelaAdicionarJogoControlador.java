@@ -57,7 +57,7 @@ public class TelaAdicionarJogoControlador {
         void btnAdicionarAdicionarJogo(ActionEvent event) throws IOException, ElementoInvalidoException, ElementoNuloException, ElementoDuplicadoException {
         String nomeJogo = nomeAdicionarJogo.getText();
         int idJogo = Integer.parseInt(idAdicionarJogo.getText());
-        Double valorJogo = Double.parseDouble(valorAdicionarJogo.getText());
+        double valorJogo = Double.parseDouble(valorAdicionarJogo.getText());
         String desenvolvedoraJogo = devAdicionarJogo.getText();
         String generoJogo = generoAdicionarJogo.getText();
         String faixaEtariaJogo = faixaAdicionarJogo.getText();
