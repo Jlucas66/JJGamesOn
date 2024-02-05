@@ -1,12 +1,17 @@
 package br.ufrpe.jjgameson.gui;
+import br.ufrpe.jjgameson.entidades.Jogo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class TelaJogoControlador {
 
@@ -61,5 +66,25 @@ public class TelaJogoControlador {
 GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
         }
 
-    }
+        public void atualizarInformacoes(Jogo jogo){
+                Image image = null;
+                try{
+                        image = new Image(jogo.getPath());
+                } catch (Exception e){
+                        e.printStackTrace();
+                }
+                capaTelaJogo.setImage(image);
+                nomeTelaJogo.setText(jogo.getNome());
+                descricaoTelaJogo.setText(jogo.getResumo());
+                generoTelaJogo.setText(jogo.getGenero());
+                String valorr = Double.toString(jogo.getValor());
+                precoTelaJogo.setText(valorr);
+                devTelaJogo.setText(jogo.getDesenvolvedora());
+                String idadee = String.valueOf(jogo.getFaixaEtaria().getIdade());
+                faixaEtariaTelaJogo.setText(idadee);
+        }
+
+
+
+}
 

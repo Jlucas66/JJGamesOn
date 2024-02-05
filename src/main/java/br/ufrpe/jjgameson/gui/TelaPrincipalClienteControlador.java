@@ -6,6 +6,7 @@ package br.ufrpe.jjgameson.gui;
 import javafx.fxml.FXML;
     import javafx.fxml.FXMLLoader;
     import javafx.fxml.Initializable;
+    import javafx.scene.Parent;
     import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -25,6 +26,7 @@ public class TelaPrincipalClienteControlador implements Initializable {
         public void initialize(URL url, ResourceBundle resourceBundle) {
 
                  catalogo = new ArrayList<>(catalogo());
+
         try{
                 for(int i = 0; i < catalogo.size(); i++){
                         FXMLLoader fxmlLoader = new FXMLLoader();
