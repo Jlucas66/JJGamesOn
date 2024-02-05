@@ -11,7 +11,7 @@ public class ConexaoBD {
     private static Connection conn = null;
 
     private static Properties loadProperties(){
-        try (FileInputStream fs = new FileInputStream("src/main/resources/br/ufrpe/jjgameson/db.properties")){
+        try (FileInputStream fs = new FileInputStream("src/main/java/br/ufrpe/jjgameson/dados/db.properties")){
             Properties props = new Properties();
             props.load(fs);
             return props;
