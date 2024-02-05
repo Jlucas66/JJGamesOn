@@ -141,6 +141,10 @@ public class ControladorAvaliacao {
             repositorioAvaliacao.inserirBD(avaliacao);
         }
     }
+    //corrigir metodo no repositorio (nao precisa de parametro)
+   // public void listarBD() {
+  //      repositorioAvaliacao.listarBD();
+  //  }
 // corrigir metodo no repositorio
    /* public void atualizarBD(Avaliacao avaliacaoAntiga, Avaliacao avaliacaoNova) throws ElementoNuloException, ElementoInvalidoException, ElementoNaoEncontradoException, ElementoDuplicadoException {
         if (avaliacaoAntiga == null || avaliacaoNova == null) {
