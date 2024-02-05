@@ -15,6 +15,8 @@ import java.util.ResourceBundle;
 
 public class TelaJogoControlador {
 
+        private Jogo jogoA;
+
         @FXML
         private Button botaoAdicionarAoCarrinho;
 
@@ -67,6 +69,7 @@ GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
         }
 
         public void atualizarInformacoes(Jogo jogo){
+                jogoA = jogo;
                 Image image = null;
                 try{
                         image = new Image(jogo.getPath());
