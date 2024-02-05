@@ -2,6 +2,9 @@ package br.ufrpe.jjgameson.dados;
 
 import br.ufrpe.jjgameson.entidades.Venda;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +27,21 @@ public class RepositorioVenda implements IRepositorioVenda{
     public void inserir(Venda venda) {
         if(venda != null){
             vendas.add(venda);
+        }
+    }
+
+    @Override
+    public void inserirBD(Venda venda) {
+        Connection conn = null;
+        Statement st = null;
+        ResultSet rs = null;
+
+        try {
+            conn = ConexaoBD.getConnection();
+            st = conn.createStatement();
+            st.executeUpdate("INSERT INTO Venda (dtVenda, emailCliente, itens) VALUES ('" + venda.getData() + "', '" + venda.getCliente().getEmail() + "', '" + venda.getItensVenda().toString() + "')");
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
