@@ -7,6 +7,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -23,31 +25,33 @@ public class TelaCarrinhoControlador implements Initializable {
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
+                itemNoCarrinho = new ArrayList<>(itemNoCarrinho());
                 jogoNoCarrinho = new ArrayList<>(jogoNoCarrinho());
-                try{
-                        for(int i = 0; i < jogoNoCarrinho.size(); i++){
-                                for(int u = 0; i < itemNoCarrinho.size(); i++){
+                try {
+                        for (int i = 0; i < jogoNoCarrinho.size(); i++) {
+                                for (int u = 0; i < itemNoCarrinho.size(); i++) {
                                         FXMLLoader fxmlLoader = new FXMLLoader();
                                         fxmlLoader.setLocation(HelloApplication.class.getResource("cardTelaCarrinho.fxml"));
                                         VBox cardBox = fxmlLoader.load();
                                         CardTelaCarrinhoControlador cardTelaCarrinhoControlador = fxmlLoader.getController();
                                         cardTelaCarrinhoControlador.setInformacoes(jogoNoCarrinho.get(i), itemNoCarrinho.get(i));
                                         vboxTelaCarrinho.getChildren().add(cardBox);
+                                        itemNoCarrinho.get(i).setJogo(jogoNoCarrinho.get(i));
                                 }
 
                         }
-                }
-                catch (IOException e){
+                } catch (IOException e) {
                         e.printStackTrace();
                 }
         }
 
-        private List<Jogo> jogoNoCarrinho(){
+        private List<Jogo> jogoNoCarrinho() {
                 List<Jogo> car = new ArrayList<>();
 
                 return car;
         }
-        private List<ItemVenda> itemNoCarrinho(){
+
+        private List<ItemVenda> itemNoCarrinho() {
                 List<ItemVenda> itens = new ArrayList<>();
 
                 return itens;
@@ -86,15 +90,20 @@ public class TelaCarrinhoControlador implements Initializable {
         }
 
         @FXML
-        void btnLimparCarrinhoTelaCarrinho(ActionEvent event) throws IOException{
-
+        void btnLimparCarrinhoTelaCarrinho(ActionEvent event) throws IOException {
+                itemNoCarrinho().clear();
         }
 
         @FXML
-        void btnVoltaParaALojaTelaCarrinho(ActionEvent event) throws IOException{
+        void btnVoltaParaALojaTelaCarrinho(ActionEvent event) throws IOException {
                 GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
         }
 
+        public void guardarJogo(Jogo jogo) {
+                jogoNoCarrinho.add(jogo);
+                ItemVenda itemVenda = new ItemVenda(jogo, 1, 1);
+                itemNoCarrinho.add(itemVenda);
+        }
 
 }
 
