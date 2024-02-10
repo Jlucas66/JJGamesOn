@@ -20,7 +20,7 @@ public class TelaHistoricoControlador {
 
         @FXML
         void btnVoltarTelaHistorico(ActionEvent event) throws IOException {
-GerenciadorDeTelas.irParaTelaJogo(event);
+GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
         }
 
     }

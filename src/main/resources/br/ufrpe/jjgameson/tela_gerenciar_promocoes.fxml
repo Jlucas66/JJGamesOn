@@ -11,7 +11,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.jjgameson.gui.TelaGerenciarPromocoesControlador">
    <children>
       <ImageView fx:id="logoGerenciarPromocoes" fitHeight="157.0" fitWidth="450.0" layoutX="225.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
@@ -19,48 +18,64 @@
             <Image url="@imagens/JJ-GamesON.png" />
          </image>
       </ImageView>
-      <Line endX="-100.00003051757812" endY="426.79998779296875" layoutX="550.0" layoutY="150.0" startX="-100.00003051757812" startY="32.40000915527344" />
-      <ChoiceBox fx:id="choiceBoxNomeGerenciarPromocoes" layoutX="51.0" layoutY="250.0" prefWidth="150.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" />
+      <Line endX="-100.00003051757812" endY="362.79998779296875" layoutX="700.0" layoutY="149.0" startX="-100.00003051757812" startY="32.40000915527344" />
+      <ChoiceBox fx:id="choiceBoxNomeGerenciarPromocoes" layoutX="657.0" layoutY="320.0" prefWidth="190.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" />
       <Text fill="RED" layoutX="332.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gerenciar promoções">
          <font>
             <Font size="25.0" />
          </font>
       </Text>
-      <ChoiceBox fx:id="choiceBoxJogo1GerenciarPromocoes" layoutX="249.0" layoutY="250.0" prefWidth="150.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" />
-      <TextField fx:id="desconto1GerenciarPromocoes" layoutX="248.0" layoutY="320.0" prefWidth="150.0" promptText="Desconto da promoção" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
-      <TextField fx:id="id1GerenciarPromocoes" layoutX="51.0" layoutY="320.0" prefWidth="150.0" promptText="ID da promoção" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
-      <DatePicker fx:id="dataInicio1GerenciarPromocoes" layoutX="51.0" layoutY="390.0" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" />
-      <DatePicker fx:id="dataFim1GerenciarPromocoes" layoutX="248.0" layoutY="390.0" prefWidth="150.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" />
-      <Button fx:id="botaoSalvarAlteracoes" layoutX="110.0" layoutY="471.0" mnemonicParsing="false" onAction="#btnSalvarAlteracoesGerenciarPromocoes" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Salvar alterações" />
-      <Button fx:id="botaoDeletarPromocao" layoutX="234.0" layoutY="471.0" mnemonicParsing="false" onAction="#btnDeletarPromocaoGerenciarPromocoes" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Deletar promoção" />
-      <ChoiceBox fx:id="choiceBoxJogo2GerenciarPromocoes" layoutX="693.0" layoutY="250.0" prefWidth="150.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" />
-      <TextField fx:id="id2GerenciarPromocoes" layoutX="496.0" layoutY="320.0" prefWidth="150.0" promptText="Digite o ID" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
-      <TextField fx:id="desconto2GerenciarPromocoes" layoutX="693.0" layoutY="320.0" prefWidth="150.0" promptText="Digite o desconto" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
-      <DatePicker fx:id="dataInicio2GerenciarPromocoes" layoutX="496.0" layoutY="390.0" prefWidth="150.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" />
-      <DatePicker fx:id="dataFim2GerenciarPromocoes" layoutX="693.0" layoutY="390.0" prefWidth="150.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" />
-      <Button fx:id="botaoCriarPromocao" layoutX="626.0" layoutY="471.0" mnemonicParsing="false" onAction="#btnCriarPromocaoGerenciarPromocoes" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Criar promoção" />
-      <Text layoutX="51.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecione o nome" />
-      <Text layoutX="249.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jogo" />
-      <Text layoutX="51.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID" />
-      <Text layoutX="249.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Desconto" />
-      <Text layoutX="51.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data de início" />
-      <Text layoutX="249.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data de fim" />
-      <Text layoutX="693.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jogo" />
-      <Text layoutX="496.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID" />
-      <Text layoutX="693.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Desconto" />
-      <Text layoutX="496.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data de início" />
-      <Text layoutX="693.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data de fim" />
-      <TextField fx:id="nomeGerenciarPromocoes" layoutX="497.0" layoutY="251.0" promptText="Digite o nome" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
-      <Text layoutX="496.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" />
-      <Button fx:id="botaoVoltar" layoutX="827.0" layoutY="544.0" mnemonicParsing="false" onAction="#btnVoltarGerenciarPromocoes" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Voltar" />
-      <Text layoutX="113.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editar ou remover uma promoção">
+      <Button fx:id="botaoDeletarPromocao" layoutX="691.0" layoutY="471.0" mnemonicParsing="false" onAction="#btnDeletarPromocaoGerenciarPromocoes" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Deletar promoção">
          <font>
-            <Font size="15.0" />
+            <Font size="13.0" />
+         </font></Button>
+      <ChoiceBox fx:id="choiceBoxJogo2GerenciarPromocoes" layoutX="340.0" layoutY="251.0" prefWidth="190.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" />
+      <TextField fx:id="id2GerenciarPromocoes" layoutX="65.0" layoutY="320.0" prefWidth="190.0" promptText="Digite o ID" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
+      <TextField fx:id="desconto2GerenciarPromocoes" layoutX="340.0" layoutY="320.0" prefWidth="190.0" promptText="Digite o desconto" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
+      <DatePicker fx:id="dataInicio2GerenciarPromocoes" layoutX="65.0" layoutY="390.0" prefWidth="190.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" />
+      <DatePicker fx:id="dataFim2GerenciarPromocoes" layoutX="340.0" layoutY="390.0" prefWidth="190.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" />
+      <Button fx:id="botaoCriarPromocao" layoutX="245.0" layoutY="471.0" mnemonicParsing="false" onAction="#btnCriarPromocaoGerenciarPromocoes" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Criar promoção">
+         <font>
+            <Font size="13.0" />
+         </font></Button>
+      <Text layoutX="657.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecione a promoção">
+         <font>
+            <Font size="13.0" />
+         </font></Text>
+      <Text layoutX="341.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jogo">
+         <font>
+            <Font size="13.0" />
+         </font></Text>
+      <Text layoutX="66.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID">
+         <font>
+            <Font size="13.0" />
+         </font></Text>
+      <Text layoutX="340.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Desconto">
+         <font>
+            <Font size="13.0" />
+         </font></Text>
+      <Text layoutX="65.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data de início">
+         <font>
+            <Font size="13.0" />
+         </font></Text>
+      <Text layoutX="341.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Data de fim">
+         <font>
+            <Font size="13.0" />
+         </font></Text>
+      <TextField fx:id="nomeGerenciarPromocoes" layoutX="65.0" layoutY="251.0" prefWidth="190.0" promptText="Digite o nome" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
+      <Text layoutX="66.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome">
+         <font>
+            <Font size="13.0" />
+         </font></Text>
+      <Button fx:id="botaoVoltar" layoutX="836.0" layoutY="559.0" mnemonicParsing="false" onAction="#btnVoltarGerenciarPromocoes" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Voltar" />
+      <Text layoutX="659.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Remover uma promoção">
+         <font>
+            <Font size="17.0" />
          </font>
       </Text>
-      <Text layoutX="607.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Criar uma promoção">
+      <Text layoutX="225.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Criar uma promoção">
          <font>
-            <Font size="15.0" />
+            <Font size="17.0" />
          </font>
       </Text>
    </children>

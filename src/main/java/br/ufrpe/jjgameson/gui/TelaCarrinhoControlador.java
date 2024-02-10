@@ -29,14 +29,15 @@ public class TelaCarrinhoControlador implements Initializable {
                 jogoNoCarrinho = new ArrayList<>(jogoNoCarrinho());
                 try {
                         for (int i = 0; i < jogoNoCarrinho.size(); i++) {
-                                for (int u = 0; i < itemNoCarrinho.size(); i++) {
+                                for (int u = 0; u < itemNoCarrinho.size(); u++) {
+                                        itemNoCarrinho.get(u).setJogo(jogoNoCarrinho.get(i));
                                         FXMLLoader fxmlLoader = new FXMLLoader();
                                         fxmlLoader.setLocation(HelloApplication.class.getResource("cardTelaCarrinho.fxml"));
                                         VBox cardBox = fxmlLoader.load();
                                         CardTelaCarrinhoControlador cardTelaCarrinhoControlador = fxmlLoader.getController();
-                                        cardTelaCarrinhoControlador.setInformacoes(jogoNoCarrinho.get(i), itemNoCarrinho.get(i));
+                                        cardTelaCarrinhoControlador.setInformacoes(jogoNoCarrinho.get(i), itemNoCarrinho.get(u));
                                         vboxTelaCarrinho.getChildren().add(cardBox);
-                                        itemNoCarrinho.get(i).setJogo(jogoNoCarrinho.get(i));
+
                                 }
 
                         }
