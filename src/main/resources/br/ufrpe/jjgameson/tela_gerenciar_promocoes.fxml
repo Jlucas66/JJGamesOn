@@ -29,9 +29,8 @@
          <font>
             <Font size="13.0" />
          </font></Button>
-      <ChoiceBox fx:id="choiceBoxJogo2GerenciarPromocoes" layoutX="340.0" layoutY="251.0" prefWidth="190.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" />
-      <TextField fx:id="id2GerenciarPromocoes" layoutX="65.0" layoutY="320.0" prefWidth="190.0" promptText="Digite o ID" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
-      <TextField fx:id="desconto2GerenciarPromocoes" layoutX="340.0" layoutY="320.0" prefWidth="190.0" promptText="Digite o desconto" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
+      <ChoiceBox fx:id="choiceBoxJogo2GerenciarPromocoes" layoutX="202.0" layoutY="249.0" prefWidth="190.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" />
+      <TextField fx:id="desconto2GerenciarPromocoes" layoutX="340.0" layoutY="319.0" prefWidth="190.0" promptText="Digite o desconto" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
       <DatePicker fx:id="dataInicio2GerenciarPromocoes" layoutX="65.0" layoutY="390.0" prefWidth="190.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" />
       <DatePicker fx:id="dataFim2GerenciarPromocoes" layoutX="340.0" layoutY="390.0" prefWidth="190.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" />
       <Button fx:id="botaoCriarPromocao" layoutX="245.0" layoutY="471.0" mnemonicParsing="false" onAction="#btnCriarPromocaoGerenciarPromocoes" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Criar promoção">
@@ -42,15 +41,11 @@
          <font>
             <Font size="13.0" />
          </font></Text>
-      <Text layoutX="341.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jogo">
+      <Text layoutX="205.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jogo">
          <font>
             <Font size="13.0" />
          </font></Text>
-      <Text layoutX="66.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID">
-         <font>
-            <Font size="13.0" />
-         </font></Text>
-      <Text layoutX="340.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Desconto">
+      <Text layoutX="341.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Desconto">
          <font>
             <Font size="13.0" />
          </font></Text>
@@ -62,8 +57,8 @@
          <font>
             <Font size="13.0" />
          </font></Text>
-      <TextField fx:id="nomeGerenciarPromocoes" layoutX="65.0" layoutY="251.0" prefWidth="190.0" promptText="Digite o nome" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
-      <Text layoutX="66.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome">
+      <TextField fx:id="nomeGerenciarPromocoes" layoutX="65.0" layoutY="319.0" prefWidth="190.0" promptText="Digite o nome" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;" />
+      <Text layoutX="66.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome">
          <font>
             <Font size="13.0" />
          </font></Text>
@@ -73,7 +68,7 @@
             <Font size="17.0" />
          </font>
       </Text>
-      <Text layoutX="225.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Criar uma promoção">
+      <Text layoutX="222.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Criar uma promoção">
          <font>
             <Font size="17.0" />
          </font>

@@ -15,8 +15,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-
     import java.io.IOException;
+
 
 public class TelaAdicionarJogoControlador {
 
@@ -36,9 +36,6 @@ public class TelaAdicionarJogoControlador {
         private TextField generoAdicionarJogo;
 
         @FXML
-        private TextField idAdicionarJogo;
-
-        @FXML
         private ImageView logoAdicionarJogo;
 
         @FXML
@@ -56,7 +53,7 @@ public class TelaAdicionarJogoControlador {
         @FXML
         void btnAdicionarAdicionarJogo(ActionEvent event) throws IOException, ElementoInvalidoException, ElementoNuloException, ElementoDuplicadoException {
         String nomeJogo = nomeAdicionarJogo.getText();
-        int idJogo = Integer.parseInt(idAdicionarJogo.getText());
+        int idJogo = 0;
         double valorJogo = Double.parseDouble(valorAdicionarJogo.getText());
         String desenvolvedoraJogo = devAdicionarJogo.getText();
         String generoJogo = generoAdicionarJogo.getText();

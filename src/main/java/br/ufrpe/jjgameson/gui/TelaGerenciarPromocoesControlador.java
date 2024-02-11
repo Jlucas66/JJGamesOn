@@ -39,9 +39,6 @@ public class TelaGerenciarPromocoesControlador {
                 private TextField desconto2GerenciarPromocoes;
 
                 @FXML
-                private TextField id2GerenciarPromocoes;
-
-                @FXML
                 private ImageView logoGerenciarPromocoes;
 
                 @FXML
