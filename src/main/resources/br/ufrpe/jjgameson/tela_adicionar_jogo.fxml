@@ -21,7 +21,7 @@
             <Font size="23.0" />
          </font>
       </Text>
-      <TextField fx:id="pathAdicionarJogo" layoutX="58.0" layoutY="260.0" prefHeight="30.0" prefWidth="200.0" promptText="Digite o path da capa" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;">
+      <TextField fx:id="pathAdicionarJogo" layoutX="58.0" layoutY="260.0" prefHeight="30.0" prefWidth="200.0" promptText="Digite o URL da capa" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;">
          <font>
             <Font size="13.0" />
          </font>
@@ -56,7 +56,7 @@
             <Font size="13.0" />
          </font>
       </TextField>
-      <Text layoutX="25.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Path" />
+      <Text layoutX="20.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image" />
       <Text layoutX="20.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" />
       <Text layoutX="22.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor" />
       <Text layoutX="282.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dev" />
