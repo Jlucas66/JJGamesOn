@@ -19,6 +19,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -37,15 +38,19 @@ public class TelaCarrinhoControlador implements Initializable {
                         for (int i = 0; i < jogoNoCarrinho.size(); i++) {
                                 Jogo jogo = jogoNoCarrinho.get(i);
                                 ItemVenda itemVenda = itemNoCarrinho.get(i);
-                                oValorTotal = oValorTotal + jogoNoCarrinho.get(i).getValor();
+                                oValorTotal += jogo.getValor();
                                 FXMLLoader fxmlLoader = new FXMLLoader();
                                 fxmlLoader.setLocation(HelloApplication.class.getResource("cardTelaCarrinho.fxml"));
                                 VBox cardBox = fxmlLoader.load();
                                 CardTelaCarrinhoControlador cardTelaCarrinhoControlador = fxmlLoader.getController();
                                 cardTelaCarrinhoControlador.setInformacoes(jogo, itemVenda);
                                 vboxTelaCarrinho.getChildren().add(cardBox);
-                                valorTotalCarrinho.setText(oValorTotal.toString());
                         }
+
+                        // Formatação do valor total para exibição como moeda
+                        DecimalFormat df = new DecimalFormat("#,##0.00");
+                        String valorTotalFormatado = "R$ " + df.format(oValorTotal);
+                        valorTotalCarrinho.setText(valorTotalFormatado);
                 } catch (IOException e) {
                         e.printStackTrace();
                 }
