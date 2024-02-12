@@ -22,7 +22,6 @@ public class TelaBuscaControlador implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        buscados = new ArrayList<>(buscados());
         try{
             for(int i = 0; i < buscados.size(); i++){
                 FXMLLoader fxmlLoader = new FXMLLoader();
@@ -38,13 +37,7 @@ public class TelaBuscaControlador implements Initializable {
         }
     }
 
-    private List<Jogo> buscados(){
-        List<Jogo> busc = new ArrayList<>();
-
-        return busc;
-    }
-
-    private List<Jogo> buscados;
+    private List<Jogo> buscados = new ArrayList<>();
 
         @FXML
         private Button botaoBuscar;
@@ -74,6 +67,10 @@ public class TelaBuscaControlador implements Initializable {
 GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
         }
 
+        public void setarInformacoes (ArrayList<Jogo> jgs){
+            this.buscados = jgs;
+            //System.out.println("Tamanho da lista buscados: " + buscados.size());
+        }
 
 }
 

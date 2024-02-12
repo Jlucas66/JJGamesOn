@@ -6,13 +6,16 @@ package br.ufrpe.jjgameson.gui;
 import javafx.fxml.FXML;
     import javafx.fxml.FXMLLoader;
     import javafx.fxml.Initializable;
+    import javafx.scene.Node;
     import javafx.scene.Parent;
+    import javafx.scene.Scene;
     import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
     import javafx.scene.layout.HBox;
     import javafx.scene.layout.VBox;
+    import javafx.stage.Stage;
 
     import java.io.IOException;
     import java.net.URL;
@@ -52,6 +55,9 @@ public class TelaPrincipalClienteControlador implements Initializable {
                 return cata;
         }
 
+
+
+        private ArrayList<Jogo> filtro = new ArrayList<>();
         private List<Jogo> catalogo;
 
         @FXML
@@ -134,7 +140,28 @@ public class TelaPrincipalClienteControlador implements Initializable {
         }
         @FXML
         void btnPesquisarPrincipalCliente(ActionEvent event) throws IOException{
-GerenciadorDeTelas.irParaTelaBusca(event);
+
+String oNomeDoJogo = nomePesquisa.getText();
+for(int i = 0; i < catalogo.size(); i++){
+        if(catalogo.get(i).getNome().equalsIgnoreCase(oNomeDoJogo.trim())){
+                filtro.add(catalogo.get(i));
+        }
+}
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("tela_busca.fxml"));
+            loader.setControllerFactory(controllerClass -> {
+                if (controllerClass.equals(TelaBuscaControlador.class)) {
+                    TelaBuscaControlador controller = new TelaBuscaControlador();
+                    controller.setarInformacoes(filtro);
+                    return controller;
+                } else {return null;}
+            });
+
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root, 900, 600));
+            stage.setTitle("Sua busca");
+            stage.setResizable(false);
+            stage.show();
         }
         @FXML
         void btnCarrinhoPrincipalCliente(ActionEvent event) throws IOException{
@@ -150,4 +177,5 @@ GerenciadorDeTelas.irParaTelaHistorico(event);
         void btnSairDaContaPrincipalCliente(ActionEvent event) throws IOException {
                 GerenciadorDeTelas.irParaTelaLoginCliente(event);
         }
+
 }
