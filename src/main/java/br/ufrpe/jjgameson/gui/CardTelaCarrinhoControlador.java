@@ -44,7 +44,7 @@ public class CardTelaCarrinhoControlador {
                 try{
                         image = new Image(getClass().getResourceAsStream(jogo.getPath()));
                 } catch (Exception e){
-                        // e.printStackTrace();
+                         e.printStackTrace();
                 }
 
                 capa.setImage(image);

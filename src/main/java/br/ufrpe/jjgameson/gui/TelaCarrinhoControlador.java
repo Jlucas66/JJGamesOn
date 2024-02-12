@@ -19,23 +19,25 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class TelaCarrinhoControlador implements Initializable {
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
-                itemNoCarrinho = new ArrayList<>(itemNoCarrinho());
-                jogoNoCarrinho = new ArrayList<>(jogoNoCarrinho());
+                System.out.println("Tamanho da lista jogos: " + jogoNoCarrinho.size());
+                System.out.println("Tamanho da lista itemvenda: " + itemNoCarrinho.size());
+                vboxTelaCarrinho.getChildren().clear();
                 try {
                         for (int i = 0; i < jogoNoCarrinho.size(); i++) {
                                 for (int u = 0; u < itemNoCarrinho.size(); u++) {
-                                        itemNoCarrinho.get(u).setJogo(jogoNoCarrinho.get(i));
+                                        //itemNoCarrinho.get(u).setJogo(jogoNoCarrinho.get(i));
                                         FXMLLoader fxmlLoader = new FXMLLoader();
                                         fxmlLoader.setLocation(HelloApplication.class.getResource("cardTelaCarrinho.fxml"));
                                         VBox cardBox = fxmlLoader.load();
                                         CardTelaCarrinhoControlador cardTelaCarrinhoControlador = fxmlLoader.getController();
-                                        cardTelaCarrinhoControlador.setInformacoes(jogoNoCarrinho.get(i), itemNoCarrinho.get(u));
+                                        cardTelaCarrinhoControlador.setInformacoes(TelaCarrinhoControlador.jogoNoCarrinho.get(i), TelaCarrinhoControlador.itemNoCarrinho.get(u));
                                         vboxTelaCarrinho.getChildren().add(cardBox);
 
                                 }
@@ -45,7 +47,7 @@ public class TelaCarrinhoControlador implements Initializable {
                         e.printStackTrace();
                 }
         }
-
+/*
         private List<Jogo> jogoNoCarrinho() {
                 List<Jogo> car = new ArrayList<>();
 
@@ -57,9 +59,9 @@ public class TelaCarrinhoControlador implements Initializable {
 
                 return itens;
         }
-
-        private List<Jogo> jogoNoCarrinho;
-        private List<ItemVenda> itemNoCarrinho;
+*/
+        private static List<Jogo> jogoNoCarrinho = new ArrayList<>();
+        private static List<ItemVenda> itemNoCarrinho = new ArrayList<>();
 
         @FXML
         private Button botaoFinalizarCompra;
@@ -92,17 +94,37 @@ public class TelaCarrinhoControlador implements Initializable {
 
         @FXML
         void btnLimparCarrinhoTelaCarrinho(ActionEvent event) throws IOException {
-                itemNoCarrinho().clear();
+                itemNoCarrinho.clear();
         }
 
         @FXML
         void btnVoltaParaALojaTelaCarrinho(ActionEvent event) throws IOException {
                 GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
         }
-
+/*
+        public void atualizarCarrinho() {
+                vboxTelaCarrinho.getChildren().clear();
+                for (int i = 0; i < jogoNoCarrinho.size(); i++) {
+                        for (int u = 0; u < itemNoCarrinho.size(); u++) {
+                                FXMLLoader fxmlLoader = new FXMLLoader();
+                                fxmlLoader.setLocation(HelloApplication.class.getResource("cardTelaCarrinho.fxml"));
+                                try {
+                                        VBox cardBox = fxmlLoader.load();
+                                        CardTelaCarrinhoControlador cardTelaCarrinhoControlador = fxmlLoader.getController();
+                                        cardTelaCarrinhoControlador.setInformacoes(jogoNoCarrinho.get(i), itemNoCarrinho.get(u));
+                                        vboxTelaCarrinho.getChildren().add(cardBox);
+                                } catch (IOException e) {
+                                        e.printStackTrace();
+                                }
+                        }
+                }
+        }
+*/
         public void guardarJogo(Jogo jogo) {
                 jogoNoCarrinho.add(jogo);
-                ItemVenda itemVenda = new ItemVenda(jogo, 1, 1);
+                Random rand = new Random();
+                int id = rand.nextInt(101); // TEMPORÁRIO!!! Gerando ID aleatório entre 0 e 100
+                ItemVenda itemVenda = new ItemVenda(jogo, 1, id);
                 itemNoCarrinho.add(itemVenda);
         }
 

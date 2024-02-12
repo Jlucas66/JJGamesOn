@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -62,18 +63,21 @@ public class TelaJogoControlador {
 
         @FXML
         void btnAdicionarAoCarrinhoTelaJogo(ActionEvent event) throws IOException {
-                try {
-                        Stage stage;
-                        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tela_carrinho.fxml"));
-                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                        stage.setScene(new Scene(fxmlLoader.load(), 900, 600));
-                        stage.setTitle("Seu carrinho");
-                        stage.setResizable(false);
-                        stage.show();
+                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("tela_carrinho.fxml"));
+                loader.setControllerFactory(controllerClass -> {
+                        if (controllerClass.equals(TelaCarrinhoControlador.class)) {
+                                TelaCarrinhoControlador controller = new TelaCarrinhoControlador();
+                                controller.guardarJogo(jogoA);
+                                return controller;
+                        } else {return null;}
+                });
 
-                        TelaCarrinhoControlador telaCarrinhoControlador = fxmlLoader.getController();
-                        telaCarrinhoControlador.guardarJogo(jogoA);
-                }catch (IOException e){e.printStackTrace();}
+                Parent root = loader.load();
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(new Scene(root, 900, 600));
+                stage.setTitle("Seu carrinho");
+                stage.setResizable(false);
+                stage.show();
 
         }
 
