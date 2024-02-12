@@ -19,6 +19,7 @@ import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -37,15 +38,19 @@ public class TelaCarrinhoControlador implements Initializable {
                         for (int i = 0; i < jogoNoCarrinho.size(); i++) {
                                 Jogo jogo = jogoNoCarrinho.get(i);
                                 ItemVenda itemVenda = itemNoCarrinho.get(i);
-                                oValorTotal = oValorTotal + jogoNoCarrinho.get(i).getValor();
+                                oValorTotal += jogo.getValor();
                                 FXMLLoader fxmlLoader = new FXMLLoader();
                                 fxmlLoader.setLocation(HelloApplication.class.getResource("cardTelaCarrinho.fxml"));
                                 VBox cardBox = fxmlLoader.load();
                                 CardTelaCarrinhoControlador cardTelaCarrinhoControlador = fxmlLoader.getController();
                                 cardTelaCarrinhoControlador.setInformacoes(jogo, itemVenda);
+                                cardTelaCarrinhoControlador.setCarrinhoControlador(this);
                                 vboxTelaCarrinho.getChildren().add(cardBox);
-                                valorTotalCarrinho.setText(oValorTotal.toString());
+
                         }
+                        DecimalFormat df = new DecimalFormat("#,##0.00");
+                        String valorTotalFormatado = df.format(oValorTotal);
+                        valorTotalCarrinho.setText(valorTotalFormatado);
                 } catch (IOException e) {
                         e.printStackTrace();
                 }
@@ -87,6 +92,15 @@ public class TelaCarrinhoControlador implements Initializable {
         void btnLimparCarrinhoTelaCarrinho(ActionEvent event) throws IOException {
                 itemNoCarrinho.clear();
                 jogoNoCarrinho.clear();
+                atualizarCarrinho(event);
+        }
+
+        @FXML
+        void btnVoltaParaALojaTelaCarrinho(ActionEvent event) throws IOException {
+                GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
+        }
+
+        public void atualizarCarrinho(ActionEvent event) throws IOException{
                 FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("tela_carrinho.fxml"));
                 loader.setControllerFactory(controllerClass -> {
                         if (controllerClass.equals(TelaCarrinhoControlador.class)) {
@@ -103,29 +117,6 @@ public class TelaCarrinhoControlador implements Initializable {
                 stage.show();
         }
 
-        @FXML
-        void btnVoltaParaALojaTelaCarrinho(ActionEvent event) throws IOException {
-                GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
-        }
-/*
-        public void atualizarCarrinho() {
-                vboxTelaCarrinho.getChildren().clear();
-                for (int i = 0; i < jogoNoCarrinho.size(); i++) {
-                        for (int u = 0; u < itemNoCarrinho.size(); u++) {
-                                FXMLLoader fxmlLoader = new FXMLLoader();
-                                fxmlLoader.setLocation(HelloApplication.class.getResource("cardTelaCarrinho.fxml"));
-                                try {
-                                        VBox cardBox = fxmlLoader.load();
-                                        CardTelaCarrinhoControlador cardTelaCarrinhoControlador = fxmlLoader.getController();
-                                        cardTelaCarrinhoControlador.setInformacoes(jogoNoCarrinho.get(i), itemNoCarrinho.get(u));
-                                        vboxTelaCarrinho.getChildren().add(cardBox);
-                                } catch (IOException e) {
-                                        e.printStackTrace();
-                                }
-                        }
-                }
-        }
-*/
         public void guardarJogo(Jogo jogo) {
                 jogoNoCarrinho.add(jogo);
                 Random rand = new Random();

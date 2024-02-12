@@ -16,6 +16,7 @@ public class CardTelaCarrinhoControlador {
 
         private Jogo jogg;
         private ItemVenda item;
+        private TelaCarrinhoControlador telaCarrinhoControlador;
         @FXML
         private ImageView capa;
 
@@ -39,15 +40,14 @@ public class CardTelaCarrinhoControlador {
 
         @FXML
         void removerDoCarrinhoJogoCard(ActionEvent event) throws IOException {
-                /*
-                TelaCarrinhoControlador carrinhoControlador = (TelaCarrinhoControlador)vboxTelaCarrinho.getParent().getProperties().get("controller");
-
-                carrinhoControlador.removerDoCarrinho(jogo, itemVenda);
-                */
-
+                telaCarrinhoControlador.removerDoCarrinho(jogg, item);
+                telaCarrinhoControlador.atualizarCarrinho(event);
         }
+
         public void setInformacoes(Jogo jogo, ItemVenda itemVenda){
                 Image image = null;
+                jogg = jogo;
+                item = itemVenda;
                 try{
                         image = new Image(getClass().getResourceAsStream(jogo.getPath()));
                 } catch (Exception e){
@@ -62,6 +62,9 @@ public class CardTelaCarrinhoControlador {
                 quantidade.setText(quant);
                 String vTotal = Double.toString(itemVenda.getValorTotal());
                 valorTotal.setText(vTotal);
+        }
+        public void setCarrinhoControlador(TelaCarrinhoControlador carrinhoControlador) {
+                this.telaCarrinhoControlador = carrinhoControlador;
         }
     }
 
