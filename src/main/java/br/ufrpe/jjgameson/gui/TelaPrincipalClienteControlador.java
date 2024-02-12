@@ -107,7 +107,27 @@ public class TelaPrincipalClienteControlador implements Initializable {
 
         @FXML
         void btnAcaoPrincipalCliente(ActionEvent event) throws IOException{
+            ArrayList<Jogo> cataAcao = new ArrayList<>();
+            for(Jogo jogo : catalogo){
+                if(jogo.getGenero().equalsIgnoreCase("Ação")){
+                    cataAcao.add(jogo);
+                }
+            }
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("tela_busca.fxml"));
+            loader.setControllerFactory(controllerClass -> {
+                if (controllerClass.equals(TelaBuscaControlador.class)) {
+                    TelaBuscaControlador controller = new TelaBuscaControlador();
+                    controller.setarInformacoes(cataAcao);
+                    return controller;
+                } else {return null;}
+            });
 
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root, 900, 600));
+            stage.setTitle("Sua busca!");
+            stage.setResizable(false);
+            stage.show();
         }
 
         @FXML
