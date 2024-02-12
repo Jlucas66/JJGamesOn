@@ -3,20 +3,18 @@ package br.ufrpe.jjgameson.gui;
     import br.ufrpe.jjgameson.entidades.FaixaEtaria;
     import br.ufrpe.jjgameson.entidades.Jogo;
     import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
+    import javafx.fxml.FXML;
     import javafx.fxml.FXMLLoader;
     import javafx.fxml.Initializable;
     import javafx.scene.Node;
     import javafx.scene.Parent;
     import javafx.scene.Scene;
     import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView;
+    import javafx.scene.control.ScrollPane;
+    import javafx.scene.control.TextField;
+    import javafx.scene.image.ImageView;
     import javafx.scene.layout.HBox;
-    import javafx.scene.layout.VBox;
     import javafx.stage.Stage;
-
     import java.io.IOException;
     import java.net.URL;
     import java.util.ArrayList;
@@ -132,41 +130,164 @@ public class TelaPrincipalClienteControlador implements Initializable {
 
         @FXML
         void btnAventuraPrincipalCliente(ActionEvent event) throws IOException{
+            ArrayList<Jogo> cataAventura = new ArrayList<>();
+            for(Jogo jogo : catalogo){
+                if(jogo.getGenero().equalsIgnoreCase("Aventura")){
+                    cataAventura.add(jogo);
+                }
+            }
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("tela_busca.fxml"));
+            loader.setControllerFactory(controllerClass -> {
+                if (controllerClass.equals(TelaBuscaControlador.class)) {
+                    TelaBuscaControlador controller = new TelaBuscaControlador();
+                    controller.setarInformacoes(cataAventura);
+                    return controller;
+                } else {return null;}
+            });
 
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root, 900, 600));
+            stage.setTitle("Sua busca!");
+            stage.setResizable(false);
+            stage.show();
         }
 
         @FXML
         void btnCasualPrincipalCliente(ActionEvent event) throws IOException{
+            ArrayList<Jogo> cataCasual = new ArrayList<>();
+            for(Jogo jogo : catalogo){
+                if(jogo.getGenero().equalsIgnoreCase("Casual")){
+                    cataCasual.add(jogo);
+                }
+            }
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("tela_busca.fxml"));
+            loader.setControllerFactory(controllerClass -> {
+                if (controllerClass.equals(TelaBuscaControlador.class)) {
+                    TelaBuscaControlador controller = new TelaBuscaControlador();
+                    controller.setarInformacoes(cataCasual);
+                    return controller;
+                } else {return null;}
+            });
 
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root, 900, 600));
+            stage.setTitle("Sua busca!");
+            stage.setResizable(false);
+            stage.show();
         }
 
         @FXML
         void btnFPSPrincipalCliente(ActionEvent event) throws IOException{
+            ArrayList<Jogo> cataFPS = new ArrayList<>();
+            for(Jogo jogo : catalogo){
+                if(jogo.getGenero().equalsIgnoreCase("FPS")){
+                    cataFPS.add(jogo);
+                }
+            }
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("tela_busca.fxml"));
+            loader.setControllerFactory(controllerClass -> {
+                if (controllerClass.equals(TelaBuscaControlador.class)) {
+                    TelaBuscaControlador controller = new TelaBuscaControlador();
+                    controller.setarInformacoes(cataFPS);
+                    return controller;
+                } else {return null;}
+            });
 
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root, 900, 600));
+            stage.setTitle("Sua busca!");
+            stage.setResizable(false);
+            stage.show();
         }
 
         @FXML
         void btnMobaPrincipalCliente(ActionEvent event) throws IOException{
+            ArrayList<Jogo> cataMoba = new ArrayList<>();
+            for(Jogo jogo : catalogo){
+                if(jogo.getGenero().equalsIgnoreCase("Moba")){
+                    cataMoba.add(jogo);
+                }
+            }
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("tela_busca.fxml"));
+            loader.setControllerFactory(controllerClass -> {
+                if (controllerClass.equals(TelaBuscaControlador.class)) {
+                    TelaBuscaControlador controller = new TelaBuscaControlador();
+                    controller.setarInformacoes(cataMoba);
+                    return controller;
+                } else {return null;}
+            });
 
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root, 900, 600));
+            stage.setTitle("Sua busca!");
+            stage.setResizable(false);
+            stage.show();
         }
         @FXML
         void btnSimulacaoPrincipalCliente(ActionEvent event) throws IOException{
+            ArrayList<Jogo> cataSimulacao = new ArrayList<>();
+            for(Jogo jogo : catalogo){
+                if(jogo.getGenero().equalsIgnoreCase("Simulação")){
+                    cataSimulacao.add(jogo);
+                }
+                else if(jogo.getGenero().equalsIgnoreCase("Simulacao")){
+                    cataSimulacao.add(jogo);
+                }
+            }
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("tela_busca.fxml"));
+            loader.setControllerFactory(controllerClass -> {
+                if (controllerClass.equals(TelaBuscaControlador.class)) {
+                    TelaBuscaControlador controller = new TelaBuscaControlador();
+                    controller.setarInformacoes(cataSimulacao);
+                    return controller;
+                } else {return null;}
+            });
 
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root, 900, 600));
+            stage.setTitle("Sua busca!");
+            stage.setResizable(false);
+            stage.show();
         }
 
         @FXML
         void btnTerrorPrincipalCliente(ActionEvent event) throws IOException{
+            ArrayList<Jogo> cataTerror = new ArrayList<>();
+            for(Jogo jogo : catalogo){
+                if(jogo.getGenero().equalsIgnoreCase("Terror")){
+                    cataTerror.add(jogo);
+                }
+            }
+            FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("tela_busca.fxml"));
+            loader.setControllerFactory(controllerClass -> {
+                if (controllerClass.equals(TelaBuscaControlador.class)) {
+                    TelaBuscaControlador controller = new TelaBuscaControlador();
+                    controller.setarInformacoes(cataTerror);
+                    return controller;
+                } else {return null;}
+            });
 
+            Parent root = loader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root, 900, 600));
+            stage.setTitle("Sua busca!");
+            stage.setResizable(false);
+            stage.show();
         }
         @FXML
         void btnPesquisarPrincipalCliente(ActionEvent event) throws IOException{
 
-String oNomeDoJogo = nomePesquisa.getText();
-for(int i = 0; i < catalogo.size(); i++){
-        if(catalogo.get(i).getNome().equalsIgnoreCase(oNomeDoJogo.trim())){
-                filtro.add(catalogo.get(i));
-        }
-}
+            String oNomeDoJogo = nomePesquisa.getText();
+            for(int i = 0; i < catalogo.size(); i++){
+                if(catalogo.get(i).getNome().equalsIgnoreCase(oNomeDoJogo.trim())){
+                    filtro.add(catalogo.get(i));
+                }
+            }
             FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("tela_busca.fxml"));
             loader.setControllerFactory(controllerClass -> {
                 if (controllerClass.equals(TelaBuscaControlador.class)) {
@@ -185,17 +306,17 @@ for(int i = 0; i < catalogo.size(); i++){
         }
         @FXML
         void btnCarrinhoPrincipalCliente(ActionEvent event) throws IOException{
-                GerenciadorDeTelas.irParaTelaCarrinho(event);
+            GerenciadorDeTelas.irParaTelaCarrinho(event);
         }
 
         @FXML
         void btnHistoricoPrincipalCliente(ActionEvent event) throws IOException{
-GerenciadorDeTelas.irParaTelaHistorico(event);
+            GerenciadorDeTelas.irParaTelaHistorico(event);
         }
 
         @FXML
         void btnSairDaContaPrincipalCliente(ActionEvent event) throws IOException {
-                GerenciadorDeTelas.irParaTelaLoginCliente(event);
+            GerenciadorDeTelas.irParaTelaLoginCliente(event);
         }
 
 }
