@@ -7,6 +7,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
@@ -29,39 +31,28 @@ public class TelaCarrinhoControlador implements Initializable {
                 System.out.println("Tamanho da lista jogos: " + jogoNoCarrinho.size());
                 System.out.println("Tamanho da lista itemvenda: " + itemNoCarrinho.size());
                 vboxTelaCarrinho.getChildren().clear();
+                oValorTotal = 0.0;
+
                 try {
                         for (int i = 0; i < jogoNoCarrinho.size(); i++) {
-                                for (int u = 0; u < itemNoCarrinho.size(); u++) {
-                                        //itemNoCarrinho.get(u).setJogo(jogoNoCarrinho.get(i));
-                                        FXMLLoader fxmlLoader = new FXMLLoader();
-                                        fxmlLoader.setLocation(HelloApplication.class.getResource("cardTelaCarrinho.fxml"));
-                                        VBox cardBox = fxmlLoader.load();
-                                        CardTelaCarrinhoControlador cardTelaCarrinhoControlador = fxmlLoader.getController();
-                                        cardTelaCarrinhoControlador.setInformacoes(TelaCarrinhoControlador.jogoNoCarrinho.get(i), TelaCarrinhoControlador.itemNoCarrinho.get(u));
-                                        vboxTelaCarrinho.getChildren().add(cardBox);
-
-                                }
-
+                                Jogo jogo = jogoNoCarrinho.get(i);
+                                ItemVenda itemVenda = itemNoCarrinho.get(i);
+                                oValorTotal = oValorTotal + jogoNoCarrinho.get(i).getValor();
+                                FXMLLoader fxmlLoader = new FXMLLoader();
+                                fxmlLoader.setLocation(HelloApplication.class.getResource("cardTelaCarrinho.fxml"));
+                                VBox cardBox = fxmlLoader.load();
+                                CardTelaCarrinhoControlador cardTelaCarrinhoControlador = fxmlLoader.getController();
+                                cardTelaCarrinhoControlador.setInformacoes(jogo, itemVenda);
+                                vboxTelaCarrinho.getChildren().add(cardBox);
+                                valorTotalCarrinho.setText(oValorTotal.toString());
                         }
                 } catch (IOException e) {
                         e.printStackTrace();
                 }
         }
-/*
-        private List<Jogo> jogoNoCarrinho() {
-                List<Jogo> car = new ArrayList<>();
-
-                return car;
-        }
-
-        private List<ItemVenda> itemNoCarrinho() {
-                List<ItemVenda> itens = new ArrayList<>();
-
-                return itens;
-        }
-*/
         private static List<Jogo> jogoNoCarrinho = new ArrayList<>();
         private static List<ItemVenda> itemNoCarrinho = new ArrayList<>();
+        private static Double oValorTotal = 0.0;
 
         @FXML
         private Button botaoFinalizarCompra;
@@ -95,6 +86,21 @@ public class TelaCarrinhoControlador implements Initializable {
         @FXML
         void btnLimparCarrinhoTelaCarrinho(ActionEvent event) throws IOException {
                 itemNoCarrinho.clear();
+                jogoNoCarrinho.clear();
+                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("tela_carrinho.fxml"));
+                loader.setControllerFactory(controllerClass -> {
+                        if (controllerClass.equals(TelaCarrinhoControlador.class)) {
+                                TelaCarrinhoControlador controller = new TelaCarrinhoControlador();
+                                return controller;
+                        } else {return null;}
+                });
+
+                Parent root = loader.load();
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(new Scene(root, 900, 600));
+                stage.setTitle("Seu carrinho");
+                stage.setResizable(false);
+                stage.show();
         }
 
         @FXML
@@ -126,6 +132,11 @@ public class TelaCarrinhoControlador implements Initializable {
                 int id = rand.nextInt(101); // TEMPORÁRIO!!! Gerando ID aleatório entre 0 e 100
                 ItemVenda itemVenda = new ItemVenda(jogo, 1, id);
                 itemNoCarrinho.add(itemVenda);
+        }
+
+        public void removerDoCarrinho(Jogo jogo, ItemVenda itemVenda) {
+                jogoNoCarrinho.remove(jogo);
+                itemNoCarrinho.remove(itemVenda);
         }
 
 }

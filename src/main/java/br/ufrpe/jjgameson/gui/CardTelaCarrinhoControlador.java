@@ -14,6 +14,8 @@ import java.io.IOException;
 
 public class CardTelaCarrinhoControlador {
 
+        private Jogo jogg;
+        private ItemVenda item;
         @FXML
         private ImageView capa;
 
@@ -37,6 +39,11 @@ public class CardTelaCarrinhoControlador {
 
         @FXML
         void removerDoCarrinhoJogoCard(ActionEvent event) throws IOException {
+                /*
+                TelaCarrinhoControlador carrinhoControlador = (TelaCarrinhoControlador)vboxTelaCarrinho.getParent().getProperties().get("controller");
+
+                carrinhoControlador.removerDoCarrinho(jogo, itemVenda);
+                */
 
         }
         public void setInformacoes(Jogo jogo, ItemVenda itemVenda){
