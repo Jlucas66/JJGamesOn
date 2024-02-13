@@ -111,4 +111,17 @@ public class Jogo {
         this.faixaEtaria = faixaEtaria;
     }
 
+    @Override
+    public String toString() {
+        return "Jogo{" +
+                "id=" + id +
+                ", path='" + path + '\'' +
+                ", nome='" + nome + '\'' +
+                ", valor=" + valor +
+                ", desenvolvedora='" + desenvolvedora + '\'' +
+                ", genero='" + genero + '\'' +
+                ", resumo='" + resumo + '\'' +
+                ", faixaEtaria=" + faixaEtaria +
+                '}';
+    }
 }

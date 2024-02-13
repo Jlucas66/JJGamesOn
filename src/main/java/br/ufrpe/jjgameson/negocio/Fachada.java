@@ -3,6 +3,8 @@ package br.ufrpe.jjgameson.negocio;
 import br.ufrpe.jjgameson.entidades.*;
 import br.ufrpe.jjgameson.exceptions.*;
 
+import java.util.List;
+
 public class Fachada {
 
     private static Fachada instance;
@@ -135,7 +137,7 @@ public class Fachada {
         controladorJogo.listarJogos();
     }
 
-    public Jogo listarJogosBD(){
+    public List<Jogo> listarJogosBD(){
         return controladorJogo.listarJogosBD();
     }
 

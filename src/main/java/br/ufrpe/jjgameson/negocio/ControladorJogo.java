@@ -161,8 +161,8 @@ public class ControladorJogo {
         repositorioJogo.atualizarJogoBD(jogoAntigo, jogoNovo);
     }
 
-    public Jogo listarJogosBD(){
-        return (Jogo) repositorioJogo.listarJogosBD();
+    public List<Jogo> listarJogosBD(){
+        return repositorioJogo.listarJogosBD();
     }
 }
 
