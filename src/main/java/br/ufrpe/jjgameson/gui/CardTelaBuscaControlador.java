@@ -54,7 +54,7 @@ public class CardTelaBuscaControlador {
                 jogoo = jogo;
                 Image image = null;
                 try{
-                        image = new Image(getClass().getResourceAsStream(jogo.getPath()));
+                        image = new Image(jogo.getPath());
                 } catch (Exception e){
                          e.printStackTrace();
                 }

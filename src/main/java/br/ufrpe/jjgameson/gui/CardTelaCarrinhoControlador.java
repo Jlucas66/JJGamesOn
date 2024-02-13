@@ -49,7 +49,7 @@ public class CardTelaCarrinhoControlador {
                 jogg = jogo;
                 item = itemVenda;
                 try{
-                        image = new Image(getClass().getResourceAsStream(jogo.getPath()));
+                        image = new Image(jogo.getPath());
                 } catch (Exception e){
                          e.printStackTrace();
                 }

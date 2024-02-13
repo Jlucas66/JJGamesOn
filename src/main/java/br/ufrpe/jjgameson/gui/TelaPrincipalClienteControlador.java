@@ -46,9 +46,9 @@ public class TelaPrincipalClienteControlador implements Initializable {
 
         private List<Jogo> catalogo(){
                 List<Jogo> cata = new ArrayList<>();
-                Jogo jogo1 = new Jogo(1,"@imagens/minecraft.jpg","Minecraft",29.99,"Mojang Studios","Casual","Um jogo casual de construção", FaixaEtaria.LIVRE);
+                Jogo jogo1 = new Jogo(1,"https://static.tvtropes.org/pmwiki/pub/images/minecraft_cover.png","Minecraft",29.99,"Mojang Studios","Casual","Um jogo casual de construção", FaixaEtaria.LIVRE);
                 cata.add(jogo1);
-                Jogo jogo2 = new Jogo(2,"@imagens/gtaV.jpg","GTA V",69.99,"Rockstar Games","Ação","Um jogo de ação", FaixaEtaria.DEZESSEIS);
+                Jogo jogo2 = new Jogo(2,"https://i.pinimg.com/736x/7b/34/81/7b34815378a30fb718bcdb97b0a1d178.jpg","GTA V",69.99,"Rockstar Games","Ação","Um jogo de ação", FaixaEtaria.DEZESSEIS);
                 cata.add(jogo2);
                 return cata;
         }
