@@ -143,4 +143,25 @@ public class ControladorJogo {
     public void listarJogos(){
         repositorioJogo.listarJogos();
     }
+
+    //Funcoes para o banco de dados
+
+    public void inserirJogoBD(Jogo jogo){
+        repositorioJogo.inserirJogoBD(jogo);
+    }
+
+    public Jogo obterJogoPorIdBD(int id){
+        return repositorioJogo.obterJogoPorIdBD(id);
+    }
+    public void removerJogoBD(int id){
+        repositorioJogo.removerJogoBD(id);
+    }
+
+    public void atualizarJogoBD(Jogo jogoAntigo, Jogo jogoNovo){
+        repositorioJogo.atualizarJogoBD(jogoAntigo, jogoNovo);
+    }
+
+    public Jogo listarJogosBD(){
+        return (Jogo) repositorioJogo.listarJogosBD();
+    }
 }

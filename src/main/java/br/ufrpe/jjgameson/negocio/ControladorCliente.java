@@ -135,4 +135,33 @@ public class ControladorCliente {
     public void listarClientes(){
         repositorioCliente.listarClientes();
     }
+
+    //Funcoes Com o BD
+    public void inserirClienteBD(Pessoa cliente){
+        repositorioCliente.inserirClienteBD(cliente);
+    }
+
+    public Pessoa obterClientePorEmailBD(String email){
+        return repositorioCliente.obterClientePorEmailBD(email);
+    }
+
+    public boolean VerificarUsuarioLoginBD(String email, String senha){
+        return repositorioCliente.VerificarUsuarioLoginBD(email, senha);
+    }
+
+    public void removerClienteBD(String email){
+        repositorioCliente.removerClienteBD(email);
+    }
+
+    public void atualizarClienteBD(String email){
+        repositorioCliente.atualizarClienteBD(email);
+    }
+
+    public void listarClientesBD(){
+        repositorioCliente.listarClientesBD();
+    }
 }
+
+
+
+

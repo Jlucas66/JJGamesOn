@@ -2,6 +2,7 @@ package br.ufrpe.jjgameson.gui;
 
 import br.ufrpe.jjgameson.dados.RepositorioCliente;
 import br.ufrpe.jjgameson.entidades.Pessoa;
+import br.ufrpe.jjgameson.negocio.Fachada;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -46,7 +47,18 @@ public class TelaCadastroClienteControlador {
 
     @FXML
     public void btnCadastroClienteRealizarCadastro(ActionEvent event) throws IOException {
-        String nomeCliente = nomeCadastro.getText();
+
+        Pessoa Cliente = new Pessoa(nomeCadastro.getText(), emailCadastro.getText(), senhaCadastro.getText(), dataNascimentoCadastro.getValue(), false);
+
+        Fachada fachada = (Fachada) Fachada.getInstance();
+        try {
+            fachada.inserirClienteBD(Cliente);
+            GerenciadorDeTelas.irParaTelaLoginCliente(event);
+        }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        /*String nomeCliente = nomeCadastro.getText();
         String emailCliente = emailCadastro.getText();
         String senhaCliente = senhaCadastro.getText();
         LocalDate dataNascimento = dataNascimentoCadastro.getValue();
@@ -59,7 +71,7 @@ public class TelaCadastroClienteControlador {
             GerenciadorDeTelas.irParaTelaLoginCliente(event);
         } catch (Exception e) {
             System.out.println(e.getMessage());
-        }
+        }*/
     }
 
     @FXML
