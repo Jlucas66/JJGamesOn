@@ -164,8 +164,6 @@ public class RepositorioJogo implements IRepositorioJogo {
                 Jogo jogo = new Jogo(rs.getInt("idJogo"), rs.getString("URL"), rs.getString("nomeJogo"), rs.getDouble("valor"), rs.getString("desenvolvedora"), rs.getString("genero"), rs.getString("resumo"), rs.getString("faixaEtaria"));
                 jogos.add(jogo);
             }
-            System.out.println(jogos.size());
-            System.out.println(jogos.get(0).toString());
         }
         catch (SQLException e){
             throw new DBException(e.getMessage());
@@ -175,9 +173,5 @@ public class RepositorioJogo implements IRepositorioJogo {
             ConexaoBD.closeResultSet(rs);
         }
         return jogos;
-    }
-
-    public static void main(String[] args) {
-        RepositorioJogo.getInstance().listarJogosBD();
     }
 }

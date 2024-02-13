@@ -47,11 +47,11 @@ public class TelaPrincipalClienteControlador implements Initializable {
 
         private List<Jogo> catalogo(){
                 List<Jogo> cata = new ArrayList<>();
-                List<Jogo> jogos = new ArrayList<>();
+                List<Jogo> jogos;
             Fachada fachada = Fachada.getInstance();
             jogos = fachada.listarJogosBD();
             for(Jogo jogo : jogos){
-                cata.add(jogo);
+               cata.add(jogo);
             }
             return cata;
         }
