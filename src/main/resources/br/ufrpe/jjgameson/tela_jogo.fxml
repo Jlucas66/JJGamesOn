@@ -19,7 +19,7 @@
       </ImageView>
       <ImageView fx:id="capaTelaJogo" fitHeight="306.0" fitWidth="280.0" layoutX="41.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@imagens/minecraft.jpg" />
+            <Image url="@imagens/white.jpg" />
          </image>
       </ImageView>
       <Text layoutX="370.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="⭐">
@@ -37,22 +37,22 @@
             <Font size="28.0" />
          </font>
       </Text>
-      <TextArea fx:id="descricaoTelaJogo" editable="false" layoutX="630.0" layoutY="226.0" prefHeight="233.0" prefWidth="226.0" promptText="A descrição do jogo aparecerá aqui..." style="-fx-border-color: #000000;" wrapText="true">
+      <TextArea fx:id="descricaoTelaJogo" editable="false" layoutX="630.0" layoutY="226.0" prefHeight="233.0" prefWidth="226.0" promptText="-" style="-fx-border-color: #000000;" wrapText="true">
          <font>
             <Font size="14.0" />
          </font>
       </TextArea>
-      <Label fx:id="nomeTelaJogo" layoutX="372.0" layoutY="152.0" prefHeight="49.0" prefWidth="502.0" text="No Man's Sky">
+      <Label fx:id="nomeTelaJogo" layoutX="372.0" layoutY="152.0" prefHeight="49.0" prefWidth="502.0" text="-">
          <font>
             <Font size="33.0" />
          </font>
       </Label>
-      <Label fx:id="devTelaJogo" layoutX="373.0" layoutY="201.0" prefHeight="26.0" prefWidth="226.0" text="Hello Games">
+      <Label fx:id="devTelaJogo" layoutX="373.0" layoutY="201.0" prefHeight="26.0" prefWidth="226.0" text="-">
          <font>
             <Font size="17.0" />
          </font>
       </Label>
-      <Label fx:id="precoTelaJogo" layoutX="412.0" layoutY="262.0" prefHeight="38.0" prefWidth="201.0" text="300.00">
+      <Label fx:id="precoTelaJogo" layoutX="412.0" layoutY="262.0" prefHeight="38.0" prefWidth="201.0" text="-">
          <font>
             <Font size="26.0" />
          </font>
@@ -72,12 +72,12 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Label fx:id="generoTelaJogo" layoutX="108.0" layoutY="487.0" prefHeight="27.0" prefWidth="208.0" text="Aventura">
+      <Label fx:id="generoTelaJogo" layoutX="108.0" layoutY="487.0" prefHeight="27.0" prefWidth="208.0" text="-">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="faixaEtariaTelaJogo" layoutX="230.0" layoutY="515.0" prefHeight="27.0" prefWidth="32.0" text="14">
+      <Label fx:id="faixaEtariaTelaJogo" layoutX="230.0" layoutY="515.0" prefHeight="27.0" prefWidth="32.0" text="-">
          <font>
             <Font size="18.0" />
          </font>

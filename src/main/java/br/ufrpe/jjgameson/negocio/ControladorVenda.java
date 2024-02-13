@@ -121,4 +121,31 @@ public class ControladorVenda {
 
         repositorioVenda.excluir(vendaParaExcluir);
     }
+
+public void inserirVendaBD(Venda venda) throws ElementoNuloException, ElementoDuplicadoException, ElementoInvalidoException {
+        if(venda == null){
+            throw new ElementoNuloException("Venda não pode ser nula.");
+        }
+        if(repositorioVenda.listar().contains(venda)){
+            throw new ElementoDuplicadoException("Venda já cadastrada.");
+        }
+        if(venda.getItensVenda().isEmpty()){
+            throw new ElementoInvalidoException("Venda não pode ser vazia.");
+        }
+        if(venda.getCliente() == null){
+            throw new ElementoNuloException("Venda não pode ser feita sem um cliente.");
+        }
+        if(venda.getData() == null){
+            throw new ElementoNuloException("Venda não pode ser feita sem uma data.");
+        }
+        for (ItemVenda itens : venda.getItensVenda()) {
+            if(itens.getJogo() == null){
+                throw new ElementoNuloException("Venda não pode ser feita sem um jogo.");
+            }
+            if(itens.getQuantidade() <= 0){
+                throw new ElementoInvalidoException("Venda não pode ser feita com quantidade negativa.");
+            }
+        }
+        repositorioVenda.inserirBD(venda);
+    }
 }

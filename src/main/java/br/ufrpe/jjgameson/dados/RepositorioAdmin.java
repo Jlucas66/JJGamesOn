@@ -3,6 +3,9 @@ package br.ufrpe.jjgameson.dados;
 import br.ufrpe.jjgameson.entidades.Pessoa;
 import br.ufrpe.jjgameson.exceptions.*;
 import br.ufrpe.jjgameson.gui.GerenciadorDeTelas;
+import br.ufrpe.jjgameson.exceptions.AcessoInvalidoException;
+import br.ufrpe.jjgameson.exceptions.DBException;
+import javafx.scene.control.Alert;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -30,6 +33,31 @@ public class RepositorioAdmin implements IRepositorioAdmin {
     @Override
     public void inserir(Pessoa admin) {
         admins.add(admin);
+    }
+    
+    @Override
+    public void inserirPessoaAdminBD(Pessoa pessoa) {
+    	Connection conn = null;
+    	Statement st = null;
+    	ResultSet rs = null;
+    	
+        try{
+            conn = ConexaoBD.getConnection();
+            st = conn.createStatement();
+            st.executeUpdate("INSERT INTO Pessoa (nome, email, senha, dataNascimento) VALUES ('" + pessoa.getNome() + "', '" + pessoa.getEmail() + "', '" + pessoa.getSenha() + "', '" + pessoa.getDataNascimento() + "')");
+        }
+        catch (SQLException e){
+            throw new DBException(e.getMessage());
+        }
+        finally {
+            ConexaoBD.closeStatement(st);
+            ConexaoBD.closeResultSet(rs);
+        }
+    }
+
+    @Override
+    public Pessoa obterAdminPorEmail(String email) {
+        return null;
     }
 
 
@@ -68,6 +96,78 @@ public class RepositorioAdmin implements IRepositorioAdmin {
         } catch (AcessoInvalidoException e) {
             throw new RuntimeException(e);
         } finally {
+            ConexaoBD.closeStatement(st);
+            ConexaoBD.closeResultSet(rs);
+        }
+    }
+
+//    @Override
+//    public void removerPessoaAdminBD(Pessoa pessoa) {
+//        Connection conn = null;
+//        Statement st = null;
+//        ResultSet rs = null;
+//
+//        try{
+//            conn = ConexaoBD.getConnection();
+//            st = conn.createStatement();
+//            st.executeUpdate("DELETE FROM Pessoa WHERE emailCliente = '" + pessoa.getEmail() + "'");
+//        }
+//        catch (SQLException e){
+//            throw new DBException(e.getMessage());
+//        }
+//        finally {
+//            ConexaoBD.closeStatement(st);
+//            ConexaoBD.closeResultSet(rs);
+//        }
+//    }
+
+    @Override
+// atualizarPessoaAdminBD esta atualizando um nome com ele mesmo, deve atualizar uma pessoa com outra
+    public void atualizarPessoaAdminBD(Pessoa pessoa){
+        Connection conn = null;
+        Statement st = null;
+        ResultSet rs = null;
+
+        try{
+            conn = ConexaoBD.getConnection();
+            st = conn.createStatement();
+            st.executeUpdate("UPDATE Pessoa SET nome = '" + pessoa + "' WHERE email = '" + pessoa + "'");
+        }
+        catch (SQLException e){
+            throw new DBException(e.getMessage());
+        }
+        finally {
+            ConexaoBD.closeConnection();
+            ConexaoBD.closeStatement(st);
+            ConexaoBD.closeResultSet(rs);
+        }
+    }
+
+    @Override
+    public void removerPessoaAdminBD(Pessoa pessoa) {
+
+    }
+
+    public void listarPessoaAdminsBD() {
+        Connection conn = null;
+        Statement st = null;
+        ResultSet rs = null;
+
+        try{
+            conn = ConexaoBD.getConnection();
+            st = conn.createStatement();
+            rs = st.executeQuery("SELECT * FROM Pessoa");
+
+            while (rs.next()){  // deve retornar uma lista pra poder ser usado no controlador
+                System.out.println(rs.getString("nome") + " " + rs.getString("email") + " " + rs.getDate("dtNascimento"));
+            }
+
+        }
+        catch (SQLException e){
+            throw new DBException(e.getMessage());
+        }
+        finally {
+            ConexaoBD.closeConnection();
             ConexaoBD.closeStatement(st);
             ConexaoBD.closeResultSet(rs);
         }

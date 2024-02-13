@@ -14,6 +14,9 @@ import java.io.IOException;
 
 public class CardTelaCarrinhoControlador {
 
+        private Jogo jogg;
+        private ItemVenda item;
+        private TelaCarrinhoControlador telaCarrinhoControlador;
         @FXML
         private ImageView capa;
 
@@ -37,14 +40,18 @@ public class CardTelaCarrinhoControlador {
 
         @FXML
         void removerDoCarrinhoJogoCard(ActionEvent event) throws IOException {
-
+                telaCarrinhoControlador.removerDoCarrinho(jogg, item);
+                telaCarrinhoControlador.atualizarCarrinho(event);
         }
+
         public void setInformacoes(Jogo jogo, ItemVenda itemVenda){
                 Image image = null;
+                jogg = jogo;
+                item = itemVenda;
                 try{
-                        image = new Image(getClass().getResourceAsStream(jogo.getPath()));
+                        image = new Image(jogo.getPath());
                 } catch (Exception e){
-                        // e.printStackTrace();
+                         e.printStackTrace();
                 }
 
                 capa.setImage(image);
@@ -55,6 +62,9 @@ public class CardTelaCarrinhoControlador {
                 quantidade.setText(quant);
                 String vTotal = Double.toString(itemVenda.getValorTotal());
                 valorTotal.setText(vTotal);
+        }
+        public void setCarrinhoControlador(TelaCarrinhoControlador carrinhoControlador) {
+                this.telaCarrinhoControlador = carrinhoControlador;
         }
     }
 

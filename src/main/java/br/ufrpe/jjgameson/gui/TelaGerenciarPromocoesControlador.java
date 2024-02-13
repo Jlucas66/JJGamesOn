@@ -13,76 +13,53 @@ import java.io.IOException;
 
 public class TelaGerenciarPromocoesControlador {
 
-        @FXML
-        private Button botaoCriarPromocao;
 
-        @FXML
-        private Button botaoDeletarPromocao;
+                @FXML
+                private Button botaoCriarPromocao;
 
-        @FXML
-        private Button botaoSalvarAlteracoes;
+                @FXML
+                private Button botaoDeletarPromocao;
 
-        @FXML
-        private Button botaoVoltar;
+                @FXML
+                private Button botaoVoltar;
 
-        @FXML
-        private ChoiceBox<?> choiceBoxJogo1GerenciarPromocoes;
+                @FXML
+                private ChoiceBox<?> choiceBoxJogo2GerenciarPromocoes;
 
-        @FXML
-        private ChoiceBox<?> choiceBoxJogo2GerenciarPromocoes;
+                @FXML
+                private ChoiceBox<?> choiceBoxNomeGerenciarPromocoes;
 
-        @FXML
-        private ChoiceBox<?> choiceBoxNomeGerenciarPromocoes;
+                @FXML
+                private DatePicker dataFim2GerenciarPromocoes;
 
-        @FXML
-        private DatePicker dataFim1GerenciarPromocoes;
+                @FXML
+                private DatePicker dataInicio2GerenciarPromocoes;
 
-        @FXML
-        private DatePicker dataFim2GerenciarPromocoes;
+                @FXML
+                private TextField desconto2GerenciarPromocoes;
 
-        @FXML
-        private DatePicker dataInicio1GerenciarPromocoes;
+                @FXML
+                private ImageView logoGerenciarPromocoes;
 
-        @FXML
-        private DatePicker dataInicio2GerenciarPromocoes;
+                @FXML
+                private TextField nomeGerenciarPromocoes;
 
-        @FXML
-        private TextField desconto1GerenciarPromocoes;
+                @FXML
+                void btnCriarPromocaoGerenciarPromocoes(ActionEvent event) throws IOException{
 
-        @FXML
-        private TextField desconto2GerenciarPromocoes;
+                }
 
-        @FXML
-        private TextField id1GerenciarPromocoes;
+                @FXML
+                void btnDeletarPromocaoGerenciarPromocoes(ActionEvent event) throws IOException{
 
-        @FXML
-        private TextField id2GerenciarPromocoes;
+                }
 
-        @FXML
-        private ImageView logoGerenciarPromocoes;
-
-        @FXML
-        private TextField nomeGerenciarPromocoes;
-
-        @FXML
-        void btnCriarPromocaoGerenciarPromocoes(ActionEvent event) throws IOException {
-
-        }
-
-        @FXML
-        void btnDeletarPromocaoGerenciarPromocoes(ActionEvent event) throws IOException{
-
-        }
-
-        @FXML
-        void btnSalvarAlteracoesGerenciarPromocoes(ActionEvent event) throws IOException{
-
-        }
-
-        @FXML
-        void btnVoltarGerenciarPromocoes(ActionEvent event) throws IOException{
+                @FXML
+                void btnVoltarGerenciarPromocoes(ActionEvent event) throws IOException{
 GerenciadorDeTelas.irParaTelaPrincipalADM(event);
+                }
+
         }
 
-    }
+
 

@@ -58,21 +58,6 @@ public class TelaCadastroClienteControlador {
         catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        /*String nomeCliente = nomeCadastro.getText();
-        String emailCliente = emailCadastro.getText();
-        String senhaCliente = senhaCadastro.getText();
-        LocalDate dataNascimento = dataNascimentoCadastro.getValue();
-        Pessoa Cliente = new Pessoa(nomeCliente, emailCliente, senhaCliente, dataNascimento, false);
-        RepositorioCliente.getInstance().inserirCliente(new Pessoa(nomeCliente, emailCliente, senhaCliente, dataNascimento, false));
-
-        RepositorioCliente repositorioCliente = (RepositorioCliente) RepositorioCliente.getInstance();
-        try {
-            repositorioCliente.inserirClienteBD(Cliente);
-            GerenciadorDeTelas.irParaTelaLoginCliente(event);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }*/
-    }
 
     @FXML
     public void btnCadastroClienteVoltar(ActionEvent event) throws IOException{

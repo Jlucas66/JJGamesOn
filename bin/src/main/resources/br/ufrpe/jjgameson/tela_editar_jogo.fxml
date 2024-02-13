@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.jjgameson.gui.TelaEditarJogoControlador">
+   <children>
+      <ImageView fx:id="logoEditarJogo" fitHeight="157.0" fitWidth="450.0" layoutX="225.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@imagens/JJ-GamesON.png" />
+         </image>
+      </ImageView>
+      <Text fill="RED" layoutX="330.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Editar jogo do catálogo" textAlignment="CENTER">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Text>
+      <TextField fx:id="idEditarJogo" layoutX="67.0" layoutY="220.0" prefHeight="30.0" prefWidth="200.0" promptText="ID do jogo" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="pathEditarJogo" layoutX="67.0" layoutY="300.0" prefHeight="30.0" prefWidth="200.0" promptText="Parh da capa do jogo" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <TextArea fx:id="resumoEditarJogo" layoutX="587.0" layoutY="219.0" prefHeight="272.0" prefWidth="274.0" promptText="Resumo do jogo" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000;" wrapText="true">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextArea>
+      <TextField fx:id="nomeEditarJogo" layoutX="67.0" layoutY="380.0" prefHeight="30.0" prefWidth="200.0" promptText="Nome do jogo" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="valorEditarJogo" layoutX="67.0" layoutY="460.0" prefHeight="30.0" prefWidth="200.0" promptText="Valor do jogo" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="devEditarJogo" layoutX="313.0" layoutY="260.0" prefHeight="30.0" prefWidth="200.0" promptText="Desenvolvedora do jogo" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="generoEditarJogo" layoutX="313.0" layoutY="340.0" prefHeight="30.0" prefWidth="200.0" promptText="Gênero do jogo" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="faixaEditarJogo" layoutX="313.0" layoutY="420.0" prefHeight="30.0" prefWidth="200.0" promptText="Faixa etária do jogo" style="-fx-background-color: #FAFAFA; -fx-border-color: #000000; -fx-border-width: 0px 0px 2px 0px;">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </TextField>
+      <Text layoutX="38.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID" />
+      <Text layoutX="32.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Path" />
+      <Text layoutX="27.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" />
+      <Text layoutX="30.0" layoutY="479.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Valor" />
+      <Text layoutX="286.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dev" />
+      <Text layoutX="270.0" layoutY="359.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gênero" />
+      <Text layoutX="283.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Faixa" />
+      <Text layoutX="531.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resumo" />
+      <Button fx:id="botaoEditar" layoutX="410.0" layoutY="520.0" mnemonicParsing="false" onAction="#btnEditarEditarJogo" prefHeight="31.0" prefWidth="81.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Editar" textAlignment="CENTER">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="botaoVoltar" layoutX="807.0" layoutY="520.0" mnemonicParsing="false" onAction="#btnVoltarEditarJogo" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Voltar">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <ChoiceBox fx:id="choiceBoxEditarJogo" layoutX="350.0" layoutY="171.0" prefHeight="25.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" />
+      <Text layoutX="350.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selecione um jogo" />
+   </children>
+</Pane>

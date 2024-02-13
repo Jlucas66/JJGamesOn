@@ -6,6 +6,7 @@ import br.ufrpe.jjgameson.exceptions.AcessoInvalidoException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 
@@ -26,7 +27,7 @@ public class TelaLoginADMControlador {
     private ImageView logoLoginADM;
 
     @FXML
-    private TextField senhaLoginADM;
+    private PasswordField senhaLoginADM;
 
     @FXML
     void btnLoginADMEntrarComoADM(ActionEvent event) throws IOException{

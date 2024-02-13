@@ -134,4 +134,94 @@ public class ControladorAdmin {
 
         repositorioAdmin.excluir(adminParaExcluir);
     }
+    // metodos BD
+    public void inserirPessoaAdminBD(Pessoa pessoa) throws AcessoInvalidoException, ElementoDuplicadoException, ElementoNuloException, ElementoInvalidoException, SenhaFracaException {
+        if (pessoa.getNome() == null) {
+            throw new ElementoNuloException("Nome não pode ser nulo.");
+        }
+        if(pessoa.getSenha() == null || pessoa.getSenha().isEmpty()){
+            throw new ElementoNuloException("Senha não pode ser nula ou vazia.");
+        }
+        if (!pessoa.isEhAdm()) {
+            throw new AcessoInvalidoException("Apenas administradores podem ser cadastrados.");
+        }
+        if (pessoa.getDataNascimento() == null) {
+            throw new ElementoNuloException("Data de nascimento não pode ser nula.");
+        }
+        if (pessoa.getEmail() == null) {
+            throw new ElementoNuloException("Email não pode ser nulo.");
+        }
+        if (!pessoa.getEmail().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+            throw new ElementoInvalidoException("Email inválido, o email deve ser no formato \"email@dominio\".");
+        }
+        if (!verificarSenhaForte(pessoa.getSenha())) {
+            throw new SenhaFracaException("Sua senha deve ter pelo menos 8 " +
+                    "caracteres, incluindo letras maiúsculas, minúsculas, números e caracteres especiais.");
+        }
+        // corrigir IRepositorioAdmin
+      //  if (repositorioAdmin.listarPessoaAdminsBD().contains(pessoa)) {
+      //      throw new ElementoDuplicadoException("Esse administrador ja foi cadastrado.");
+      //  }
+        repositorioAdmin.inserirPessoaAdminBD(pessoa);
+    }
+
+    public boolean verificarloginADMBD(String email, String senha) throws AcessoInvalidoException, ElementoNuloException {
+        if (email == null || senha == null) {
+            throw new ElementoNuloException("Email e senha não podem ser nulos.");
+        }
+        return repositorioAdmin.verificarloginADMBD(email, senha);
+    }
+
+    public void removerPessoaAdminBD(Pessoa pessoa) throws ElementoNaoEncontradoException, ElementoNuloException {
+        if (pessoa == null) {
+            throw new ElementoNuloException("Administrador não pode ser nulo.");
+        }
+        // corrigir IRepositorioAdmin
+       // if (repositorioAdmin.listarPessoaAdminsBD().contains(pessoa) == false) {
+       //     throw new ElementoNaoEncontradoException("Administrador não encontrado para exclusão.");
+       // }
+        repositorioAdmin.removerPessoaAdminBD(pessoa);
+    }
+// corrigir metodo no repositorio
+    /*
+    public void atualizarPessoaAdminBD(Pessoa pessoaAntiga, Pessoa pessoa) throws ElementoNaoEncontradoException, ElementoNuloException, AcessoInvalidoException, SenhaFracaException, ElementoDuplicadoException, ElementoInvalidoException{
+        if (pessoa == null) {
+            throw new ElementoNuloException("Administrador não pode ser nulo.");
+        }
+        if (pessoa.getNome() == null) {
+            throw new ElementoNuloException("Nome não pode ser nulo.");
+        }
+        if (pessoa.isEhAdm() == false) {
+            throw new AcessoInvalidoException("Apenas administradores podem ser cadastrados.");
+        }
+        if(pessoa.getSenha() == null || pessoa.getSenha().isEmpty()){
+            throw new ElementoNuloException("Senha não pode ser nula ou vazia.");
+        }
+        if (pessoa.getDataNascimento() == null) {
+            throw new ElementoNuloException("Data de nascimento não pode ser nula.");
+        }
+        if (pessoa.getEmail() == null) {
+            throw new ElementoNuloException("Email não pode ser nulo.");
+        }
+        if (!pessoa.getEmail().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
+            throw new ElementoInvalidoException("Email inválido, o email deve ser no formato \"email@dominio\".");
+        }
+        if (!verificarSenhaForte(pessoa.getSenha())) {
+            throw new SenhaFracaException("Sua senha deve ter pelo menos 8 " +
+                    "caracteres, incluindo letras maiúsculas, minúsculas, números e caracteres especiais.");
+        }
+        // corrigir IRepositorioAdmin
+         // if (repositorioAdmin.listarPessoaAdminsBD().contains(pessoaAntiga) == false) {
+            //     throw new ElementoNaoEncontradoException("Administrador não encontrado para atualização.");
+            // }
+       // if (repositorioAdmin.listarPessoaAdminsBD().contains(pessoa)) {
+       //     throw new ElementoDuplicadoException("Esse administrador ja foi cadastrado.");
+       // }
+        repositorioAdmin.atualizarPessoaAdminBD(pessoa);
+    }
+    // Corrigir IRepositorioAdmin / RepositorioAdmin
+   // public List<Pessoa> listarPessoaAdminsBD(){
+   //     return repositorioAdmin.listarPessoaAdminsBD();
+   // }
+   */
 }
