@@ -141,11 +141,11 @@ public class Fachada {
         return controladorJogo.listarJogosBD();
     }
 
-    public void obterJogoPorId(int id) throws ElementoInvalidoException, ElementoNaoEncontradoException {
+    public void obterJogoPorId(int id) throws ElementoInvalidoException {
         controladorJogo.obterJogoPorId(id);
     }
 
-    public Jogo obterJogoPorIdBD(int id) throws ElementoInvalidoException, ElementoNaoEncontradoException {
+    public Jogo obterJogoPorIdBD(int id) throws ElementoInvalidoException {
         return controladorJogo.obterJogoPorIdBD(id);
     }
 
