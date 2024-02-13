@@ -102,9 +102,9 @@ public class Fachada {
         controladorCliente.atualizarCliente(clienteAntigo, clienteNovo);
     }
 
-    public void atualizarClienteBD(String email) throws ElementoNuloException, ElementoInvalidoException, ElementoDuplicadoException, ElementoNaoEncontradoException, SenhaFracaException, AcessoInvalidoException {
-        controladorCliente.atualizarClienteBD(email);
-    }
+    /*public void atualizarClienteBD(Pessoa clienteAntigo, Pessoa clienteNovo) throws ElementoNuloException, ElementoInvalidoException, ElementoDuplicadoException, ElementoNaoEncontradoException, SenhaFracaException, AcessoInvalidoException {
+        controladorCliente.atualizarClienteBD(clienteAntigo, clienteNovo);
+    } */
 
     public void removerCliente(String email) throws ElementoNuloException, ElementoNaoEncontradoException {
         controladorCliente.removerCliente(email);
@@ -145,11 +145,11 @@ public class Fachada {
         return controladorJogo.listarJogosBD();
     }
 
-    public void obterJogoPorId(int id) throws ElementoInvalidoException {
+    public void obterJogoPorId(int id) throws ElementoInvalidoException, ElementoNaoEncontradoException {
         controladorJogo.obterJogoPorId(id);
     }
 
-    public Jogo obterJogoPorIdBD(int id) throws ElementoInvalidoException {
+    public Jogo obterJogoPorIdBD(int id) throws ElementoInvalidoException, ElementoNaoEncontradoException {
         return controladorJogo.obterJogoPorIdBD(id);
     }
 

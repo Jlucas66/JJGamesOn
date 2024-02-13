@@ -60,9 +60,12 @@ public class ControladorJogo {
         repositorioJogo.inserirJogo(jogo);
     }
 
-    public Jogo obterJogoPorId(int id) throws ElementoInvalidoException {
+    public Jogo obterJogoPorId(int id) throws ElementoInvalidoException, ElementoNaoEncontradoException {
         if(id <= 0){
             throw new ElementoInvalidoException("Id não pode ser menor ou igual a zero");
+        }
+        if (repositorioJogo.obterJogoPorId(id) == null){
+            throw new ElementoNaoEncontradoException("Jogo não encontrado");
         }
         return repositorioJogo.obterJogoPorId(id);
     }
@@ -177,9 +180,12 @@ public class ControladorJogo {
         repositorioJogo.inserirJogoBD(jogo);
     }
 
-    public Jogo obterJogoPorIdBD(int id) throws ElementoInvalidoException{
+    public Jogo obterJogoPorIdBD(int id) throws ElementoInvalidoException, ElementoNaoEncontradoException{
         if(id <= 0){
             throw new ElementoInvalidoException("Id não pode ser menor ou igual a zero");
+        }
+        if (repositorioJogo.obterJogoPorIdBD(id) == null){
+            throw new ElementoNaoEncontradoException("Jogo não encontrado");
         }
         return repositorioJogo.obterJogoPorIdBD(id);
     }
