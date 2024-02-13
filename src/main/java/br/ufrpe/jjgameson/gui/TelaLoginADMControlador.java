@@ -44,7 +44,7 @@ public class TelaLoginADMControlador {
 
     @FXML
     void btnLoginADMVoltar(ActionEvent event) throws IOException {
-GerenciadorDeTelas.irParaTelaLoginCliente(event);
+        GerenciadorDeTelas.irParaTelaLoginCliente(event);
     }
 
 }

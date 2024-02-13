@@ -23,6 +23,17 @@ public class Jogo {
         this.faixaEtaria = faixaEtaria;
     }
 
+    public Jogo(int idJogo, String url, String nomeJogo, double valor, String desenvolvedora, String genero, String resumo, String faixaEtaria) {
+        this.id = idJogo;
+        this.path = url;
+        this.nome = nomeJogo;
+        this.valor = valor;
+        this.desenvolvedora = desenvolvedora;
+        this.genero = genero;
+        this.resumo = resumo;
+        this.faixaEtaria = FaixaEtaria.valueOf(faixaEtaria);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

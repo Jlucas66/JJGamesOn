@@ -12,8 +12,12 @@ public interface IRepositorioCliente {
         void inserirCliente(Pessoa cliente);
         void inserirClienteBD(Pessoa cliente);
         Pessoa obterClientePorEmail(String email);
+        Pessoa obterClientePorEmailBD(String email);
         boolean VerificarUsuarioLoginBD(String email, String senha);
         void removerCliente(String email);
+        void removerClienteBD(String email);
         void atualizarCliente(Pessoa clienteAntigo, Pessoa clienteNovo);
+        void atualizarClienteBD(String email);
         List<Pessoa> listarClientes();
+        List<Pessoa> listarClientesBD();
 }

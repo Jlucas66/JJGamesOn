@@ -4,7 +4,6 @@ import br.ufrpe.jjgameson.dados.IRepositorioCliente;
 import br.ufrpe.jjgameson.dados.RepositorioCliente;
 import br.ufrpe.jjgameson.entidades.Pessoa;
 import br.ufrpe.jjgameson.exceptions.*;
-import br.ufrpe.jjgameson.gui.GerenciadorDeTelas;
 
 public class ControladorCliente {
 
@@ -137,142 +136,37 @@ public class ControladorCliente {
         repositorioCliente.listarClientes();
     }
 
-    // metodos BD
-    public void inserirClienteBD(Pessoa cliente) throws ElementoNuloException, AcessoInvalidoException, ElementoDuplicadoException, SenhaFracaException, ElementoInvalidoException {
-        if(cliente == null){
-            GerenciadorDeTelas.exibirAlertaMensagem("Erro", "Cliente não pode ser nulo");
-            throw new ElementoNuloException("Cliente não pode ser nulo");
-
-        }
-        if(cliente.isEhAdm()){
-            GerenciadorDeTelas.exibirAlertaMensagem("Erro", "Cliente não pode ser um administrador");
-            throw new AcessoInvalidoException("Cliente não pode ser um administrador");
-        }
-        if(repositorioCliente.obterClientePorEmail(cliente.getEmail()) != null){
-            GerenciadorDeTelas.exibirAlertaMensagem("Erro", "Já existe um cliente cadastrado com esse email");
-            throw new ElementoDuplicadoException("Já existe um cliente cadastrado com esse email");
-        }
-        if (cliente.getNome() == null || cliente.getNome().isEmpty()) {
-            GerenciadorDeTelas.exibirAlertaMensagem("Erro", "Nome não pode ser nulo ou vazio");
-            throw new ElementoNuloException("Nome não pode ser nulo ou vazio");
-        }
-
-        if (cliente.getDataNascimento() == null) {
-            GerenciadorDeTelas.exibirAlertaMensagem("Erro", "Data de nascimento não pode ser nula");
-            throw new ElementoNuloException("Data de nascimento não pode ser nula");
-        }
-
-        if(cliente.getSenha() == null){
-            GerenciadorDeTelas.exibirAlertaMensagem("Erro", "Senha não pode ser nula");
-            throw new ElementoNuloException("Senha não pode ser nula");
-        }
-
-        if(cliente.getSenha().isEmpty()){
-            GerenciadorDeTelas.exibirAlertaMensagem("Erro", "Senha não pode ser vazia");
-            throw new ElementoNuloException("Senha não pode ser vazia");
-        }
-
-        if(cliente.getEmail() == null){
-            GerenciadorDeTelas.exibirAlertaMensagem("Erro", "Email não pode ser nulo");
-            throw new ElementoNuloException("Email não pode ser nulo");
-        }
-
-        if(!cliente.getEmail().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")){
-            GerenciadorDeTelas.exibirAlertaMensagem("Erro", "Email inválido, o email deve ser no formato \"email@dominio\"");
-            throw new ElementoInvalidoException("Email inválido, o email deve ser no formato \"email@dominio\"");
-        }
-
-        if(!verificarSenhaForte(cliente.getSenha())){
-            GerenciadorDeTelas.exibirAlertaMensagem("Erro", "Sua senha deve ter pelo menos 8 " +
-                    "caracteres, incluindo letras maiúsculas, minúsculas, números e caracteres especiais");
-            throw new SenhaFracaException("Sua senha deve ter pelo menos 8 " +
-                    "caracteres, incluindo letras maiúsculas, minúsculas, números e caracteres especiais");
-        }
+    //Funcoes Com o BD
+    public void inserirClienteBD(Pessoa cliente){
         repositorioCliente.inserirClienteBD(cliente);
     }
 
-  /*  public Pessoa obterClientePorEmailBD(String email) throws ElementoNuloException, ElementoInvalidoException, ElementoNaoEncontradoException {
-        Pessoa resultado = null;
-        if(email == null){
-            throw new ElementoNuloException("Email não pode ser nulo");
-        }
-        if (!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
-            throw new ElementoInvalidoException("Email inválido, o email deve ser no formato \"email@dominio\"");
-        }
-        if (repositorioCliente.obterClientePorEmail(email) == null) {
-            throw new ElementoNaoEncontradoException("Não existe cliente cadastrado com esse email");
-        }
-        resultado = repositorioCliente.obterClientePorEmailBD(email);
-        return resultado;
-
+    public Pessoa obterClientePorEmailBD(String email){
+        return repositorioCliente.obterClientePorEmailBD(email);
     }
-      */
-  public boolean VerificarUsuarioLoginBD(String email, String senha) throws AcessoInvalidoException{
-     if (email == null || senha == null) {
-            throw new AcessoInvalidoException("Email e senha não podem ser nulos");
-        }
+
+    public boolean VerificarUsuarioLoginBD(String email, String senha){
         return repositorioCliente.VerificarUsuarioLoginBD(email, senha);
-  }
-  // corrigir IRepositorioCliente
-    /*
-    public void removerClienteBD(String email) throws ElementoNuloException, ElementoNaoEncontradoException {
-            if(email == null){
-                throw new ElementoNuloException("Email não pode ser nulo");
-            }
-            if(repositorioCliente.obterClientePorEmail(email) == null){
-                throw new ElementoNaoEncontradoException("Não existe cliente cadastrado com esse email");
-            }
-             repositorioCliente.removerClienteBD(email);
-        }
-            */
-
-    // corrigir RepositorioCliente
-    /*
-    public void atualizarClienteBD(Pessoa clienteAntigo, Pessoa clienteNovo) throws ElementoNuloException, AcessoInvalidoException, ElementoNaoEncontradoException, SenhaFracaException, ElementoInvalidoException, ElementoDuplicadoException {
-        if (clienteAntigo == null || clienteNovo == null) {
-            throw new ElementoNuloException("Cliente não pode ser nulo");
-        }
-        if (clienteNovo.isEhAdm()) {
-            throw new AcessoInvalidoException("Cliente não pode ser um administrador");
-        }
-        if (clienteNovo.getNome() == null || clienteNovo.getNome().isEmpty()) {
-            throw new ElementoNuloException("Nome não pode ser nulo ou vazio");
-        }
-        if (clienteNovo.getDataNascimento() == null) {
-            throw new ElementoNuloException("Data de nascimento não pode ser nula");
-        }
-        if (clienteNovo.getSenha() == null) {
-            throw new ElementoNuloException("Senha não pode ser nula");
-        }
-        if (clienteNovo.getSenha().isEmpty()) {
-            throw new ElementoNuloException("Senha não pode ser vazia");
-        }
-        if (!verificarSenhaForte(clienteNovo.getSenha())) {
-            throw new SenhaFracaException("Sua senha deve ter pelo menos 8 " +
-                    "caracteres, incluindo letras maiúsculas, minúsculas, números e caracteres especiais");
-        }
-        if (clienteNovo.getEmail() == null) {
-            throw new ElementoNuloException("Email não pode ser nulo");
-        }
-        if (repositorioCliente.obterClientePorEmailBD(clienteAntigo.getEmail()) == null) {
-            throw new ElementoNaoEncontradoException("Não existe cliente cadastrado com esse email");
-        }
-        if (repositorioCliente.obterClientePorEmailBD(clienteNovo.getEmail()) != null) {
-            throw new ElementoInvalidoException("Já existe um cliente cadastrado com esse email");
-        }
-        if (!clienteNovo.getEmail().matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) {
-            throw new ElementoInvalidoException("Email inválido, o email deve ser no formato \"email@dominio\"");
-        }
-        if (repositorioCliente.obterClientePorEmailBD(clienteAntigo.getEmail()) != null) {
-            throw new ElementoDuplicadoException("Já existe um cliente cadastrado com esse email");
-        }
-        repositorioCliente.atualizarClienteBD(clienteAntigo, clienteNovo);
     }
-    */
-    // corrigir IRepositorioCliente
-    /*
-    public void listarClientesBD() {
+
+    public void removerClienteBD(String email){
+        repositorioCliente.removerClienteBD(email);
+    }
+
+    public void atualizarClienteBD(String email){
+        repositorioCliente.atualizarClienteBD(email);
+    }
+
+    public void listarClientesBD(){
         repositorioCliente.listarClientesBD();
     }
-     */
 }
+
+
+
+
+
+
+
+
+

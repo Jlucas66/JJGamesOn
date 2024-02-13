@@ -4,7 +4,6 @@ import br.ufrpe.jjgameson.entidades.Pessoa;
 import br.ufrpe.jjgameson.exceptions.AcessoInvalidoException;
 import br.ufrpe.jjgameson.exceptions.DBException;
 import br.ufrpe.jjgameson.gui.GerenciadorDeTelas;
-import javafx.scene.control.Alert;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -165,7 +164,7 @@ public class RepositorioCliente implements IRepositorioCliente {
         }
     }
 
-    private void atualizarClienteBD(String email){
+    public void atualizarClienteBD(String email){
         Connection conn = null;
         Statement st = null;
         ResultSet rs = null;
@@ -190,7 +189,7 @@ public class RepositorioCliente implements IRepositorioCliente {
         return clientes;
     }
 
-    public void listarClientesBD() {
+    public List<Pessoa> listarClientesBD() {
         Connection conn = null;
         Statement st = null;
         ResultSet rs = null;
@@ -213,6 +212,7 @@ public class RepositorioCliente implements IRepositorioCliente {
             ConexaoBD.closeStatement(st);
             ConexaoBD.closeResultSet(rs);
         }
+        return null;
     }
 
 }

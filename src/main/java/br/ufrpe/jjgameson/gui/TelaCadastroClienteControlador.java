@@ -2,8 +2,7 @@ package br.ufrpe.jjgameson.gui;
 
 import br.ufrpe.jjgameson.dados.RepositorioCliente;
 import br.ufrpe.jjgameson.entidades.Pessoa;
-import br.ufrpe.jjgameson.exceptions.*;
-import br.ufrpe.jjgameson.negocio.ControladorCliente;
+import br.ufrpe.jjgameson.negocio.Fachada;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -47,20 +46,18 @@ public class TelaCadastroClienteControlador {
     private PasswordField senhaCadastro;
 
     @FXML
-    public void btnCadastroClienteRealizarCadastro(ActionEvent event) throws IOException, ElementoInvalidoException, ElementoNuloException, SenhaFracaException, ElementoDuplicadoException, AcessoInvalidoException {
-        String nomeCliente = nomeCadastro.getText();
-        String emailCliente = emailCadastro.getText();
-        String senhaCliente = senhaCadastro.getText();
-        LocalDate dataNascimento = dataNascimentoCadastro.getValue();
-        Pessoa Cliente = new Pessoa(nomeCliente, emailCliente, senhaCliente, dataNascimento, false);
+    public void btnCadastroClienteRealizarCadastro(ActionEvent event) throws IOException {
 
+        Pessoa Cliente = new Pessoa(nomeCadastro.getText(), emailCadastro.getText(), senhaCadastro.getText(), dataNascimentoCadastro.getValue(), false);
+
+        Fachada fachada = (Fachada) Fachada.getInstance();
         try {
-            ControladorCliente.getInstance().inserirClienteBD(Cliente);
+            fachada.inserirClienteBD(Cliente);
             GerenciadorDeTelas.irParaTelaLoginCliente(event);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             System.out.println(e.getMessage());
         }
-    }
 
     @FXML
     public void btnCadastroClienteVoltar(ActionEvent event) throws IOException{
