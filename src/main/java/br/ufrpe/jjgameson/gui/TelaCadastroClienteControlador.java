@@ -54,10 +54,10 @@ public class TelaCadastroClienteControlador {
         try {
             fachada.inserirClienteBD(Cliente);
             GerenciadorDeTelas.irParaTelaLoginCliente(event);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
 
     @FXML
     public void btnCadastroClienteVoltar(ActionEvent event) throws IOException{
