@@ -51,6 +51,10 @@ public class Fachada {
     public void atualizarAdmin(Pessoa adminAntigo, Pessoa adminNovo) throws ElementoNaoEncontradoException, ElementoNuloException, ElementoInvalidoException, SenhaFracaException, ElementoDuplicadoException, AcessoInvalidoException {
         controladorAdministrador.atualizar(adminAntigo, adminNovo);
     }
+
+    public boolean verificarloginADMBD(String email, String senha) throws AcessoInvalidoException, ElementoNuloException {
+        return controladorAdministrador.verificarloginADMBD(email, senha);
+    }
     //Avaliacoes
     public void inserirAvaliacao(Avaliacao avaliacao) throws ElementoNuloException, ElementoInvalidoException {
         controladorAvaliacao.inserirAvaliacao(avaliacao);

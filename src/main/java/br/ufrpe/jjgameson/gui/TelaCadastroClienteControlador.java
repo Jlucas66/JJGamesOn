@@ -50,9 +50,10 @@ public class TelaCadastroClienteControlador {
 
         Pessoa Cliente = new Pessoa(nomeCadastro.getText(), emailCadastro.getText(), senhaCadastro.getText(), dataNascimentoCadastro.getValue(), false);
 
-        Fachada fachada = (Fachada) Fachada.getInstance();
+        //Fachada fachada = (Fachada) Fachada.getInstance();
         try {
-            fachada.inserirClienteBD(Cliente);
+            //fachada.inserirClienteBD(Cliente);
+            Fachada.getInstance().inserirClienteBD(Cliente);
             GerenciadorDeTelas.irParaTelaLoginCliente(event);
         } catch (Exception e) {
             System.out.println(e.getMessage());

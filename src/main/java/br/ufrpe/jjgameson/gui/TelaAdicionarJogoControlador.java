@@ -16,6 +16,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
     import java.io.IOException;
+    import br.ufrpe.jjgameson.negocio.Fachada;
 
 
 public class TelaAdicionarJogoControlador {
@@ -63,10 +64,11 @@ public class TelaAdicionarJogoControlador {
 
         Jogo jogo = new Jogo(idJogo, pathJogo, nomeJogo, valorJogo, desenvolvedoraJogo, generoJogo, resumoJogo, FaixaEtaria.valueOf(faixaEtariaJogo));
 
-        ControladorJogo controladorJogo = (ControladorJogo) ControladorJogo.getInstance();
+        //ControladorJogo controladorJogo = (ControladorJogo) ControladorJogo.getInstance();
 
         try {
-            controladorJogo.inserirJogoBD(jogo);
+            //controladorJogo.inserirJogoBD(jogo);
+            Fachada.getInstance().inserirJogoBD(jogo);
             GerenciadorDeTelas.exibirAlertaMensagem("Jogo adicionado com sucesso!", "Jogo adicionado com sucesso!");
             GerenciadorDeTelas.irParaTelaPrincipalADM(event);
         } catch (DBException e) {
