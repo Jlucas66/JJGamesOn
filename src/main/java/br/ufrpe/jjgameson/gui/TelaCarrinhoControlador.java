@@ -71,6 +71,8 @@ public class TelaCarrinhoControlador implements Initializable {
 
         static Pessoa provisorio = new Pessoa("Josimar", "josimar@gmail.com", "123", LocalDate.now(), false);
         private static Venda venda = new Venda(provisorio, LocalDateTime.now());
+
+
         private static Double oValorTotal = 0.0;
 
         @FXML
