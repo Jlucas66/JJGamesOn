@@ -68,17 +68,12 @@ public class ItemVenda {
         return idItemVenda;
     }
 
-    public void setIdItemVenda(int idItemVenda) {
-        this.idItemVenda = idItemVenda;
-    }
-
     public int getQuantidade() {
         return quantidade;
     }
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
-        // Ao alterar a quantidade, regera os códigos
         this.codigos = gerarCodigos(quantidade);
     }
 
