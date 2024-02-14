@@ -16,7 +16,7 @@ public class Teste {
                 "Um jogo casual de construção", FaixaEtaria.LIVRE);
         Avaliacao avaliacao = new Avaliacao(cliente, jogo, 5, "Muito bom!", LocalDateTime.now());
         Venda venda = new Venda(cliente, LocalDateTime.now());
-        ItemVenda itemVenda = new ItemVenda(jogo, 2, 1);
+        ItemVenda itemVenda = new ItemVenda(jogo, 2);
         Fachada fachada = Fachada.getInstance();
         try {
             fachada.inserirAdmin(admin);

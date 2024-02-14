@@ -63,6 +63,7 @@ public class TelaJogoControlador {
 
         @FXML
         void btnAdicionarAoCarrinhoTelaJogo(ActionEvent event) throws IOException {
+                ItemVenda compra = new ItemVenda(jogoA, 1);
                 FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("tela_carrinho.fxml"));
                 loader.setControllerFactory(controllerClass -> {
                         if (controllerClass.equals(TelaCarrinhoControlador.class)) {
@@ -88,7 +89,7 @@ public class TelaJogoControlador {
 
         @FXML
         void btnVoltarTelaJogo(ActionEvent event) throws IOException{
-GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
+                GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
 
         }
 

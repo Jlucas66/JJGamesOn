@@ -5,15 +5,16 @@ import br.ufrpe.jjgameson.exceptions.DBException;
 import java.util.ArrayList;
 
 public class ItemVenda {
+    private static int contadorIds = 0; // Variável estática para controle do ID autoincrementável
     private Jogo jogo;
     private int idItemVenda;
     private int quantidade;
     private double valorTotal;
     private ArrayList<String> codigos;
 
-    public ItemVenda(Jogo jogo, int quantidade, int idItemVenda) {
+    public ItemVenda(Jogo jogo, int quantidade) {
         this.jogo = jogo;
-        this.idItemVenda = idItemVenda;
+        this.idItemVenda = ++contadorIds; // Incrementa o contador de IDs e atribui ao ID do item
         this.quantidade = quantidade;
         valorTotal = jogo.getValor() * quantidade;
         this.codigos = gerarCodigos(quantidade);
@@ -22,24 +23,24 @@ public class ItemVenda {
     private ArrayList<String> gerarCodigos(int quantidade) {
         ArrayList<String> codigos = new ArrayList<>();
 
-        for (int j = 0; j < quantidade; j++) {
-            String codigo = gerarCodigoUnico();
-
-            // Verifica se o código já existe no banco de dados
-            try {
-                while (ConexaoBD.verificarCodigoExistenteNoBanco(codigo)) {
-                    codigo = gerarCodigoUnico();
-                }
-            } catch (DBException e) {
-                // Registra a exceção para análise posterior, se necessário
-                e.printStackTrace();
-
-                // Ignora a exceção e gera uma nova chave
-                codigo = gerarCodigoUnico();
-            }
-
-            codigos.add(codigo);
-        }
+//        for (int j = 0; j < quantidade; j++) {
+//            String codigo = gerarCodigoUnico();
+//
+//            // Verifica se o código já existe no banco de dados
+//            try {
+//                while (ConexaoBD.verificarCodigoExistenteNoBanco(codigo)) {
+//                    codigo = gerarCodigoUnico();
+//                }
+//            } catch (DBException e) {
+//                // Registra a exceção para análise posterior, se necessário
+//                e.printStackTrace();
+//
+//                // Ignora a exceção e gera uma nova chave
+//                codigo = gerarCodigoUnico();
+//            }
+//
+//            codigos.add(codigo);
+//        }
         return codigos;
     }
 

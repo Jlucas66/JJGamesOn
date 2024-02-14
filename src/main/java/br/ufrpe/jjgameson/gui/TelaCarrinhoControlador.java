@@ -121,7 +121,7 @@ public class TelaCarrinhoControlador implements Initializable {
                 jogoNoCarrinho.add(jogo);
                 Random rand = new Random();
                 int id = rand.nextInt(101); // TEMPORÁRIO!!! Gerando ID aleatório entre 0 e 100
-                ItemVenda itemVenda = new ItemVenda(jogo, 1, id);
+                ItemVenda itemVenda = new ItemVenda(jogo, 1);
                 itemNoCarrinho.add(itemVenda);
         }
 
