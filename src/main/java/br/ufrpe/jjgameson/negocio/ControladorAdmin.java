@@ -62,6 +62,16 @@ public class ControladorAdmin {
         repositorioAdmin.inserir(admin);
     }
 
+    public Pessoa obterAdminPorEmail(String email) throws ElementoNaoEncontradoException, ElementoNuloException {
+        if (email == null) {
+            throw new ElementoNuloException("Email não pode ser nulo.");
+        }
+        if (repositorioAdmin.obterAdminPorEmail(email) == null) {
+            throw new ElementoNaoEncontradoException("Administrador não encontrado.");
+        }
+        return repositorioAdmin.obterAdminPorEmail(email);
+    }
+
     public void listar(){
         repositorioAdmin.listar();
     }
