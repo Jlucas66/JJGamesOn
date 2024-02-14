@@ -29,22 +29,6 @@ public class RepositorioVenda implements IRepositorioVenda{
             vendas.add(venda);
         }
     }
-
-    @Override
-    public void inserirBD(Venda venda) {
-        Connection conn = null;
-        Statement st = null;
-        ResultSet rs = null;
-
-        try {
-            conn = ConexaoBD.getConnection();
-            st = conn.createStatement();
-            st.executeUpdate("INSERT INTO Venda (dtVenda, emailCliente, itens) VALUES ('" + venda.getData() + "', '" + venda.getCliente().getEmail() + "', '" + venda.getItensVenda().toString() + "')");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     @Override
     public List<Venda> listar() {
         return vendas;

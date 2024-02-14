@@ -7,12 +7,9 @@ import java.util.List;
 
 public interface IRepositorioAdmin {
     public void inserir (Pessoa admin);
-    void inserirPessoaAdminBD(Pessoa pessoa);
     Pessoa obterAdminPorEmail(String email);
     public List<Pessoa> listar();
-    public boolean verificarloginADMBD(String email, String senha) throws AcessoInvalidoException;
     public void atualizar (Pessoa adminAntigo, Pessoa adminNovo);
     public void excluir(Pessoa adminParaExcluir);
-    void atualizarPessoaAdminBD(Pessoa pessoa);
-    void removerPessoaAdminBD(Pessoa pessoa);
+
 }
