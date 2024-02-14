@@ -11,7 +11,8 @@ package br.ufrpe.jjgameson.gui;
     import br.ufrpe.jjgameson.negocio.ControladorJogo;
     import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+    import javafx.scene.control.Alert;
+    import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -64,16 +65,17 @@ public class TelaAdicionarJogoControlador {
 
         Jogo jogo = new Jogo(idJogo, pathJogo, nomeJogo, valorJogo, desenvolvedoraJogo, generoJogo, resumoJogo, FaixaEtaria.valueOf(faixaEtariaJogo));
 
-        //ControladorJogo controladorJogo = (ControladorJogo) ControladorJogo.getInstance();
-
         try {
-            //controladorJogo.inserirJogoBD(jogo);
-            Fachada.getInstance().inserirJogoBD(jogo);
+            Fachada.getInstance().inserirJogo(jogo);
             GerenciadorDeTelas.exibirAlertaMensagem("Jogo adicionado com sucesso!", "Jogo adicionado com sucesso!");
             GerenciadorDeTelas.irParaTelaPrincipalADM(event);
-        } catch (DBException e) {
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro");
+            alert.setHeaderText("Erro ao adicionar jogo");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
             e.printStackTrace();
-
         }
         }
 
