@@ -52,9 +52,6 @@ public class Fachada {
         controladorAdministrador.atualizar(adminAntigo, adminNovo);
     }
 
-    public boolean verificarloginADMBD(String email, String senha) throws AcessoInvalidoException, ElementoNuloException {
-        return controladorAdministrador.verificarloginADMBD(email, senha);
-    }
     //Avaliacoes
     public void inserirAvaliacao(Avaliacao avaliacao) throws ElementoNuloException, ElementoInvalidoException {
         controladorAvaliacao.inserirAvaliacao(avaliacao);
@@ -76,47 +73,20 @@ public class Fachada {
     public void inserirCliente(Pessoa cliente) throws ElementoNuloException, ElementoInvalidoException, ElementoDuplicadoException, SenhaFracaException, AcessoInvalidoException {
         controladorCliente.inserirCliente(cliente);
     }
-
-    public void inserirClienteBD(Pessoa cliente) throws ElementoNuloException, ElementoInvalidoException, ElementoDuplicadoException, SenhaFracaException, AcessoInvalidoException {
-        controladorCliente.inserirClienteBD(cliente);
-    }
-
     public void listarClientes(){
         controladorCliente.listarClientes();
-    }
-
-    public void listarClientesBD(){
-        controladorCliente.listarClientesBD();
     }
 
     public void obterClientePorEmail(String email) throws ElementoNuloException, ElementoInvalidoException, ElementoNaoEncontradoException {
         controladorCliente.obterClientePorEmail(email);
     }
 
-    public Pessoa obterClientePorEmailBD(String email) throws ElementoNuloException, ElementoInvalidoException, ElementoNaoEncontradoException {
-        return controladorCliente.obterClientePorEmailBD(email);
-
-    }
-
     public void atualizarCliente(Pessoa clienteAntigo, Pessoa clienteNovo) throws ElementoNuloException, ElementoInvalidoException, ElementoDuplicadoException, ElementoNaoEncontradoException, SenhaFracaException, AcessoInvalidoException {
         controladorCliente.atualizarCliente(clienteAntigo, clienteNovo);
     }
 
-    /*public void atualizarClienteBD(Pessoa clienteAntigo, Pessoa clienteNovo) throws ElementoNuloException, ElementoInvalidoException, ElementoDuplicadoException, ElementoNaoEncontradoException, SenhaFracaException, AcessoInvalidoException {
-        controladorCliente.atualizarClienteBD(clienteAntigo, clienteNovo);
-    } */
-
     public void removerCliente(String email) throws ElementoNuloException, ElementoNaoEncontradoException {
         controladorCliente.removerCliente(email);
-    }
-
-    public void removerClienteBD(String email) throws ElementoNuloException, ElementoNaoEncontradoException {
-        controladorCliente.removerClienteBD(email);
-    }
-    public boolean VerificarUsuarioLoginBD(String email, String senha) throws ElementoNuloException, ElementoInvalidoException, AcessoInvalidoException {
-        boolean result = controladorCliente.VerificarUsuarioLoginBD(email, senha);
-        return result;
-
     }
 
     //Codigo
@@ -133,40 +103,20 @@ public class Fachada {
         controladorJogo.inserirJogo(jogo);
     }
 
-    public void inserirJogoBD(Jogo jogo) throws ElementoNuloException, ElementoInvalidoException, ElementoDuplicadoException {
-        controladorJogo.inserirJogoBD(jogo);
-    }
-
     public void listarJogos(){
         controladorJogo.listarJogos();
-    }
-
-    public List<Jogo> listarJogosBD(){
-        return controladorJogo.listarJogosBD();
     }
 
     public void obterJogoPorId(int id) throws ElementoInvalidoException, ElementoNaoEncontradoException {
         controladorJogo.obterJogoPorId(id);
     }
 
-    public Jogo obterJogoPorIdBD(int id) throws ElementoInvalidoException, ElementoNaoEncontradoException {
-        return controladorJogo.obterJogoPorIdBD(id);
-    }
-
     public void removerJogo(Jogo jogoParaExcluir) throws ElementoNuloException, ElementoNaoEncontradoException {
         controladorJogo.removerJogo(jogoParaExcluir);
     }
 
-    public void removerJogoBD(int id) throws ElementoNuloException, ElementoNaoEncontradoException {
-        controladorJogo.removerJogoBD(id);
-    }
-
     public void atualizarJogo(Jogo jogoAntigo, Jogo jogoNovo) throws ElementoNuloException, ElementoNaoEncontradoException, ElementoDuplicadoException, ElementoInvalidoException {
         controladorJogo.atualizarJogo(jogoAntigo, jogoNovo);
-    }
-
-    public void atualizarJogoBD(Jogo jogoAntigo, Jogo jogoNovo) throws ElementoNuloException, ElementoNaoEncontradoException, ElementoDuplicadoException, ElementoInvalidoException {
-        controladorJogo.atualizarJogoBD(jogoAntigo, jogoNovo);
     }
 
     //Promocoes

@@ -1,6 +1,5 @@
 package br.ufrpe.jjgameson.entidades;
 
-import br.ufrpe.jjgameson.dados.ConexaoBD;
 import br.ufrpe.jjgameson.exceptions.DBException;
 
 import java.util.ArrayList;
