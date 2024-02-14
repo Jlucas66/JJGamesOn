@@ -107,8 +107,8 @@ public class Fachada {
         controladorJogo.inserirJogo(jogo);
     }
 
-    public void listarJogos(){
-        controladorJogo.listarJogos();
+    public List<Jogo> listarJogos(){
+        return controladorJogo.listarJogos();
     }
 
     public void obterJogoPorId(int id) throws ElementoInvalidoException, ElementoNaoEncontradoException {

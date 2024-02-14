@@ -140,8 +140,8 @@ public class ControladorJogo {
         repositorioJogo.atualizarJogo(jogoAntigo, jogoNovo);
     }
 
-    public void listarJogos(){
-        repositorioJogo.listarJogos();
+    public List<Jogo> listarJogos(){
+        return repositorioJogo.listarJogos();
     }
 }
 

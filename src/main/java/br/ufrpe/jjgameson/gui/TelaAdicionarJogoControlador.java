@@ -69,7 +69,7 @@ public class TelaAdicionarJogoControlador {
             Fachada.getInstance().inserirJogo(jogo);
             GerenciadorDeTelas.exibirAlertaMensagem("Jogo adicionado com sucesso!", "Jogo adicionado com sucesso!");
             GerenciadorDeTelas.irParaTelaPrincipalADM(event);
-        } catch (Exception e) {
+        } catch (ElementoNuloException | ElementoDuplicadoException | ElementoInvalidoException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erro");
             alert.setHeaderText("Erro ao adicionar jogo");
