@@ -20,6 +20,11 @@ public class ItemVenda {
     }
 
     private ArrayList<String> gerarCodigos(int quantidade) {
+        //so pra tirar o erro
+        return new ArrayList<>();
+    }
+
+    /*private ArrayList<String> gerarCodigos(int quantidade) {
         ArrayList<String> codigos = new ArrayList<>();
 
         for (int j = 0; j < quantidade; j++) {
@@ -41,7 +46,7 @@ public class ItemVenda {
             codigos.add(codigo);
         }
         return codigos;
-    }
+    }*/
 
     private String gerarCodigoUnico() {
         String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

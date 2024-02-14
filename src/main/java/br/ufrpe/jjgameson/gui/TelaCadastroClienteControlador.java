@@ -48,16 +48,6 @@ public class TelaCadastroClienteControlador {
     @FXML
     public void btnCadastroClienteRealizarCadastro(ActionEvent event) throws IOException {
 
-        Pessoa Cliente = new Pessoa(nomeCadastro.getText(), emailCadastro.getText(), senhaCadastro.getText(), dataNascimentoCadastro.getValue(), false);
-
-        //Fachada fachada = (Fachada) Fachada.getInstance();
-        try {
-            //fachada.inserirClienteBD(Cliente);
-            Fachada.getInstance().inserirClienteBD(Cliente);
-            GerenciadorDeTelas.irParaTelaLoginCliente(event);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
     }
 
     @FXML

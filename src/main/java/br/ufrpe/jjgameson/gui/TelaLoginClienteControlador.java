@@ -56,26 +56,6 @@ public class TelaLoginClienteControlador {
 
     @FXML
     void btnLoginClienteEntrar(ActionEvent event) throws IOException{
-
-       // Fachada fachada = (Fachada) Fachada.getInstance();
-        try{
-           /* if(fachada.VerificarUsuarioLoginBD(emailLogin.getText(), senhaLogin.getText())) {
-                Pessoa Cliente = fachada.obterClientePorEmailBD(emailLogin.getText());
-                fachada.inserirCliente(Cliente);
-                System.out.println(Cliente.toString());
-                GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
-            } */
-
-            if(Fachada.getInstance().VerificarUsuarioLoginBD(emailLogin.getText(), senhaLogin.getText())) {
-                Pessoa Cliente = Fachada.getInstance().obterClientePorEmailBD(emailLogin.getText());
-                Fachada.getInstance().inserirCliente(Cliente);
-                System.out.println(Cliente.toString());
-                GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-
-        }
     }
 
     @FXML

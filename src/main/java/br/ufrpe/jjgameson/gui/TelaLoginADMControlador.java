@@ -32,18 +32,7 @@ public class TelaLoginADMControlador {
 
     @FXML
     void btnLoginADMEntrarComoADM(ActionEvent event) throws IOException{
-        //RepositorioAdmin repositorioAdmin = (RepositorioAdmin) RepositorioAdmin.getInstance();
-        try{
-           /* if (repositorioAdmin.verificarloginADMBD(emailLoginADM.getText(), senhaLoginADM.getText())){
-                GerenciadorDeTelas.irParaTelaPrincipalADM(event);
-            } */
-            if(Fachada.getInstance().verificarloginADMBD(emailLoginADM.getText(), senhaLoginADM.getText())){
-                GerenciadorDeTelas.irParaTelaPrincipalADM(event);
-            }
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     @FXML

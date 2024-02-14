@@ -53,30 +53,8 @@ public class TelaAdicionarJogoControlador {
 
         @FXML
         void btnAdicionarAdicionarJogo(ActionEvent event) throws IOException, ElementoInvalidoException, ElementoNuloException, ElementoDuplicadoException {
-        String nomeJogo = nomeAdicionarJogo.getText();
-        int idJogo = 0;
-        double valorJogo = Double.parseDouble(valorAdicionarJogo.getText());
-        String desenvolvedoraJogo = devAdicionarJogo.getText();
-        String generoJogo = generoAdicionarJogo.getText();
-        String faixaEtariaJogo = faixaAdicionarJogo.getText();
-        String resumoJogo = resumoAdicionarJogo.getText();
-        String pathJogo = pathAdicionarJogo.getText();
-
-        Jogo jogo = new Jogo(idJogo, pathJogo, nomeJogo, valorJogo, desenvolvedoraJogo, generoJogo, resumoJogo, FaixaEtaria.valueOf(faixaEtariaJogo));
-
-        //ControladorJogo controladorJogo = (ControladorJogo) ControladorJogo.getInstance();
-
-        try {
-            //controladorJogo.inserirJogoBD(jogo);
-            Fachada.getInstance().inserirJogoBD(jogo);
-            GerenciadorDeTelas.exibirAlertaMensagem("Jogo adicionado com sucesso!", "Jogo adicionado com sucesso!");
-            GerenciadorDeTelas.irParaTelaPrincipalADM(event);
-        } catch (DBException e) {
-            e.printStackTrace();
 
         }
-        }
-
         @FXML
         void btnVoltarAdicionarJogo(ActionEvent event) throws IOException {
                 GerenciadorDeTelas.irParaTelaPrincipalADM(event);
