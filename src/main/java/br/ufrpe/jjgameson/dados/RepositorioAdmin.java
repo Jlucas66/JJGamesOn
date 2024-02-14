@@ -32,6 +32,9 @@ public class RepositorioAdmin implements IRepositorioAdmin {
     }
     @Override
     public Pessoa obterAdminPorEmail(String email) {
+        for (Pessoa admin : admins) {
+            if (admin.getEmail().equals(email)) return admin;
+        }
         return null;
     }
     @Override
