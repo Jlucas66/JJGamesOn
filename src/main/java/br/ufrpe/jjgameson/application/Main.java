@@ -33,11 +33,11 @@ public class Main {
         Jogo jogo2 = new Jogo(2,"@imagens/gtaV.jpg","GTA V",69.90,"Rockstar Games","Ação","Um jogo de ação", FaixaEtaria.DEZESSEIS);
         // Gerando itemVenda
 
-        ItemVenda itemVenda1 = new ItemVenda(jogo1,2,1);
+        ItemVenda itemVenda1 = new ItemVenda(jogo1,2);
         for (String codigo: itemVenda1.getCodigos()) {
             repositorioCodigo.inserir(codigo);
         }
-        ItemVenda itemVenda2 = new ItemVenda(jogo2, 1, 2);
+        ItemVenda itemVenda2 = new ItemVenda(jogo2, 1);
         for (String codigo : itemVenda2.getCodigos()) {
             repositorioCodigo.inserir(codigo);
         }

@@ -3,6 +3,8 @@ package br.ufrpe.jjgameson.gui;
 import br.ufrpe.jjgameson.HelloApplication;
 import br.ufrpe.jjgameson.entidades.ItemVenda;
 import br.ufrpe.jjgameson.entidades.Jogo;
+import br.ufrpe.jjgameson.entidades.Pessoa;
+import br.ufrpe.jjgameson.entidades.Venda;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +22,8 @@ import javafx.scene.layout.VBox;
 import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -57,6 +61,16 @@ public class TelaCarrinhoControlador implements Initializable {
         }
         private static List<Jogo> jogoNoCarrinho = new ArrayList<>();
         private static List<ItemVenda> itemNoCarrinho = new ArrayList<>();
+        
+        /*
+                ***********************************************************
+                *   ATENÇÃO PARA ARRUMAR ISSO AQUI, É APENAS PROVISÓRIO   *
+                ***********************************************************
+
+        */
+
+        static Pessoa provisorio = new Pessoa("Josimar", "josimar@gmail.com", "123", LocalDate.now(), false);
+        private static Venda venda = new Venda(provisorio, LocalDateTime.now());
         private static Double oValorTotal = 0.0;
 
         @FXML
@@ -85,6 +99,7 @@ public class TelaCarrinhoControlador implements Initializable {
 
         @FXML
         void btnFinalizarComprarTelaCarrinho(ActionEvent event) throws IOException {
+
                 GerenciadorDeTelas.irParaTelaCompraFinalizada(event);
         }
 
@@ -117,17 +132,16 @@ public class TelaCarrinhoControlador implements Initializable {
                 stage.show();
         }
 
-        public void guardarJogo(Jogo jogo) {
-                jogoNoCarrinho.add(jogo);
-                Random rand = new Random();
-                int id = rand.nextInt(101); // TEMPORÁRIO!!! Gerando ID aleatório entre 0 e 100
-                ItemVenda itemVenda = new ItemVenda(jogo, 1, id);
-                itemNoCarrinho.add(itemVenda);
+        public void guardarCompra(ItemVenda compra) {
+                jogoNoCarrinho.add(compra.getJogo());
+                itemNoCarrinho.add(compra);
+                venda.adicionarItemVenda(compra);
         }
 
         public void removerDoCarrinho(Jogo jogo, ItemVenda itemVenda) {
                 jogoNoCarrinho.remove(jogo);
                 itemNoCarrinho.remove(itemVenda);
+                venda.removerItemVenda(itemVenda);
         }
 
 }

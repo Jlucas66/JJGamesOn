@@ -11,7 +11,8 @@ package br.ufrpe.jjgameson.gui;
     import br.ufrpe.jjgameson.negocio.ControladorJogo;
     import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+    import javafx.scene.control.Alert;
+    import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -53,7 +54,29 @@ public class TelaAdicionarJogoControlador {
 
         @FXML
         void btnAdicionarAdicionarJogo(ActionEvent event) throws IOException, ElementoInvalidoException, ElementoNuloException, ElementoDuplicadoException {
+          
+        String nomeJogo = nomeAdicionarJogo.getText();
+        int idJogo = 0;
+        double valorJogo = Double.parseDouble(valorAdicionarJogo.getText());
+        String desenvolvedoraJogo = devAdicionarJogo.getText();
+        String generoJogo = generoAdicionarJogo.getText();
+        String faixaEtariaJogo = faixaAdicionarJogo.getText();
+        String resumoJogo = resumoAdicionarJogo.getText();
+        String pathJogo = pathAdicionarJogo.getText();
 
+        Jogo jogo = new Jogo(idJogo, pathJogo, nomeJogo, valorJogo, desenvolvedoraJogo, generoJogo, resumoJogo, FaixaEtaria.valueOf(faixaEtariaJogo));
+
+        try {
+            Fachada.getInstance().inserirJogo(jogo);
+            GerenciadorDeTelas.exibirAlertaMensagem("Jogo adicionado com sucesso!", "Jogo adicionado com sucesso!");
+            GerenciadorDeTelas.irParaTelaPrincipalADM(event);
+        } catch (ElementoNuloException | ElementoDuplicadoException | ElementoInvalidoException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro");
+            alert.setHeaderText("Erro ao adicionar jogo");
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+            e.printStackTrace();
         }
         @FXML
         void btnVoltarAdicionarJogo(ActionEvent event) throws IOException {

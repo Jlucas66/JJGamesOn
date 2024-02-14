@@ -40,6 +40,10 @@ public class Fachada {
         controladorAdministrador.inserir(admin);
     }
 
+    public void obterAdminPorEmail(String email) throws ElementoNuloException, ElementoNaoEncontradoException {
+        controladorAdministrador.obterAdminPorEmail(email);
+    }
+
     public void listarAdmins(){
         controladorAdministrador.listar();
     }
@@ -103,8 +107,8 @@ public class Fachada {
         controladorJogo.inserirJogo(jogo);
     }
 
-    public void listarJogos(){
-        controladorJogo.listarJogos();
+    public List<Jogo> listarJogos(){
+        return controladorJogo.listarJogos();
     }
 
     public void obterJogoPorId(int id) throws ElementoInvalidoException, ElementoNaoEncontradoException {
