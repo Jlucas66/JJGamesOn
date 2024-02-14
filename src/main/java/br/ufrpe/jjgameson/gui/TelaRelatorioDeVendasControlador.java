@@ -1,6 +1,7 @@
 package br.ufrpe.jjgameson.gui;
 
 
+import br.ufrpe.jjgameson.negocio.Fachada;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -19,6 +20,16 @@ public class TelaRelatorioDeVendasControlador {
 
         @FXML
         private TextArea textAreaRelatorioDeVendas;
+
+        @FXML
+        void initialize() {
+                preencherRelatorioDeVendas();
+        }
+
+        private void preencherRelatorioDeVendas() {
+                String relatorio = Fachada.getInstance().obterRelatorioVendas();
+                textAreaRelatorioDeVendas.setText(relatorio);
+        }
 
         @FXML
         void btnVoltarRelatorioDeVendas(ActionEvent event) throws IOException {

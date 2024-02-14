@@ -109,7 +109,8 @@ public class Main {
         //listando venda
         List<Venda> vendas = repositorioVenda.listar();
         System.out.println("\nVendas:");
-        for (Venda venda : vendas) {
+        System.out.println(repositorioVenda.listar());
+       /* for (Venda venda : vendas) {
             System.out.println("Cliente: " + venda1.getCliente().getNome() + ", Data: " + venda1.getData()  + ", Valor: " + venda1.calcularTotal());
             List<ItemVenda> itensVenda = venda.getItensVenda();
             System.out.println("Itens da Venda:");
@@ -141,6 +142,6 @@ public class Main {
             }
         }
 
-
+*/
     }
 }

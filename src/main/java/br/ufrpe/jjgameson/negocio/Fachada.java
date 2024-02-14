@@ -141,12 +141,23 @@ public class Fachada {
     }
 
     //Vendas
+    public String obterRelatorioVendas() {
+        StringBuilder relatorio = new StringBuilder();
+        List<Venda> vendas = controladorVenda.listarVendas();
+
+        for (Venda venda : vendas) {
+            relatorio.append("Venda ").append(vendas.indexOf(venda)).append(":\n");
+            relatorio.append(venda.toString());
+        }
+
+        return relatorio.toString();
+    }
     public void inserirVenda(Venda venda) throws ElementoNuloException, ElementoInvalidoException, ElementoDuplicadoException {
         controladorVenda.inserirVenda(venda);
     }
 
-    public void listarVendas(){
-        controladorVenda.listarVendas();
+    public List<Venda> listarVendas(){
+        return controladorVenda.listarVendas();
     }
 
     public void atualizarVenda(Venda vendaAntiga, Venda vendaNova) throws ElementoNuloException, ElementoInvalidoException, ElementoDuplicadoException, ElementoNaoEncontradoException {

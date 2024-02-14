@@ -54,8 +54,8 @@ public class ControladorVenda {
         repositorioVenda.inserir(venda);
     }
 
-    public void listarVendas(){
-        repositorioVenda.listar();
+    public List<Venda> listarVendas(){
+        return repositorioVenda.listar();
     }
 
     public void atualizarVenda(Venda vendaAntiga, Venda vendaNova) throws ElementoNuloException,

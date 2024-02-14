@@ -1,6 +1,7 @@
 package br.ufrpe.jjgameson.entidades;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Venda {
@@ -45,5 +46,38 @@ public class Venda {
 
     public ArrayList<ItemVenda> getItensVenda() {
         return itensVenda;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder result = new StringBuilder();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        String dataFormatada = formatter.format(data);
+
+        result.append("Venda{\n")
+                .append("   Data da venda: ").append(dataFormatada).append("\n")
+                .append("   Cliente: ").append(cliente.getNome()).append(" | Idade: ").append(cliente.calcularIdade()).append("\n")
+                .append("   Total: ").append(calcularTotal()).append("\n")
+                .append("   Itens:\n");
+
+        result.append(String.format("%-20s | %-10s | %-10s | %-10s\n", "Nome do produto", "Preço", "Quantidade", "Total"));
+        for (int i = 0; i < 61; i++) result.append("-");
+        result.append("\n");
+
+        for (ItemVenda item : itensVenda) {
+            result.append(String.format("%-20s | $%-9.2f | %-9d | $%-9.2f\n",
+                    item.getJogo().getNome(),
+                    item.getJogo().getValor(),
+                    item.getQuantidade(),
+                    item.getValorTotal()));
+        }
+
+        for (int i = 0; i < 61; i++) result.append("-");
+        result.append("\n");
+
+        result.append(String.format("%-48s $%-9.2f\n", "Total da venda:", calcularTotal()));
+        result.append("}");
+
+        return result.toString();
     }
 }

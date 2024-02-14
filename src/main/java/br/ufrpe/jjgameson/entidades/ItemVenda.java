@@ -82,6 +82,17 @@ public class ItemVenda {
         this.codigos = gerarCodigos(quantidade);
     }
 
+    @Override
+    public String toString() {
+        return "ItemVenda{" +
+                "jogo=" + jogo +
+                ", idItemVenda=" + idItemVenda +
+                ", quantidade=" + quantidade +
+                ", valorTotal=" + valorTotal +
+                ", codigos=" + codigos +
+                '}';
+    }
+
     public double getValorTotal() {
         return valorTotal;
     }
