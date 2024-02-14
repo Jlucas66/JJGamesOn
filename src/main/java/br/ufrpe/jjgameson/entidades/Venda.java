@@ -48,6 +48,19 @@ public class Venda {
         return itensVenda;
     }
 
+    public String listarCodigosVenda() {
+        StringBuilder codigos = new StringBuilder();
+        codigos.append("Itens da Venda:\n");
+        for (ItemVenda itemVenda : itensVenda) {
+            codigos.append("Jogo: ").append(itemVenda.getJogo().getNome()).append(", Quantidade: ").append(itemVenda.getQuantidade()).append("\n");
+            codigos.append("Códigos:\n");
+            for (String codigo : itemVenda.getCodigos()) {
+                codigos.append("    Código: ").append(codigo).append("\n");
+            }
+        }
+        return codigos.toString();
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();
