@@ -54,6 +54,7 @@ public class TelaAdicionarJogoControlador {
 
         @FXML
         void btnAdicionarAdicionarJogo(ActionEvent event) throws IOException, ElementoInvalidoException, ElementoNuloException, ElementoDuplicadoException {
+          
         String nomeJogo = nomeAdicionarJogo.getText();
         int idJogo = 0;
         double valorJogo = Double.parseDouble(valorAdicionarJogo.getText());
@@ -77,8 +78,6 @@ public class TelaAdicionarJogoControlador {
             alert.showAndWait();
             e.printStackTrace();
         }
-        }
-
         @FXML
         void btnVoltarAdicionarJogo(ActionEvent event) throws IOException {
                 GerenciadorDeTelas.irParaTelaPrincipalADM(event);
