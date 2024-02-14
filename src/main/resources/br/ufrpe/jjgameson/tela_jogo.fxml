@@ -2,13 +2,13 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.jjgameson.gui.TelaJogoControlador">
    <children>
@@ -57,12 +57,12 @@
             <Font size="26.0" />
          </font>
       </Label>
-      <Button fx:id="botaoAdicionarAoCarrinho" layoutX="372.0" layoutY="323.0" mnemonicParsing="false" onAction="#btnAdicionarAoCarrinhoTelaJogo" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Adicionar ao carrinho">
+      <Button fx:id="botaoAdicionarAoCarrinho" layoutX="372.0" layoutY="353.0" mnemonicParsing="false" onAction="#btnAdicionarAoCarrinhoTelaJogo" prefWidth="218.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Adicionar ao carrinho">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="botaoAvaliar" layoutX="373.0" layoutY="376.0" mnemonicParsing="false" onAction="#btnAvaliarTelaJogo" prefHeight="43.0" prefWidth="216.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Avaliar">
+      <Button fx:id="botaoAvaliar" layoutX="372.0" layoutY="406.0" mnemonicParsing="false" onAction="#btnAvaliarTelaJogo" prefHeight="43.0" prefWidth="218.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Avaliar">
          <font>
             <Font size="20.0" />
          </font>
@@ -94,5 +94,7 @@
          </font>
       </Text>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Spinner fx:id="quantidadeJogo" layoutX="373.0" layoutY="319.0" prefHeight="19.0" prefWidth="80.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000; -fx-border-width: 1px 1px 1.2px 1px;" />
+      <Text layoutX="373.0" layoutY="315.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantidade" />
    </children>
 </Pane>

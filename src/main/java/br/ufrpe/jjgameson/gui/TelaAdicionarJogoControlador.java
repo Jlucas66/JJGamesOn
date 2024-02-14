@@ -22,39 +22,39 @@ import javafx.scene.image.ImageView;
 
 public class TelaAdicionarJogoControlador {
 
-        @FXML
-        private Button botaoAdicionar;
+    @FXML
+    private Button botaoAdicionar;
 
-        @FXML
-        private Button botaoVoltar;
+    @FXML
+    private Button botaoVoltar;
 
-        @FXML
-        private TextField devAdicionarJogo;
+    @FXML
+    private TextField devAdicionarJogo;
 
-        @FXML
-        private TextField faixaAdicionarJogo;
+    @FXML
+    private TextField faixaAdicionarJogo;
 
-        @FXML
-        private TextField generoAdicionarJogo;
+    @FXML
+    private TextField generoAdicionarJogo;
 
-        @FXML
-        private ImageView logoAdicionarJogo;
+    @FXML
+    private ImageView logoAdicionarJogo;
 
-        @FXML
-        private TextField nomeAdicionarJogo;
+    @FXML
+    private TextField nomeAdicionarJogo;
 
-        @FXML
-        private TextField pathAdicionarJogo;
+    @FXML
+    private TextField pathAdicionarJogo;
 
-        @FXML
-        private TextArea resumoAdicionarJogo;
+    @FXML
+    private TextArea resumoAdicionarJogo;
 
-        @FXML
-        private TextField valorAdicionarJogo;
+    @FXML
+    private TextField valorAdicionarJogo;
 
-        @FXML
-        void btnAdicionarAdicionarJogo(ActionEvent event) throws IOException, ElementoInvalidoException, ElementoNuloException, ElementoDuplicadoException {
-          
+    @FXML
+    void btnAdicionarAdicionarJogo(ActionEvent event) throws IOException, ElementoInvalidoException, ElementoNuloException, ElementoDuplicadoException {
+
         String nomeJogo = nomeAdicionarJogo.getText();
         int idJogo = 0;
         double valorJogo = Double.parseDouble(valorAdicionarJogo.getText());
@@ -78,10 +78,9 @@ public class TelaAdicionarJogoControlador {
             alert.showAndWait();
             e.printStackTrace();
         }
-        @FXML
-        void btnVoltarAdicionarJogo(ActionEvent event) throws IOException {
-                GerenciadorDeTelas.irParaTelaPrincipalADM(event);
-        }
-
     }
-
+    @FXML
+    void btnVoltarAdicionarJogo (ActionEvent event) throws IOException {
+        GerenciadorDeTelas.irParaTelaPrincipalADM(event);
+    }
+}

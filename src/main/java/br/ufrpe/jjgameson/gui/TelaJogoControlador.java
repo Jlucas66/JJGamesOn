@@ -9,21 +9,28 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TelaJogoControlador {
+public class TelaJogoControlador implements Initializable {
+
+        @Override
+        public void initialize(URL url, ResourceBundle resourceBundle) {
+                SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,10);
+                valueFactory.setValue(1);
+                quantidadeJogo.setValueFactory(valueFactory);
+                quantidade = quantidadeJogo.getValue();
+        }
 
         private Jogo jogoA;
+
+        private int quantidade;
 
         @FXML
         private Button botaoAdicionarAoCarrinho;
@@ -62,8 +69,11 @@ public class TelaJogoControlador {
         private Label precoTelaJogo;
 
         @FXML
+        private Spinner<Integer> quantidadeJogo;
+
+        @FXML
         void btnAdicionarAoCarrinhoTelaJogo(ActionEvent event) throws IOException {
-                ItemVenda compra = new ItemVenda(jogoA, 1);
+                ItemVenda compra = new ItemVenda(jogoA, quantidade);
                 FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("tela_carrinho.fxml"));
                 loader.setControllerFactory(controllerClass -> {
                         if (controllerClass.equals(TelaCarrinhoControlador.class)) {
@@ -111,6 +121,7 @@ public class TelaJogoControlador {
                 String idadee = String.valueOf(jogo.getFaixaEtaria().getIdade());
                 faixaEtariaTelaJogo.setText(idadee);
         }
+
 
 
 }
