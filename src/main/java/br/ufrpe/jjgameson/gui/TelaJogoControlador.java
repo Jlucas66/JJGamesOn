@@ -68,7 +68,7 @@ public class TelaJogoControlador {
                 loader.setControllerFactory(controllerClass -> {
                         if (controllerClass.equals(TelaCarrinhoControlador.class)) {
                                 TelaCarrinhoControlador controller = new TelaCarrinhoControlador();
-                                controller.guardarJogo(jogoA);
+                                controller.guardarCompra(compra);
                                 return controller;
                         } else {return null;}
                 });
