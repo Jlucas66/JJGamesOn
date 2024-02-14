@@ -40,6 +40,10 @@ public class Fachada {
         controladorAdministrador.inserir(admin);
     }
 
+    public void obterAdminPorEmail(String email) throws ElementoNuloException, ElementoNaoEncontradoException {
+        controladorAdministrador.obterAdminPorEmail(email);
+    }
+
     public void listarAdmins(){
         controladorAdministrador.listar();
     }
