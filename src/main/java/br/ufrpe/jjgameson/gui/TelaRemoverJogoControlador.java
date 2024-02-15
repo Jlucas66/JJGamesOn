@@ -61,7 +61,7 @@ public class TelaRemoverJogoControlador {
 
         @FXML
         void btnVoltarRemoverJogo(ActionEvent event) throws IOException {
-GerenciadorDeTelas.irParaTelaPrincipalADM(event);
+                GerenciadorDeTelas.irParaTelaPrincipalADM(event);
         }
 
     }

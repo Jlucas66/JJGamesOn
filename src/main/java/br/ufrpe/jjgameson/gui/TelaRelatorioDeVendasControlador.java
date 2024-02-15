@@ -33,7 +33,7 @@ public class TelaRelatorioDeVendasControlador {
 
         @FXML
         void btnVoltarRelatorioDeVendas(ActionEvent event) throws IOException {
-GerenciadorDeTelas.irParaTelaPrincipalADM(event);
+                GerenciadorDeTelas.irParaTelaPrincipalADM(event);
         }
 
     }
