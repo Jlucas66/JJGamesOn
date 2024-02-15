@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.jjgameson.gui.TelaPrincipalADMControlador">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.jjgameson.gui.TelaPrincipalADMControlador">
    <children>
       <ImageView fx:id="logoPrincipalADM" fitHeight="157.0" fitWidth="450.0" layoutX="225.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -36,11 +33,6 @@
          </font>
       </Button>
       <Button fx:id="botaoRelatorioDeVendas" layoutX="350.0" layoutY="384.0" mnemonicParsing="false" onAction="#btnRelatorioDeVendasADM" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Relatório de vendas" textAlignment="CENTER">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Button>
-      <Button fx:id="botaoGerenciarPromocoes" layoutX="350.0" layoutY="444.0" mnemonicParsing="false" onAction="#btnGerenciarPromocoesADM" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #000000;" text="Gerenciar promoções" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
