@@ -81,13 +81,20 @@ public class TelaAvaliacaoControlador implements Initializable {
         void btnAvaliarTelaAvaliacao(ActionEvent event) throws IOException{
             // Avaliacao avaliacao = new Avaliacao (clienteLogado(), jogo1, nota, comentarioTelaAvaliacao.getText(), dataAgora);
 
+            // Caso o cliente não possua o jogo
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Aviso");
+            alert.setHeaderText("Ausência de jogo");
+            alert.setContentText("Você não possui o jogo em seu histórico de compras, para avaliar um jogo na loja é necessário obter pelo menos uma unidade.");
+            alert.showAndWait();
+
             //Alert de avaliação concluída com sucesso
             //Precisa ser feito a verificação se é possível avaliar o jogo
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Concluído");
-            alert.setHeaderText("Avaliação de jogo");
-            alert.setContentText("Sua avaliação do jogo " + jogo1 + " foi registrada com sucesso!");
-            alert.showAndWait();
+            Alert alertOk = new Alert(Alert.AlertType.WARNING);
+            alertOk.setTitle("Concluído");
+            alertOk.setHeaderText("Avaliação de jogo");
+            alertOk.setContentText("Sua avaliação do jogo " + jogo1 + " foi registrada com sucesso!");
+            alertOk.showAndWait();
 
             // Salvar a avaliação nos arquivos
 
