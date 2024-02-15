@@ -2,6 +2,7 @@ package br.ufrpe.jjgameson.gui;
 import br.ufrpe.jjgameson.HelloApplication;
 import br.ufrpe.jjgameson.entidades.FaixaEtaria;
 import br.ufrpe.jjgameson.entidades.Jogo;
+import br.ufrpe.jjgameson.entidades.Pessoa;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,6 +34,7 @@ public class TelaBuscaControlador implements Initializable {
                 HBox cardBox = fxmlLoader.load();
                 CardTelaBuscaControlador cardTelaBuscaControlador = fxmlLoader.getController();
                 cardTelaBuscaControlador.setInformacoes(buscados.get(i));
+                cardTelaBuscaControlador.guardarCliente(clienteLogado);
                 hboxTelaBusca.getChildren().add(cardBox);
             }
         }
@@ -42,6 +44,7 @@ public class TelaBuscaControlador implements Initializable {
     }
 
     private List<Jogo> buscados = new ArrayList<>();
+    private Pessoa clienteLogado;
 
         @FXML
         private Button botaoBuscar;
@@ -65,6 +68,10 @@ public class TelaBuscaControlador implements Initializable {
 
         public void setarInformacoes (ArrayList<Jogo> jgs){
             this.buscados = jgs;
+        }
+
+        public void pegarCliente(Pessoa cliente){
+            clienteLogado = cliente;
         }
 
 }

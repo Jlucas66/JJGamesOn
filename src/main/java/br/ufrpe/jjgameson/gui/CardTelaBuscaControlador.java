@@ -1,6 +1,7 @@
 package br.ufrpe.jjgameson.gui;
 import br.ufrpe.jjgameson.HelloApplication;
 import br.ufrpe.jjgameson.entidades.Jogo;
+import br.ufrpe.jjgameson.entidades.Pessoa;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +19,7 @@ import java.io.IOException;
 public class CardTelaBuscaControlador {
 
         private Jogo jogoo;
+        private Pessoa clienteLogado;
 
         @FXML
         private ImageView capa;
@@ -64,6 +66,10 @@ public class CardTelaBuscaControlador {
                 dev.setText(jogo.getDesenvolvedora());
                 String oValor = Double.toString(jogo.getValor());
                 preco.setText(oValor);
+        }
+
+        public void guardarCliente(Pessoa cliente){
+                clienteLogado = cliente;
         }
 
     }
