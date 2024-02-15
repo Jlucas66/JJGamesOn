@@ -2,6 +2,7 @@ package br.ufrpe.jjgameson.gui;
     import br.ufrpe.jjgameson.HelloApplication;
     import br.ufrpe.jjgameson.entidades.FaixaEtaria;
     import br.ufrpe.jjgameson.entidades.Jogo;
+    import br.ufrpe.jjgameson.entidades.Pessoa;
     import br.ufrpe.jjgameson.negocio.Fachada;
     import javafx.event.ActionEvent;
     import javafx.fxml.FXML;
@@ -36,6 +37,7 @@ public class TelaPrincipalClienteControlador implements Initializable {
                         HBox cardBox = fxmlLoader.load();
                         CardTelaPrincipalClienteControlador cardTelaPrincipalClienteControlador = fxmlLoader.getController();
                         cardTelaPrincipalClienteControlador.setInformacoes(catalogo.get(i));
+                        cardTelaPrincipalClienteControlador.pegarCliente(clienteLogado);
                         hboxPrincipalCliente.getChildren().add(cardBox);
                 }
         }
@@ -59,6 +61,7 @@ public class TelaPrincipalClienteControlador implements Initializable {
 
         private ArrayList<Jogo> filtro = new ArrayList<>();
         private List<Jogo> catalogo;
+        private Pessoa clienteLogado;
 
         @FXML
         private HBox hboxPrincipalCliente;
@@ -308,7 +311,17 @@ public class TelaPrincipalClienteControlador implements Initializable {
         }
         @FXML
         void btnCarrinhoPrincipalCliente(ActionEvent event) throws IOException{
-            GerenciadorDeTelas.irParaTelaCarrinho(event);
+            Stage stage;
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tela_carrinho.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(fxmlLoader.load(), 900, 600));
+            stage.setTitle("Mais sobre o jogo");
+            stage.setResizable(false);
+            stage.show();
+
+            TelaCarrinhoControlador telaCarrinhoControlador = fxmlLoader.getController();
+            telaCarrinhoControlador.guardarCliente(clienteLogado);
+            //GerenciadorDeTelas.irParaTelaCarrinho(event);
         }
 
         @FXML
@@ -319,6 +332,10 @@ public class TelaPrincipalClienteControlador implements Initializable {
         @FXML
         void btnSairDaContaPrincipalCliente(ActionEvent event) throws IOException {
             GerenciadorDeTelas.irParaTelaLoginCliente(event);
+        }
+
+        public void pegarCliente(Pessoa cliente){
+            clienteLogado = cliente;
         }
 
 }

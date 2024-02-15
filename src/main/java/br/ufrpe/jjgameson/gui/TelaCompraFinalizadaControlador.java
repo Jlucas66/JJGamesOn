@@ -4,6 +4,7 @@ package br.ufrpe.jjgameson.gui;
 import br.ufrpe.jjgameson.HelloApplication;
 import br.ufrpe.jjgameson.entidades.ItemVenda;
 import br.ufrpe.jjgameson.entidades.Jogo;
+import br.ufrpe.jjgameson.entidades.Pessoa;
 import br.ufrpe.jjgameson.entidades.Venda;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,6 +33,7 @@ setCodigosDeAcessoCompraFinalizada(aVenda);
     }
 
         private Venda aVenda;
+        private Pessoa clienteLogado;
         @FXML
         private Button botaoVoltar;
 
@@ -52,6 +54,10 @@ setCodigosDeAcessoCompraFinalizada(aVenda);
 
         public void vendaRealizada(Venda venda){
             aVenda = venda;
+        }
+
+        public void pegarCliente(Pessoa cliente){
+            clienteLogado = cliente;
         }
 
 

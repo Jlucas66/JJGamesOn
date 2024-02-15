@@ -1,11 +1,14 @@
 package br.ufrpe.jjgameson.gui;
 
+import br.ufrpe.jjgameson.HelloApplication;
 import br.ufrpe.jjgameson.dados.RepositorioCliente;
 import br.ufrpe.jjgameson.entidades.Pessoa;
 import br.ufrpe.jjgameson.exceptions.*;
 import br.ufrpe.jjgameson.negocio.Fachada;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -67,7 +70,17 @@ public class TelaLoginClienteControlador {
         }
         if(pessoaLogin != null){
             if(pessoaLogin.getSenha().equals(senhaLogin.getText())){
-                GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
+                Stage stage;
+                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tela_jogo.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(new Scene(fxmlLoader.load(), 900, 600));
+                stage.setTitle("Mais sobre o jogo");
+                stage.setResizable(false);
+                stage.show();
+
+                TelaPrincipalClienteControlador telaPrincipalClienteControlador = fxmlLoader.getController();
+                telaPrincipalClienteControlador.pegarCliente(pessoaLogin);
+                //GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
             }
             else{
                 GerenciadorDeTelas.exibirAlertaMensagem("Erro","Senha inválida");

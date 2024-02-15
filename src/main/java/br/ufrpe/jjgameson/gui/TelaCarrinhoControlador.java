@@ -5,6 +5,10 @@ import br.ufrpe.jjgameson.entidades.ItemVenda;
 import br.ufrpe.jjgameson.entidades.Jogo;
 import br.ufrpe.jjgameson.entidades.Pessoa;
 import br.ufrpe.jjgameson.entidades.Venda;
+import br.ufrpe.jjgameson.exceptions.ElementoDuplicadoException;
+import br.ufrpe.jjgameson.exceptions.ElementoInvalidoException;
+import br.ufrpe.jjgameson.exceptions.ElementoNuloException;
+import br.ufrpe.jjgameson.negocio.Fachada;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -75,6 +80,8 @@ public class TelaCarrinhoControlador implements Initializable {
 
         private static Double oValorTotal = 0.0;
 
+        private Pessoa clienteLogado;
+
         @FXML
         private Button botaoFinalizarCompra;
 
@@ -100,7 +107,10 @@ public class TelaCarrinhoControlador implements Initializable {
         private VBox vboxTelaCarrinho;
 
         @FXML
-        void btnFinalizarComprarTelaCarrinho(ActionEvent event) throws IOException {
+        void btnFinalizarComprarTelaCarrinho(ActionEvent event) throws IOException, ElementoInvalidoException, ElementoNuloException, ElementoDuplicadoException {
+
+               // if(clienteLogado.getDataNascimento().)
+
                 Stage stage;
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tela_compra_finalizada.fxml"));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -111,7 +121,8 @@ public class TelaCarrinhoControlador implements Initializable {
 
                 TelaCompraFinalizadaControlador telaCompraFinalizadaControlador = fxmlLoader.getController();
                 telaCompraFinalizadaControlador.vendaRealizada(venda);
-
+                telaCompraFinalizadaControlador.pegarCliente(clienteLogado);
+                Fachada.getInstance().inserirVenda(venda);
         }
 
         @FXML
@@ -119,6 +130,10 @@ public class TelaCarrinhoControlador implements Initializable {
                 itemNoCarrinho.clear();
                 jogoNoCarrinho.clear();
                 atualizarCarrinho(event);
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Carrinho");
+                alert.setHeaderText("Carrinho limpo");
+                alert.setContentText("Operação realizada com sucesso!");
         }
 
         @FXML
@@ -147,6 +162,10 @@ public class TelaCarrinhoControlador implements Initializable {
                 jogoNoCarrinho.add(compra.getJogo());
                 itemNoCarrinho.add(compra);
                 venda.adicionarItemVenda(compra);
+        }
+
+        public void guardarCliente(Pessoa cliente){
+                clienteLogado = cliente;
         }
 
         public void removerDoCarrinho(Jogo jogo, ItemVenda itemVenda) {

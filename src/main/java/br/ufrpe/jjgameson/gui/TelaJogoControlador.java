@@ -2,6 +2,7 @@ package br.ufrpe.jjgameson.gui;
 import br.ufrpe.jjgameson.HelloApplication;
 import br.ufrpe.jjgameson.entidades.ItemVenda;
 import br.ufrpe.jjgameson.entidades.Jogo;
+import br.ufrpe.jjgameson.entidades.Pessoa;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,6 +33,8 @@ public class TelaJogoControlador implements Initializable {
         private Jogo jogoA;
 
         private int quantidade;
+
+        private Pessoa clienteLogado;
 
         @FXML
         private Button botaoAdicionarAoCarrinho;
@@ -80,6 +83,7 @@ public class TelaJogoControlador implements Initializable {
                         if (controllerClass.equals(TelaCarrinhoControlador.class)) {
                                 TelaCarrinhoControlador controller = new TelaCarrinhoControlador();
                                 controller.guardarCompra(compra);
+                                controller.guardarCliente(clienteLogado);
                                 return controller;
                         } else {return null;}
                 });
@@ -114,6 +118,7 @@ public class TelaJogoControlador implements Initializable {
 
                 TelaAvaliacaoControlador telaAvaliacaoControlador = fxmlLoader.getController();
                 telaAvaliacaoControlador.jogoParaAvaliar(jogoA);
+                telaAvaliacaoControlador.pegarCliente(clienteLogado);
         }
         @FXML
         void btnVoltarTelaJogo(ActionEvent event) throws IOException{
@@ -140,7 +145,9 @@ public class TelaJogoControlador implements Initializable {
                 faixaEtariaTelaJogo.setText(idadee);
         }
 
-
+        public void pegarCliente(Pessoa cliente){
+                clienteLogado = cliente;
+        }
 
 }
 

@@ -2,6 +2,7 @@ package br.ufrpe.jjgameson.gui;
 import br.ufrpe.jjgameson.HelloApplication;
 import br.ufrpe.jjgameson.entidades.Avaliacao;
 import br.ufrpe.jjgameson.entidades.Jogo;
+import br.ufrpe.jjgameson.entidades.Pessoa;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,6 +54,8 @@ public class TelaAvaliacaoControlador implements Initializable {
         int nota = 0;
         LocalDateTime dataAgora = LocalDateTime.now();
 
+        private Pessoa clienteLogado;
+
         @FXML
         private Button botaoAvaliar;
 
@@ -79,7 +82,9 @@ public class TelaAvaliacaoControlador implements Initializable {
 
         @FXML
         void btnAvaliarTelaAvaliacao(ActionEvent event) throws IOException{
+
             // Avaliacao avaliacao = new Avaliacao (clienteLogado(), jogo1, nota, comentarioTelaAvaliacao.getText(), dataAgora);
+
 
             // Caso o cliente não possua o jogo
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -113,6 +118,10 @@ public class TelaAvaliacaoControlador implements Initializable {
             jogo1 = jogo;
             capaTelaAvaliacao.setImage(new Image(jogo.getPath()));
             nomeTelaAvaliacao.setText(jogo.getNome());
+        }
+
+        public void pegarCliente(Pessoa cliente){
+            clienteLogado = cliente;
         }
 
 

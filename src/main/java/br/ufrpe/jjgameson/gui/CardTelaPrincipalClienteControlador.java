@@ -2,6 +2,7 @@ package br.ufrpe.jjgameson.gui;
 
 import br.ufrpe.jjgameson.HelloApplication;
 import br.ufrpe.jjgameson.entidades.Jogo;
+import br.ufrpe.jjgameson.entidades.Pessoa;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 public class CardTelaPrincipalClienteControlador {
 
     private Jogo joguinho;
+    private Pessoa clienteLogado;
 
         @FXML
         private ImageView capa;
@@ -49,6 +51,7 @@ try {
 
     TelaJogoControlador telaJogoControlador = fxmlLoader.getController();
     telaJogoControlador.atualizarInformacoes(joguinho);
+    telaJogoControlador.pegarCliente(clienteLogado);
 }catch (IOException e){e.printStackTrace();}
 
         }
@@ -69,6 +72,9 @@ try {
             preco.setText(oValor);
         }
 
+        public void pegarCliente(Pessoa cliente){
+            clienteLogado = cliente;
+        }
     public Jogo getJoguinho() {
         return joguinho;
     }
