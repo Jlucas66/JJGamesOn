@@ -73,7 +73,6 @@ public class TelaLoginClienteControlador {
                 GerenciadorDeTelas.exibirAlertaMensagem("Erro","Senha inválida");
             }
         }
-
     }
 
     @FXML
