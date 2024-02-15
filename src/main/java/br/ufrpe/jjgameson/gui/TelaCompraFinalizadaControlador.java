@@ -4,15 +4,19 @@ package br.ufrpe.jjgameson.gui;
 import br.ufrpe.jjgameson.HelloApplication;
 import br.ufrpe.jjgameson.entidades.ItemVenda;
 import br.ufrpe.jjgameson.entidades.Jogo;
+import br.ufrpe.jjgameson.entidades.Venda;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,25 +24,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class TelaCompraFinalizadaControlador implements Initializable {
-
-
+public class TelaCompraFinalizadaControlador implements Initializable{
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        itens = new ArrayList<>(itens());
-        for(int i = 0; i < itens.size(); i++){
-            setCodigosDeAcessoCompraFinalizada(itens.get(i).getCodigos());
-        }
-
-
+setCodigosDeAcessoCompraFinalizada(aVenda);
     }
-    private List<ItemVenda> itens(){
-        List<ItemVenda> its = new ArrayList<>();
 
-        return its;
-    }
-        private List<ItemVenda> itens;
+        private Venda aVenda;
         @FXML
         private Button botaoVoltar;
 
@@ -53,8 +46,12 @@ public class TelaCompraFinalizadaControlador implements Initializable {
             GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
         }
 
-        public void setCodigosDeAcessoCompraFinalizada(ArrayList<String> codigos){
-            codigosDeAcessoCompraFinalizada.setText(codigos.toString());
+        public void setCodigosDeAcessoCompraFinalizada(Venda venda){
+            codigosDeAcessoCompraFinalizada.setText(venda.listarCodigosVenda());
+        }
+
+        public void vendaRealizada(Venda venda){
+            aVenda = venda;
         }
 
 

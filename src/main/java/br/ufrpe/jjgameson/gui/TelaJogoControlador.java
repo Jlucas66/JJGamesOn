@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -93,10 +94,21 @@ public class TelaJogoControlador implements Initializable {
         }
 
         @FXML
-        void btnAvaliarTelaJogo(ActionEvent event) throws IOException{
+        void btnAvaliarTelaJogo(ActionEvent event) throws IOException {
 
+                // Tentar implementar if else assim que os arquivos estiverem ok
+
+                Stage stage;
+                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tela_avaliacao.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(new Scene(fxmlLoader.load(), 900, 600));
+                stage.setTitle("Avalie o jogo!");
+                stage.setResizable(false);
+                stage.show();
+
+                TelaAvaliacaoControlador telaAvaliacaoControlador = fxmlLoader.getController();
+                telaAvaliacaoControlador.jogoParaAvaliar(jogoA);
         }
-
         @FXML
         void btnVoltarTelaJogo(ActionEvent event) throws IOException{
                 GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
