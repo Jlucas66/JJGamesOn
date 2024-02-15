@@ -96,7 +96,13 @@ public class TelaJogoControlador implements Initializable {
         @FXML
         void btnAvaliarTelaJogo(ActionEvent event) throws IOException {
 
-                // Tentar implementar if else assim que os arquivos estiverem ok
+                // Tentar implementar if else ou try catch caso o cliente tenha ou não o jogo assim que os arquivos estiverem ok
+
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Aviso");
+                alert.setHeaderText("Ausência de jogo");
+                alert.setContentText("Você não possui o jogo em seu histórico de compras, para avaliar um jogo na loja é necessário obter pelo menos uma unidade.");
+                alert.showAndWait();
 
                 Stage stage;
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tela_avaliacao.fxml"));
