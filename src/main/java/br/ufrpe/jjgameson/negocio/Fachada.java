@@ -104,6 +104,10 @@ public class Fachada {
         controladorCodigo.inserir(codigo);
     }
 
+    public void inserirUltimoCliente(Pessoa pessoa){
+        controladorCliente.inserirUltimoCliente(pessoa);
+    }
+
     public void listarCodigos(){
         controladorCodigo.listar();
     }
