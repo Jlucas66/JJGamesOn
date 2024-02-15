@@ -71,10 +71,10 @@ public class TelaLoginClienteControlador {
         if(pessoaLogin != null){
             if(pessoaLogin.getSenha().equals(senhaLogin.getText())){
                 Stage stage;
-                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tela_jogo.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tela_principal_cliente.fxml"));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(new Scene(fxmlLoader.load(), 900, 600));
-                stage.setTitle("Mais sobre o jogo");
+                stage.setTitle("Seja bem-vindo(a)!");
                 stage.setResizable(false);
                 stage.show();
 

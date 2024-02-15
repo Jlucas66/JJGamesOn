@@ -66,21 +66,12 @@ public class TelaCarrinhoControlador implements Initializable {
         }
         private static List<Jogo> jogoNoCarrinho = new ArrayList<>();
         private static List<ItemVenda> itemNoCarrinho = new ArrayList<>();
-        
-        /*
-                ***********************************************************
-                *   ATENÇÃO PARA ARRUMAR ISSO AQUI, É APENAS PROVISÓRIO   *
-                ***********************************************************
-
-        */
-
-        static Pessoa provisorio = new Pessoa("Josimar", "josimar@gmail.com", "123", LocalDate.now(), false);
-        private static Venda venda = new Venda(provisorio, LocalDateTime.now());
-
 
         private static Double oValorTotal = 0.0;
 
         private Pessoa clienteLogado;
+
+        private Venda venda = new Venda(clienteLogado, LocalDateTime.now());
 
         @FXML
         private Button botaoFinalizarCompra;
@@ -111,11 +102,28 @@ public class TelaCarrinhoControlador implements Initializable {
 
                // if(clienteLogado.getDataNascimento().)
 
+//                for(ItemVenda item:itemNoCarrinho){
+//                        for(ItemVenda itemVenda:itemNoCarrinho){
+//                                if(clienteLogado.calcularIdade() >= itemVenda.getJogo().getFaixaEtaria().getIdade()){
+//                                        venda.adicionarItemVenda(item);
+//                                }
+//                                else{
+//                                        GerenciadorDeTelas.exibirAlertaMensagem("ERRO","Você não possui idade para jogar o jogo "+ item.getJogo().getNome());
+//                                        itemNoCarrinho.remove(item);
+//                                        jogoNoCarrinho.remove(item.getJogo());
+//                                }
+//                        }
+//                }
+                for(ItemVenda itemVenda:itemNoCarrinho){
+                        venda.adicionarItemVenda(itemVenda);
+                }
+                Fachada.getInstance().inserirVenda(venda);
+
                 Stage stage;
                 FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tela_compra_finalizada.fxml"));
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(new Scene(fxmlLoader.load(), 900, 600));
-                stage.setTitle("Avalie o jogo!");
+                stage.setTitle("Compra finalizada!");
                 stage.setResizable(false);
                 stage.show();
 

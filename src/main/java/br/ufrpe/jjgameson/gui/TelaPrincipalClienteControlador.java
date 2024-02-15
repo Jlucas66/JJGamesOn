@@ -121,6 +121,7 @@ public class TelaPrincipalClienteControlador implements Initializable {
                 if (controllerClass.equals(TelaBuscaControlador.class)) {
                     TelaBuscaControlador controller = new TelaBuscaControlador();
                     controller.setarInformacoes(cataAcao);
+                    controller.pegarCliente(clienteLogado);
                     return controller;
                 } else {return null;}
             });
@@ -146,6 +147,7 @@ public class TelaPrincipalClienteControlador implements Initializable {
                 if (controllerClass.equals(TelaBuscaControlador.class)) {
                     TelaBuscaControlador controller = new TelaBuscaControlador();
                     controller.setarInformacoes(cataAventura);
+                    controller.pegarCliente(clienteLogado);
                     return controller;
                 } else {return null;}
             });
@@ -171,6 +173,7 @@ public class TelaPrincipalClienteControlador implements Initializable {
                 if (controllerClass.equals(TelaBuscaControlador.class)) {
                     TelaBuscaControlador controller = new TelaBuscaControlador();
                     controller.setarInformacoes(cataCasual);
+                    controller.pegarCliente(clienteLogado);
                     return controller;
                 } else {return null;}
             });
@@ -196,6 +199,7 @@ public class TelaPrincipalClienteControlador implements Initializable {
                 if (controllerClass.equals(TelaBuscaControlador.class)) {
                     TelaBuscaControlador controller = new TelaBuscaControlador();
                     controller.setarInformacoes(cataFPS);
+                    controller.pegarCliente(clienteLogado);
                     return controller;
                 } else {return null;}
             });
@@ -221,6 +225,7 @@ public class TelaPrincipalClienteControlador implements Initializable {
                 if (controllerClass.equals(TelaBuscaControlador.class)) {
                     TelaBuscaControlador controller = new TelaBuscaControlador();
                     controller.setarInformacoes(cataMoba);
+                    controller.pegarCliente(clienteLogado);
                     return controller;
                 } else {return null;}
             });
@@ -248,6 +253,7 @@ public class TelaPrincipalClienteControlador implements Initializable {
                 if (controllerClass.equals(TelaBuscaControlador.class)) {
                     TelaBuscaControlador controller = new TelaBuscaControlador();
                     controller.setarInformacoes(cataSimulacao);
+                    controller.pegarCliente(clienteLogado);
                     return controller;
                 } else {return null;}
             });
@@ -273,6 +279,7 @@ public class TelaPrincipalClienteControlador implements Initializable {
                 if (controllerClass.equals(TelaBuscaControlador.class)) {
                     TelaBuscaControlador controller = new TelaBuscaControlador();
                     controller.setarInformacoes(cataTerror);
+                    controller.pegarCliente(clienteLogado);
                     return controller;
                 } else {return null;}
             });
@@ -298,6 +305,7 @@ public class TelaPrincipalClienteControlador implements Initializable {
                 if (controllerClass.equals(TelaBuscaControlador.class)) {
                     TelaBuscaControlador controller = new TelaBuscaControlador();
                     controller.setarInformacoes(filtro);
+                    controller.pegarCliente(clienteLogado);
                     return controller;
                 } else {return null;}
             });
@@ -315,7 +323,7 @@ public class TelaPrincipalClienteControlador implements Initializable {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tela_carrinho.fxml"));
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(fxmlLoader.load(), 900, 600));
-            stage.setTitle("Mais sobre o jogo");
+            stage.setTitle("Seu carrinho");
             stage.setResizable(false);
             stage.show();
 
@@ -326,7 +334,17 @@ public class TelaPrincipalClienteControlador implements Initializable {
 
         @FXML
         void btnHistoricoPrincipalCliente(ActionEvent event) throws IOException{
-            GerenciadorDeTelas.irParaTelaHistorico(event);
+            Stage stage;
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tela_historico.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(fxmlLoader.load(), 900, 600));
+            stage.setTitle("Seu histórico");
+            stage.setResizable(false);
+            stage.show();
+
+            TelaHistoricoControlador telaHistoricoControlador = fxmlLoader.getController();
+            telaHistoricoControlador.pegarCliente(clienteLogado);
+            //GerenciadorDeTelas.irParaTelaHistorico(event);
         }
 
         @FXML
