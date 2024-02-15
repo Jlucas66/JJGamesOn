@@ -82,6 +82,12 @@ public class TelaAvaliacaoControlador implements Initializable {
             // Avaliacao avaliacao = new Avaliacao (clienteLogado(), jogo1, nota, comentarioTelaAvaliacao.getText(), dataAgora);
 
             //Alert de avaliação concluída com sucesso
+            //Precisa ser feito a verificação se é possível avaliar o jogo
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Concluído");
+            alert.setHeaderText("Avaliação de jogo");
+            alert.setContentText("Sua avaliação do jogo " + jogo1 + " foi registrada com sucesso!");
+            alert.showAndWait();
 
             // Salvar a avaliação nos arquivos
 
