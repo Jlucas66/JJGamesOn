@@ -66,7 +66,7 @@ public class TelaAdicionarJogoControlador {
         String resumoJogo = resumoAdicionarJogo.getText();
         String pathJogo = pathAdicionarJogo.getText();
 
-        Jogo jogo = new Jogo(idJogo, pathJogo, nomeJogo, valorJogo, desenvolvedoraJogo, generoJogo, resumoJogo, FaixaEtaria.valueOf(faixaEtariaJogo));
+        Jogo jogo = new Jogo(pathJogo, nomeJogo, valorJogo, desenvolvedoraJogo, generoJogo, resumoJogo, FaixaEtaria.valueOf(faixaEtariaJogo));
 
         try {
             Fachada.getInstance().inserirJogo(jogo);
