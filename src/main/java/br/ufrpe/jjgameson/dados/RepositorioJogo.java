@@ -35,9 +35,9 @@ public class RepositorioJogo implements IRepositorioJogo {
         }
     }
     @Override
-    public Jogo obterJogoPorId(int id) {
+    public Jogo obterJogoPorNome(String nome) {
         for (Jogo jogo : jogos) {
-            if(jogo.getId() == id) return jogo;
+            if(jogo.getNome().equalsIgnoreCase(nome)) return jogo;
         }
         return null;
     }

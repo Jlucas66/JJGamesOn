@@ -54,20 +54,17 @@ public class ControladorJogo {
         if(jogo.getFaixaEtaria() != FaixaEtaria.LIVRE && jogo.getFaixaEtaria() != FaixaEtaria.DEZ && jogo.getFaixaEtaria() != FaixaEtaria.DOZE && jogo.getFaixaEtaria() != FaixaEtaria.QUATORZE && jogo.getFaixaEtaria() != FaixaEtaria.DEZESSEIS && jogo.getFaixaEtaria() != FaixaEtaria.DEZOITO){
             throw new ElementoInvalidoException("Faixa etaria do jogo não pode ser diferente das opções disponiveis");
         }
-        if(repositorioJogo.obterJogoPorId(jogo.getId()) != null){
+        if(repositorioJogo.obterJogoPorNome(jogo.getNome()) != null){
             throw new ElementoDuplicadoException("Jogo já cadastrado");
         }
         repositorioJogo.inserirJogo(jogo);
     }
 
-    public Jogo obterJogoPorId(int id) throws ElementoInvalidoException, ElementoNaoEncontradoException {
-        if(id <= 0){
-            throw new ElementoInvalidoException("Id não pode ser menor ou igual a zero");
-        }
-        if (repositorioJogo.obterJogoPorId(id) == null){
+    public Jogo obterJogoPorNome(String nome) throws ElementoNaoEncontradoException {
+        if (repositorioJogo.obterJogoPorNome(nome) == null){
             throw new ElementoNaoEncontradoException("Jogo não encontrado");
         }
-        return repositorioJogo.obterJogoPorId(id);
+        return repositorioJogo.obterJogoPorNome(nome);
     }
 
     public void removerJogo(Jogo jogoParaExcluir) throws ElementoNuloException, ElementoNaoEncontradoException {
@@ -134,7 +131,7 @@ public class ControladorJogo {
         if (jogoNovo.getFaixaEtaria() != FaixaEtaria.LIVRE && jogoNovo.getFaixaEtaria() != FaixaEtaria.DEZ && jogoNovo.getFaixaEtaria() != FaixaEtaria.DOZE && jogoNovo.getFaixaEtaria() != FaixaEtaria.QUATORZE && jogoNovo.getFaixaEtaria() != FaixaEtaria.DEZESSEIS && jogoNovo.getFaixaEtaria() != FaixaEtaria.DEZOITO){
             throw new ElementoInvalidoException("Faixa etaria do jogo não pode ser diferente das opções disponiveis");
         }
-        if (repositorioJogo.obterJogoPorId(jogoNovo.getId()) != null){
+        if (repositorioJogo.obterJogoPorNome(jogoNovo.getNome()) != null){
             throw new ElementoDuplicadoException("Jogo já cadastrado");
         }
         repositorioJogo.atualizarJogo(jogoAntigo, jogoNovo);

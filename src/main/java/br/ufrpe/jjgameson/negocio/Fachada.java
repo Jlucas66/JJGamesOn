@@ -113,8 +113,9 @@ public class Fachada {
         return controladorJogo.listarJogos();
     }
 
-    public void obterJogoPorId(int id) throws ElementoInvalidoException, ElementoNaoEncontradoException {
-        controladorJogo.obterJogoPorId(id);
+    public Jogo obterJogoPorNome(String nome) throws ElementoInvalidoException, ElementoNaoEncontradoException {
+        Jogo jogo = controladorJogo.obterJogoPorNome(nome);
+        return jogo;
     }
 
     public void removerJogo(Jogo jogoParaExcluir) throws ElementoNuloException, ElementoNaoEncontradoException {

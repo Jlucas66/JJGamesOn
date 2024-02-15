@@ -1,8 +1,11 @@
 package br.ufrpe.jjgameson.entidades;
 
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Jogo {
+    private static final AtomicInteger contadorIds = new AtomicInteger(0);
+
     private int id;
     private String path;
     private String nome;
@@ -12,8 +15,8 @@ public class Jogo {
     private String resumo;
     private FaixaEtaria faixaEtaria;
 
-    public Jogo(int id, String path, String nome, double valor, String desenvolvedora, String genero, String resumo, FaixaEtaria faixaEtaria) {
-        this.id = id;
+    public Jogo(String path, String nome, double valor, String desenvolvedora, String genero, String resumo, FaixaEtaria faixaEtaria) {
+        this.id = contadorIds.incrementAndGet();
         this.path = path;
         this.nome = nome;
         this.valor = valor;
@@ -21,30 +24,6 @@ public class Jogo {
         this.genero = genero;
         this.resumo = resumo;
         this.faixaEtaria = faixaEtaria;
-    }
-
-    public Jogo(int idJogo, String url, String nomeJogo, double valor, String desenvolvedora, String genero, String resumo, String faixaEtaria) {
-        this.id = idJogo;
-        this.path = url;
-        this.nome = nomeJogo;
-        this.valor = valor;
-        this.desenvolvedora = desenvolvedora;
-        this.genero = genero;
-        this.resumo = resumo;
-        this.faixaEtaria = FaixaEtaria.valueOf(faixaEtaria);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Jogo jogo = (Jogo) o;
-        return id == jogo.id && Double.compare(valor, jogo.valor) == 0 && Objects.equals(path, jogo.path) && Objects.equals(nome, jogo.nome) && Objects.equals(desenvolvedora, jogo.desenvolvedora) && Objects.equals(genero, jogo.genero) && Objects.equals(resumo, jogo.resumo) && faixaEtaria == jogo.faixaEtaria;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, path, nome, valor, desenvolvedora, genero, resumo, faixaEtaria);
     }
 
     public int getId() {
@@ -123,5 +102,18 @@ public class Jogo {
                 ", resumo='" + resumo + '\'' +
                 ", faixaEtaria=" + faixaEtaria +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Jogo jogo = (Jogo) o;
+        return id == jogo.id && Double.compare(jogo.valor, valor) == 0 && Objects.equals(path, jogo.path) && Objects.equals(nome, jogo.nome) && Objects.equals(desenvolvedora, jogo.desenvolvedora) && Objects.equals(genero, jogo.genero) && Objects.equals(resumo, jogo.resumo) && faixaEtaria == jogo.faixaEtaria;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, path, nome, valor, desenvolvedora, genero, resumo, faixaEtaria);
     }
 }
