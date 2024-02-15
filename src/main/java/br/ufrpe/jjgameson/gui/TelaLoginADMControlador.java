@@ -2,7 +2,11 @@ package br.ufrpe.jjgameson.gui;
 
 import br.ufrpe.jjgameson.dados.IRepositorioAdmin;
 import br.ufrpe.jjgameson.dados.RepositorioAdmin;
+import br.ufrpe.jjgameson.entidades.Pessoa;
 import br.ufrpe.jjgameson.exceptions.AcessoInvalidoException;
+import br.ufrpe.jjgameson.exceptions.ElementoInvalidoException;
+import br.ufrpe.jjgameson.exceptions.ElementoNaoEncontradoException;
+import br.ufrpe.jjgameson.exceptions.ElementoNuloException;
 import br.ufrpe.jjgameson.negocio.Fachada;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,10 +35,23 @@ public class TelaLoginADMControlador {
     private PasswordField senhaLoginADM;
 
     @FXML
-    void btnLoginADMEntrarComoADM(ActionEvent event) throws IOException{
+    void btnLoginADMEntrarComoADM(ActionEvent event) throws IOException, ElementoNuloException, ElementoNaoEncontradoException {
+        Pessoa adminlogin = null;
+        try {
+            adminlogin = Fachada.getInstance().obterAdminPorEmail(emailLoginADM.getText());
+        } catch (ElementoNaoEncontradoException e) {
+            GerenciadorDeTelas.exibirAlertaMensagem("Erro", "Email inválido");
+            e.printStackTrace();
+        }
+        if (adminlogin != null) {
+            if (adminlogin.getSenha().equals(senhaLoginADM.getText())) {
+                GerenciadorDeTelas.irParaTelaPrincipalADM(event);
+            } else {
+                GerenciadorDeTelas.exibirAlertaMensagem("Erro", "Senha incorreta");
+            }
+        }
 
     }
-
     @FXML
     void btnLoginADMVoltar(ActionEvent event) throws IOException {
         GerenciadorDeTelas.irParaTelaLoginCliente(event);

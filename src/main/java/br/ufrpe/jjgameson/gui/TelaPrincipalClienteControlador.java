@@ -47,7 +47,11 @@ public class TelaPrincipalClienteControlador implements Initializable {
 
         private List<Jogo> catalogo(){
                 List<Jogo> cata = new ArrayList<>();
-
+                try {
+                        cata = Fachada.getInstance().listarJogos();
+                } catch (Exception e) {
+                        e.printStackTrace();
+                }
             return cata;
         }
 
