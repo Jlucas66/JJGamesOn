@@ -4,6 +4,8 @@ import br.ufrpe.jjgameson.entidades.ItemVenda;
 import br.ufrpe.jjgameson.entidades.Jogo;
 import br.ufrpe.jjgameson.entidades.Pessoa;
 import br.ufrpe.jjgameson.negocio.Fachada;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,6 +31,14 @@ public class TelaJogoControlador implements Initializable {
                 valueFactory.setValue(1);
                 quantidadeJogo.setValueFactory(valueFactory);
                 quantidade = quantidadeJogo.getValue();
+                quantidadeJogo.valueProperty().addListener(new ChangeListener<Integer>() {
+                        @Override
+                        public void changed(ObservableValue<? extends Integer> observableValue, Integer integer, Integer t1) {
+
+                                quantidade = quantidadeJogo.getValue();
+
+                        }
+                });
         }
 
         private Jogo jogoA;
@@ -78,6 +88,7 @@ public class TelaJogoControlador implements Initializable {
 
         @FXML
         void btnAdicionarAoCarrinhoTelaJogo(ActionEvent event) throws IOException {
+                System.out.println(quantidade);
                 ItemVenda compra = new ItemVenda(jogoA, quantidade);
                 FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("tela_carrinho.fxml"));
                 loader.setControllerFactory(controllerClass -> {
