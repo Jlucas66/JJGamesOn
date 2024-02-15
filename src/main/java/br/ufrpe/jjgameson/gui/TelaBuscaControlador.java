@@ -60,7 +60,7 @@ public class TelaBuscaControlador implements Initializable {
 
         @FXML
         void btnVoltarTelaBusca(ActionEvent event) throws IOException{
-GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
+            GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
         }
 
         public void setarInformacoes (ArrayList<Jogo> jgs){
