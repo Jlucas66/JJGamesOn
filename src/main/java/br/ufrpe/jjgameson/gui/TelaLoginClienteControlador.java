@@ -2,11 +2,13 @@ package br.ufrpe.jjgameson.gui;
 
 import br.ufrpe.jjgameson.dados.RepositorioCliente;
 import br.ufrpe.jjgameson.entidades.Pessoa;
+import br.ufrpe.jjgameson.exceptions.*;
 import br.ufrpe.jjgameson.negocio.Fachada;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -55,7 +57,23 @@ public class TelaLoginClienteControlador {
     }
 
     @FXML
-    void btnLoginClienteEntrar(ActionEvent event) throws IOException{
+    void btnLoginClienteEntrar(ActionEvent event) throws IOException, ElementoInvalidoException, ElementoNuloException, ElementoNaoEncontradoException {
+        Pessoa pessoaLogin = null;
+        try {
+            pessoaLogin = Fachada.getInstance().obterClientePorEmail(emailLogin.getText());
+        }catch (ElementoInvalidoException e) {
+            GerenciadorDeTelas.exibirAlertaMensagem("Erro","Email inválido");
+            e.printStackTrace();
+        }
+        if(pessoaLogin != null){
+            if(pessoaLogin.getSenha().equals(senhaLogin.getText())){
+                GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
+            }
+            else{
+                GerenciadorDeTelas.exibirAlertaMensagem("Erro","Senha inválida");
+            }
+        }
+
     }
 
     @FXML

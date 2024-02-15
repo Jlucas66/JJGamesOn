@@ -81,8 +81,9 @@ public class Fachada {
         controladorCliente.listarClientes();
     }
 
-    public void obterClientePorEmail(String email) throws ElementoNuloException, ElementoInvalidoException, ElementoNaoEncontradoException {
-        controladorCliente.obterClientePorEmail(email);
+    public Pessoa obterClientePorEmail(String email) throws ElementoNuloException, ElementoInvalidoException, ElementoNaoEncontradoException {
+        Pessoa pessoa = controladorCliente.obterClientePorEmail(email);
+        return pessoa;
     }
 
     public void atualizarCliente(Pessoa clienteAntigo, Pessoa clienteNovo) throws ElementoNuloException, ElementoInvalidoException, ElementoDuplicadoException, ElementoNaoEncontradoException, SenhaFracaException, AcessoInvalidoException {
