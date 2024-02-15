@@ -23,13 +23,6 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
 
-        //Instanciando Repositórios
-        RepositorioAdmin repositorioAdmin = (RepositorioAdmin) RepositorioAdmin.getInstance();
-        RepositorioCliente repositorioCliente = (RepositorioCliente) RepositorioCliente.getInstance();
-        RepositorioCodigo repositorioCodigo = (RepositorioCodigo) RepositorioCodigo.getInstance();
-        RepositorioJogo repositorioJogo = (RepositorioJogo) RepositorioJogo.getInstance();
-        RepositorioVenda repositorioVenda = (RepositorioVenda) RepositorioVenda.getInstance();
-
         Pessoa pessoaLogada = null;
 
         launch();
