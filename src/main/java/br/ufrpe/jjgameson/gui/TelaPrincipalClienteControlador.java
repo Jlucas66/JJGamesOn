@@ -38,7 +38,6 @@ public class TelaPrincipalClienteControlador implements Initializable {
                         HBox cardBox = fxmlLoader.load();
                         CardTelaPrincipalClienteControlador cardTelaPrincipalClienteControlador = fxmlLoader.getController();
                         cardTelaPrincipalClienteControlador.setInformacoes(catalogo.get(i));
-                        cardTelaPrincipalClienteControlador.pegarCliente(clienteLogado);
                         hboxPrincipalCliente.getChildren().add(cardBox);
                 }
         }
@@ -329,7 +328,6 @@ public class TelaPrincipalClienteControlador implements Initializable {
             stage.show();
 
             TelaCarrinhoControlador telaCarrinhoControlador = fxmlLoader.getController();
-            telaCarrinhoControlador.guardarCliente(clienteLogado);
             //GerenciadorDeTelas.irParaTelaCarrinho(event);
         }
 

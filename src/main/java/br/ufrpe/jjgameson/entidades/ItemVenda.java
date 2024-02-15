@@ -19,13 +19,8 @@ public class ItemVenda {
         valorTotal = jogo.getValor() * quantidade;
         this.codigos = gerarCodigos(quantidade);
     }
-
+    
     private ArrayList<String> gerarCodigos(int quantidade) {
-        //so pra tirar o erro
-        return new ArrayList<>();
-    }
-
-    /*private ArrayList<String> gerarCodigos(int quantidade) {
         ArrayList<String> codigos = new ArrayList<>();
 
         for (int j = 0; j < quantidade; j++) {
@@ -38,7 +33,7 @@ public class ItemVenda {
             codigos.add(codigo);
         }
         return codigos;
-    }*/
+    }
 
     private String gerarCodigoUnico() {
         String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

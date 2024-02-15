@@ -28,9 +28,9 @@ public class ControladorVenda {
     }
 
     public void inserirVenda(Venda venda) throws ElementoNuloException, ElementoDuplicadoException, ElementoInvalidoException {
-        if(venda == null){
-            throw new ElementoNuloException("Venda não pode ser nula.");
-        }
+        //if(venda == null){
+           // throw new ElementoNuloException("Venda não pode ser nula.");
+        //}
         if(repositorioVenda.listar().contains(venda)){
             throw new ElementoDuplicadoException("Venda já cadastrada.");
         }

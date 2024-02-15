@@ -100,38 +100,29 @@ public class TelaCarrinhoControlador implements Initializable {
 
         @FXML
         void btnFinalizarComprarTelaCarrinho(ActionEvent event) throws IOException, ElementoInvalidoException, ElementoNuloException, ElementoDuplicadoException {
-
-               // if(clienteLogado.getDataNascimento().)
-
-//                for(ItemVenda item:itemNoCarrinho){
-//                        for(ItemVenda itemVenda:itemNoCarrinho){
-//                                if(clienteLogado.calcularIdade() >= itemVenda.getJogo().getFaixaEtaria().getIdade()){
-//                                        venda.adicionarItemVenda(item);
-//                                }
-//                                else{
-//                                        GerenciadorDeTelas.exibirAlertaMensagem("ERRO","Você não possui idade para jogar o jogo "+ item.getJogo().getNome());
-//                                        itemNoCarrinho.remove(item);
-//                                        jogoNoCarrinho.remove(item.getJogo());
-//                                }
-//                        }
-//                }
+                Venda venda = new Venda(clienteLogado, LocalDateTime.now());
                 for(ItemVenda itemVenda:itemNoCarrinho){
                         venda.adicionarItemVenda(itemVenda);
+
                 }
                 Fachada.getInstance().inserirVenda(venda);
+                System.out.println(venda);
 
-                Stage stage;
-                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tela_compra_finalizada.fxml"));
-                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(new Scene(fxmlLoader.load(), 900, 600));
-                stage.setTitle("Compra finalizada!");
+                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("tela_compra_finalizada.fxml"));
+                loader.setControllerFactory(controllerClass -> {
+                        if (controllerClass.equals(TelaCompraFinalizadaControlador.class)) {
+                                TelaCompraFinalizadaControlador controller = new TelaCompraFinalizadaControlador();
+                                controller.vendaRealizada(venda);
+                                return controller;
+                        } else {return null;}
+                });
+
+                Parent root = loader.load();
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(new Scene(root, 900, 600));
+                stage.setTitle("Seu carrinho");
                 stage.setResizable(false);
                 stage.show();
-
-                TelaCompraFinalizadaControlador telaCompraFinalizadaControlador = fxmlLoader.getController();
-                telaCompraFinalizadaControlador.vendaRealizada(venda);
-                telaCompraFinalizadaControlador.pegarCliente(clienteLogado);
-                Fachada.getInstance().inserirVenda(venda);
         }
 
         @FXML
@@ -171,10 +162,6 @@ public class TelaCarrinhoControlador implements Initializable {
                 jogoNoCarrinho.add(compra.getJogo());
                 itemNoCarrinho.add(compra);
                 venda.adicionarItemVenda(compra);
-        }
-
-        public void guardarCliente(Pessoa cliente){
-                clienteLogado = cliente;
         }
 
         public void removerDoCarrinho(Jogo jogo, ItemVenda itemVenda) {

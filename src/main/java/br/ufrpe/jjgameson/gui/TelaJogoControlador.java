@@ -3,6 +3,7 @@ import br.ufrpe.jjgameson.HelloApplication;
 import br.ufrpe.jjgameson.entidades.ItemVenda;
 import br.ufrpe.jjgameson.entidades.Jogo;
 import br.ufrpe.jjgameson.entidades.Pessoa;
+import br.ufrpe.jjgameson.negocio.Fachada;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -83,7 +84,6 @@ public class TelaJogoControlador implements Initializable {
                         if (controllerClass.equals(TelaCarrinhoControlador.class)) {
                                 TelaCarrinhoControlador controller = new TelaCarrinhoControlador();
                                 controller.guardarCompra(compra);
-                                controller.guardarCliente(clienteLogado);
                                 return controller;
                         } else {return null;}
                 });
