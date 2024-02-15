@@ -131,9 +131,6 @@ public class ControladorJogo {
         if (jogoNovo.getFaixaEtaria() != FaixaEtaria.LIVRE && jogoNovo.getFaixaEtaria() != FaixaEtaria.DEZ && jogoNovo.getFaixaEtaria() != FaixaEtaria.DOZE && jogoNovo.getFaixaEtaria() != FaixaEtaria.QUATORZE && jogoNovo.getFaixaEtaria() != FaixaEtaria.DEZESSEIS && jogoNovo.getFaixaEtaria() != FaixaEtaria.DEZOITO){
             throw new ElementoInvalidoException("Faixa etaria do jogo não pode ser diferente das opções disponiveis");
         }
-        if (repositorioJogo.obterJogoPorNome(jogoNovo.getNome()) != null){
-            throw new ElementoDuplicadoException("Jogo já cadastrado");
-        }
         repositorioJogo.atualizarJogo(jogoAntigo, jogoNovo);
     }
 

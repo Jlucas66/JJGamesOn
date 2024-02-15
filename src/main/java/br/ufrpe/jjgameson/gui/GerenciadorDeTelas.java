@@ -157,6 +157,7 @@ public class GerenciadorDeTelas {
         stage.show();
     }
 
+    //Avisos
     public static void exibirAlertaMensagem(String titulo, String mensagem) {
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setTitle(titulo);
@@ -165,4 +166,5 @@ public class GerenciadorDeTelas {
 
         alerta.showAndWait();
     }
+
 }

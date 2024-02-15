@@ -19,7 +19,7 @@ import static br.ufrpe.jjgameson.entidades.FaixaEtaria.LIVRE;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tela_login_cliente.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tela_principal_adm.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 900, 600);
         stage.setTitle("Login");
         stage.setScene(scene);
@@ -31,6 +31,8 @@ public class HelloApplication extends Application {
 
         Pessoa cliente = new Pessoa("exemplo", "exemplo@gmail.com","Senha123@",LocalDate.now(),false);
         Fachada.getInstance().inserirCliente(cliente);
+        Pessoa admin1 = new Pessoa("João", "joaoemail@gmail.com", "Senha@123", LocalDate.of(1999,12,12),true);
+        Fachada.getInstance().inserirAdmin(admin1);
 
         Jogo jogo1 = new Jogo("https://upload.wikimedia.org/wikipedia/pt/9/9c/Minecraft_capa.png","Minecraft",29.90,"Mojang Studios","Casual","Um jogo casual de construção", FaixaEtaria.LIVRE);
         Jogo jogo2 = new Jogo("https://s2.glbimg.com/CA-YqcadfhLkfw53DX3h6DHzx5BwmWUnVlCB89ixErNIoz-HdGixxa_8qOZvMp3w/s.glbimg.com/jo/g1/f/original/2012/11/08/coverreg610.jpg","GTA V",69.90,"Rockstar Games","Ação","Um jogo de ação", FaixaEtaria.DEZESSEIS);

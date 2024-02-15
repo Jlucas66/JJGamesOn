@@ -1,12 +1,21 @@
 package br.ufrpe.jjgameson.gui;
 
 
+import br.ufrpe.jjgameson.entidades.FaixaEtaria;
+import br.ufrpe.jjgameson.entidades.Jogo;
+import br.ufrpe.jjgameson.exceptions.ElementoDuplicadoException;
+import br.ufrpe.jjgameson.exceptions.ElementoInvalidoException;
+import br.ufrpe.jjgameson.exceptions.ElementoNaoEncontradoException;
+import br.ufrpe.jjgameson.exceptions.ElementoNuloException;
+import br.ufrpe.jjgameson.negocio.Fachada;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 
 import java.io.IOException;
+import java.util.List;
 
 public class TelaEditarJogoControlador {
 
@@ -17,7 +26,7 @@ public class TelaEditarJogoControlador {
         private Button botaoVoltar;
 
         @FXML
-        private ChoiceBox<?> choiceBoxEditarJogo;
+        private ChoiceBox<Jogo> choiceBoxEditarJogo;
 
         @FXML
         private TextField devEditarJogo;
@@ -47,22 +56,39 @@ public class TelaEditarJogoControlador {
         private TextField valorEditarJogo;
 
         @FXML
-        void btnEditarEditarJogo(ActionEvent event) throws IOException {
+        void initialize() {
+                preencherChoiceBox();
+        }
+        private void preencherChoiceBox() {
+                List<Jogo> listaJogos = Fachada.getInstance().listarJogos();
+                choiceBoxEditarJogo.setItems(FXCollections.observableArrayList(listaJogos));
+                choiceBoxEditarJogo.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
+                        if (newValue != null) {
+                                Jogo jogo = choiceBoxEditarJogo.getValue();
+                                idEditarJogo.setText(String.valueOf(jogo.getId()));
+                                nomeEditarJogo.setText(jogo.getNome());
+                                valorEditarJogo.setText(String.valueOf(jogo.getValor()));
+                                devEditarJogo.setText(jogo.getDesenvolvedora());
+                                generoEditarJogo.setText(jogo.getGenero());
+                                resumoEditarJogo.setText(jogo.getResumo());
+                                faixaEditarJogo.setText(String.valueOf(jogo.getFaixaEtaria()));
+                                pathEditarJogo.setText(jogo.getPath());
+                        }
+                });
+        }
 
-
-                // Caso tenha dado algum erro
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Erro");
-                alert.setHeaderText("Edição de jogo");
-                alert.setContentText("Não foi possível concluir a edição.");
-                alert.showAndWait();
-
-                // Caso tenha sido possivel editar o jogo
-                Alert alertOk = new Alert(Alert.AlertType.WARNING);
-                alertOk.setTitle("Sucesso");
-                alertOk.setHeaderText("Edição de jogo");
-                alertOk.setContentText("O jogo foi editado com sucesso.");
-                alertOk.showAndWait();
+        @FXML
+        void btnEditarEditarJogo(ActionEvent event) throws IOException, ElementoInvalidoException, ElementoNuloException, ElementoDuplicadoException, ElementoNaoEncontradoException {
+                Jogo jogoAntigo = choiceBoxEditarJogo.getValue();
+                Jogo jogoNovo = new Jogo(pathEditarJogo.getText(), nomeEditarJogo.getText(), Double.parseDouble(valorEditarJogo.getText()) , devEditarJogo.getText(), generoEditarJogo.getText(),resumoEditarJogo.getText(), FaixaEtaria.valueOf(faixaEditarJogo.getText()));
+                try {
+                        Fachada.getInstance().atualizarJogo(jogoAntigo, jogoNovo);
+                        GerenciadorDeTelas.exibirAlertaMensagem("Editar Jogo", "Jogo editado com sucesso!");
+                }
+                catch (ElementoNuloException | ElementoNaoEncontradoException e) {
+                        GerenciadorDeTelas.exibirAlertaMensagem("Editar Jogo", e.getMessage());
+                        e.printStackTrace();
+                }
         }
 
         @FXML
