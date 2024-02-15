@@ -84,6 +84,10 @@ public class ControladorCliente {
         return resultado;
     }
 
+    public Pessoa obterUltimoCliente(){
+        return repositorioCliente.obterUltimoCliente();
+    }
+
     public void removerCliente(String email) throws ElementoNuloException, ElementoNaoEncontradoException {
         if(email == null){
             throw new ElementoNuloException("Email não pode ser nulo");

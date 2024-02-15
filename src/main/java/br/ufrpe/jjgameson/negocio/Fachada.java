@@ -87,6 +87,11 @@ public class Fachada {
         return pessoa;
     }
 
+    public Pessoa obterUltimoCliente(){
+        Pessoa pessoa = controladorCliente.obterUltimoCliente();
+        return pessoa;
+    }
+
     public void atualizarCliente(Pessoa clienteAntigo, Pessoa clienteNovo) throws ElementoNuloException, ElementoInvalidoException, ElementoDuplicadoException, ElementoNaoEncontradoException, SenhaFracaException, AcessoInvalidoException {
         controladorCliente.atualizarCliente(clienteAntigo, clienteNovo);
     }

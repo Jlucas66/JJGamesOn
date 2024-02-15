@@ -15,6 +15,7 @@ import java.util.List;
 public class RepositorioCliente implements IRepositorioCliente {
 
     private ArrayList<Pessoa> clientes;
+    private Pessoa ultimoCliente;
     private static IRepositorioCliente instance;
 
     private RepositorioCliente() {
@@ -32,11 +33,19 @@ public class RepositorioCliente implements IRepositorioCliente {
         clientes.add(cliente);
     }
     @Override
+    public void inserirUltimoCliente(Pessoa cliente){
+        ultimoCliente = cliente;
+    }
+    @Override
     public Pessoa obterClientePorEmail(String email) {
         for (Pessoa cliente : clientes) {
             if (cliente.getEmail().equals(email)) return cliente;
         }
         return null;
+    }
+    @Override
+    public Pessoa obterUltimoCliente (){
+        return ultimoCliente;
     }
     @Override
     public void removerCliente(String email) {
