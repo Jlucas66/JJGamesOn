@@ -86,13 +86,6 @@ public class TelaAvaliacaoControlador implements Initializable {
             // Avaliacao avaliacao = new Avaliacao (clienteLogado(), jogo1, nota, comentarioTelaAvaliacao.getText(), dataAgora);
 
 
-            // Caso o cliente não possua o jogo
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Aviso");
-            alert.setHeaderText("Ausência de jogo");
-            alert.setContentText("Você não possui o jogo em seu histórico de compras, para avaliar um jogo na loja é necessário obter pelo menos uma unidade.");
-            alert.showAndWait();
-
             //Alert de avaliação concluída com sucesso
             //Precisa ser feito a verificação se é possível avaliar o jogo
             Alert alertOk = new Alert(Alert.AlertType.WARNING);

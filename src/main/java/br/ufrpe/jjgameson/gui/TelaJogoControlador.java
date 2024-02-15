@@ -101,24 +101,35 @@ public class TelaJogoControlador implements Initializable {
         void btnAvaliarTelaJogo(ActionEvent event) throws IOException {
 
                 // Tentar implementar if else ou try catch caso o cliente tenha ou não o jogo assim que os arquivos estiverem ok
+                try {
+                        /*
+                        * Método pra ver se o cliente tem o jogo
+                        *
+                        * se sim
+                        * */
+                        Stage stage;
+                        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tela_avaliacao.fxml"));
+                        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        stage.setScene(new Scene(fxmlLoader.load(), 900, 600));
+                        stage.setTitle("Avalie o jogo!");
+                        stage.setResizable(false);
+                        stage.show();
 
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Aviso");
-                alert.setHeaderText("Ausência de jogo");
-                alert.setContentText("Você não possui o jogo em seu histórico de compras, para avaliar um jogo na loja é necessário obter pelo menos uma unidade.");
-                alert.showAndWait();
+                        TelaAvaliacaoControlador telaAvaliacaoControlador = fxmlLoader.getController();
+                        telaAvaliacaoControlador.jogoParaAvaliar(jogoA);
+                        telaAvaliacaoControlador.pegarCliente(clienteLogado);
 
-                Stage stage;
-                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tela_avaliacao.fxml"));
-                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(new Scene(fxmlLoader.load(), 900, 600));
-                stage.setTitle("Avalie o jogo!");
-                stage.setResizable(false);
-                stage.show();
+                }catch (Exception e){
+                        Alert alert = new Alert(Alert.AlertType.WARNING);
+                        alert.setTitle("Aviso");
+                        alert.setHeaderText("Ausência de jogo");
+                        alert.setContentText("Você não possui o jogo em seu histórico de compras, para avaliar um jogo na loja é necessário obter pelo menos uma unidade.");
+                        alert.showAndWait();
+                }
 
-                TelaAvaliacaoControlador telaAvaliacaoControlador = fxmlLoader.getController();
-                telaAvaliacaoControlador.jogoParaAvaliar(jogoA);
-                telaAvaliacaoControlador.pegarCliente(clienteLogado);
+
+
+
         }
         @FXML
         void btnVoltarTelaJogo(ActionEvent event) throws IOException{
