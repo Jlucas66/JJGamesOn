@@ -101,8 +101,17 @@ public class TelaCarrinhoControlador implements Initializable {
 
         @FXML
         void btnFinalizarComprarTelaCarrinho(ActionEvent event) throws IOException {
+                Stage stage;
+                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tela_avaliacao.fxml"));
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(new Scene(fxmlLoader.load(), 900, 600));
+                stage.setTitle("Avalie o jogo!");
+                stage.setResizable(false);
+                stage.show();
 
-                GerenciadorDeTelas.irParaTelaCompraFinalizada(event);
+                TelaCompraFinalizadaControlador telaCompraFinalizadaControlador = fxmlLoader.getController();
+                telaCompraFinalizadaControlador.vendaRealizada(venda);
+
         }
 
         @FXML
