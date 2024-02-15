@@ -29,8 +29,6 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) throws ElementoInvalidoException, ElementoNuloException, ElementoDuplicadoException, SenhaFracaException, AcessoInvalidoException {
 
-        Pessoa pessoaLogada = null;
-
         Pessoa cliente = new Pessoa("exemplo", "exemplo@gmail.com","Senha123@",LocalDate.now(),false);
         Fachada.getInstance().inserirCliente(cliente);
 
