@@ -64,23 +64,14 @@ public class TelaLoginClienteControlador {
         Pessoa pessoaLogin = null;
         try {
             pessoaLogin = Fachada.getInstance().obterClientePorEmail(emailLogin.getText());
+            Fachada.getInstance().inserirUltimoCliente(pessoaLogin);
         }catch (ElementoInvalidoException e) {
             GerenciadorDeTelas.exibirAlertaMensagem("Erro","Email inválido");
             e.printStackTrace();
         }
         if(pessoaLogin != null){
             if(pessoaLogin.getSenha().equals(senhaLogin.getText())){
-                Stage stage;
-                FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("tela_principal_cliente.fxml"));
-                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(new Scene(fxmlLoader.load(), 900, 600));
-                stage.setTitle("Seja bem-vindo(a)!");
-                stage.setResizable(false);
-                stage.show();
-
-                TelaPrincipalClienteControlador telaPrincipalClienteControlador = fxmlLoader.getController();
-                telaPrincipalClienteControlador.pegarCliente(pessoaLogin);
-                //GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
+                GerenciadorDeTelas.irParaTelaPrincipalCliente(event);
             }
             else{
                 GerenciadorDeTelas.exibirAlertaMensagem("Erro","Senha inválida");

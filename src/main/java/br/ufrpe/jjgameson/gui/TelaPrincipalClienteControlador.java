@@ -27,7 +27,8 @@ public class TelaPrincipalClienteControlador implements Initializable {
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
-
+            clienteLogado = Fachada.getInstance().obterUltimoCliente();
+            System.out.println(clienteLogado);
                  catalogo = new ArrayList<>(catalogo());
 
         try{

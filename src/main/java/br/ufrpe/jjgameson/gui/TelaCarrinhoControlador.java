@@ -38,6 +38,7 @@ public class TelaCarrinhoControlador implements Initializable {
 
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
+                clienteLogado = Fachada.getInstance().obterUltimoCliente();
                 System.out.println("Tamanho da lista jogos: " + jogoNoCarrinho.size());
                 System.out.println("Tamanho da lista itemvenda: " + itemNoCarrinho.size());
                 vboxTelaCarrinho.getChildren().clear();

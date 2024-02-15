@@ -51,7 +51,6 @@ try {
 
     TelaJogoControlador telaJogoControlador = fxmlLoader.getController();
     telaJogoControlador.atualizarInformacoes(joguinho);
-    telaJogoControlador.pegarCliente(clienteLogado);
 }catch (IOException e){e.printStackTrace();}
 
         }

@@ -117,7 +117,6 @@ public class TelaJogoControlador implements Initializable {
 
                         TelaAvaliacaoControlador telaAvaliacaoControlador = fxmlLoader.getController();
                         telaAvaliacaoControlador.jogoParaAvaliar(jogoA);
-                        telaAvaliacaoControlador.pegarCliente(clienteLogado);
 
                 }catch (Exception e){
                         Alert alert = new Alert(Alert.AlertType.WARNING);
