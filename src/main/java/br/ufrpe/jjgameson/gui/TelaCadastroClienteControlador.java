@@ -64,10 +64,13 @@ public class TelaCadastroClienteControlador implements Initializable {
             GerenciadorDeTelas.exibirAlertaMensagem("Conta Criada!", "Sua conta foi criada com sucesso com sucesso!");
             GerenciadorDeTelas.irParaTelaLoginCliente(event);
         } catch (ElementoInvalidoException e) {
+            GerenciadorDeTelas.exibirAlertaMensagem("ERRO","Elemento Inválido");
             throw new RuntimeException(e);
         } catch (ElementoNuloException e) {
+            GerenciadorDeTelas.exibirAlertaMensagem("ERRO", "Os Campos não podem ficar vazios");
             throw new RuntimeException(e);
         } catch (SenhaFracaException e) {
+            GerenciadorDeTelas.exibirAlertaMensagem("ERRO", "Senha fraca\n\n- Mínimo 8 caracteres\n- Letra maiúscula\n- Número\n- Caracter Especial");
             throw new RuntimeException(e);
         } catch (ElementoDuplicadoException e) {
             throw new RuntimeException(e);
