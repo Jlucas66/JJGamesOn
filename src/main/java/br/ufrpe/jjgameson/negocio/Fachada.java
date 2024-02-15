@@ -14,7 +14,7 @@ public class Fachada {
     private ControladorCliente controladorCliente;
     private ControladorCodigo controladorCodigo;
     private ControladorJogo controladorJogo;
-    private ControladorPromocao controladorPromocao;
+
     private ControladorVenda controladorVenda;
 
     private Fachada(){
@@ -23,7 +23,6 @@ public class Fachada {
         controladorCliente = ControladorCliente.getInstance();
         controladorCodigo = ControladorCodigo.getInstance();
         controladorJogo = ControladorJogo.getInstance();
-        controladorPromocao = ControladorPromocao.getInstance();
         controladorVenda = ControladorVenda.getInstance();
     }
 
@@ -124,23 +123,6 @@ public class Fachada {
 
     public void atualizarJogo(Jogo jogoAntigo, Jogo jogoNovo) throws ElementoNuloException, ElementoNaoEncontradoException, ElementoDuplicadoException, ElementoInvalidoException {
         controladorJogo.atualizarJogo(jogoAntigo, jogoNovo);
-    }
-
-    //Promocoes
-    public void inserirPromocao(Promocao promocao) throws ElementoNuloException, ElementoInvalidoException, ElementoDuplicadoException {
-        controladorPromocao.inserirPromocao(promocao);
-    }
-
-    public void listarPromocoes(){
-        controladorPromocao.listarPromocoes();
-    }
-
-    public void atualizarPromocao(Promocao promocaoAntiga, Promocao promocaoNova) throws ElementoNuloException, ElementoDuplicadoException, ElementoNaoEncontradoException, ElementoInvalidoException {
-        controladorPromocao.atualizarPromocao(promocaoAntiga, promocaoNova);
-    }
-
-    public void removerPromocao(Promocao promocao) throws ElementoNuloException, ElementoNaoEncontradoException {
-        controladorPromocao.excluirPromocao(promocao);
     }
 
     //Vendas
