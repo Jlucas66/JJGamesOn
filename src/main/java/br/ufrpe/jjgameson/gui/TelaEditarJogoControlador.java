@@ -38,9 +38,6 @@ public class TelaEditarJogoControlador {
         private TextField generoEditarJogo;
 
         @FXML
-        private TextField idEditarJogo;
-
-        @FXML
         private ImageView logoEditarJogo;
 
         @FXML
@@ -65,7 +62,6 @@ public class TelaEditarJogoControlador {
                 choiceBoxEditarJogo.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
                         if (newValue != null) {
                                 Jogo jogo = choiceBoxEditarJogo.getValue();
-                                idEditarJogo.setText(String.valueOf(jogo.getId()));
                                 nomeEditarJogo.setText(jogo.getNome());
                                 valorEditarJogo.setText(String.valueOf(jogo.getValor()));
                                 devEditarJogo.setText(jogo.getDesenvolvedora());
