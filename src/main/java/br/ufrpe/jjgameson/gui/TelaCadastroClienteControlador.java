@@ -61,7 +61,7 @@ public class TelaCadastroClienteControlador implements Initializable {
         Pessoa cliente = new Pessoa(nomeCadastroString,emailCadastroString,senhaCadastroString,dataNascimento,false);
         try {
             Fachada.getInstance().inserirCliente(cliente);
-            GerenciadorDeTelas.exibirAlertaMensagem("Conta Criada!", "Sua conta foi criada com sucesso com sucesso!");
+            GerenciadorDeTelas.exibirAlertaMensagem("Conta Criada!", "Sua conta foi criada com sucesso!");
             GerenciadorDeTelas.irParaTelaLoginCliente(event);
         } catch (ElementoInvalidoException e) {
             GerenciadorDeTelas.exibirAlertaMensagem("ERRO","Elemento Inválido");
