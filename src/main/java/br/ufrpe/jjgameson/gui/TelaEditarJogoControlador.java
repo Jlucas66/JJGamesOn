@@ -56,7 +56,7 @@ public class TelaEditarJogoControlador {
 
         @FXML
         void btnVoltarEditarJogo(ActionEvent event) throws IOException{
-GerenciadorDeTelas.irParaTelaPrincipalADM(event);
+                GerenciadorDeTelas.irParaTelaPrincipalADM(event);
         }
 
     }
