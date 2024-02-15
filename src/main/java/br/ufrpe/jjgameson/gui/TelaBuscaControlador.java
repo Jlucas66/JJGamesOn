@@ -65,7 +65,6 @@ public class TelaBuscaControlador implements Initializable {
 
         public void setarInformacoes (ArrayList<Jogo> jgs){
             this.buscados = jgs;
-            //System.out.println("Tamanho da lista buscados: " + buscados.size());
         }
 
 }
